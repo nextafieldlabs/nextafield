@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="profit-tracker.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+
+    <!-- Market Prices Section Start -->
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --secondary: #8BC34A;
+            --dark: #2E7D32;
+            --light: #DCEDC8;
+            --accent: #FFC107;
+            --text: #333;
+            --bg: #f9f9f9;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        
+        
+        header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            position: sticky;
+            top: 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 1rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 90;
+        }
+        
+        .main-content {
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        /* Search & Filters */
+        .search-box {
+            margin-left: auto;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        /* Commodity List */
+        .commodity-list {
+            margin-top: 1rem;
+        }
+        
+        .commodity-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .commodity-item:hover {
+            background: var(--light);
+        }
+        
+        .commodity-item.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .commodity-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 0.8rem;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Dashboard Header */
+        .dashboard-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .commodity-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .price-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .price-change {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        
+        .price-up {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        
+        .price-down {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .stat-title {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .stat-change {
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+        
+        .up { color: #2E7D32; }
+        .down { color: #C62828; }
+        
+        /* 3D Visualization */
+        #commodity-3d {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            background: #f5f5f5;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .card-header {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* Data Tables */
+        .data-table, .state-data-table, .market-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .data-table th, .data-table td,
+        .state-data-table th, .state-data-table td,
+        .market-table th, .market-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table th, .state-data-table th, .market-table th {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .badge-primary { background: var(--light); color: var(--dark); }
+        .badge-success { background: #E8F5E9; color: #2E7D32; }
+        .badge-warning { background: #FFF8E1; color: #FF8F00; }
+        .badge-danger { background: #FFEBEE; color: #C62828; }
+        
+        /* Time Filters */
+        .time-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .time-filter {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .time-filter.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Weather Widget */
+        .weather-widget {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .weather-icon {
+            font-size: 1.5rem;
+        }
+        
+        .weather-info h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .weather-info p {
+            margin: 0.2rem 0 0;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        /* News & Analysis */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .news-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item h4 {
+            margin: 0 0 0.3rem 0;
+            font-size: 1rem;
+        }
+        
+        .news-item p {
+            margin: 0;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        /* Alert Cards */
+        .msp-alert, .market-alert {
+            background: #FFF3E0;
+            border-left: 4px solid #FFA000;
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .market-alert {
+            background: #E3F2FD;
+            border-left: 4px solid #2196F3;
+        }
+        
+        /* Chart Containers */
+        .trade-chart-container, 
+        .production-trends-container,
+        .yield-chart-container,
+        .market-sentiment-container {
+            height: 300px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 280px;
+                height: calc(100vh - 60px);
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                grid-column: 1;
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            </button>
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Market Prices</span>
+            </div>
+            <div class="search-box">
+                <span>Real-time agricultural commodity prices, trends, and insights.</span>
+            </div>
+        </header>
+        
+        <aside class="sidebar" id="sidebar">
+            <h3>Indian Commodities</h3>
+            <div class="commodity-list">
+                <div class="commodity-item active" data-commodity="wheat">
+                    <div class="commodity-icon">🌾</div>
+                    <div class="commodity-name">Wheat</div>
+                </div>
+                <div class="commodity-item" data-commodity="rice">
+                    <div class="commodity-icon">🍚</div>
+                    <div class="commodity-name">Rice</div>
+                </div>
+                <div class="commodity-item" data-commodity="soybean">
+                    <div class="commodity-icon">🥜</div>
+                    <div class="commodity-name">Soybean</div>
+                </div>
+                <div class="commodity-item" data-commodity="cotton">
+                    <div class="commodity-icon">🧵</div>
+                    <div class="commodity-name">Cotton</div>
+                </div>
+                <div class="commodity-item" data-commodity="sugarcane">
+                    <div class="commodity-icon">🍯</div>
+                    <div class="commodity-name">Sugarcane</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 1.5rem;">Indian States</h3>
+            <div class="commodity-list">
+                <div class="commodity-item" data-region="punjab">
+                    <div class="commodity-icon">🏙️</div>
+                    <div class="commodity-name">Punjab</div>
+                </div>
+                <div class="commodity-item" data-region="haryana">
+                    <div class="commodity-icon">🏙️</div>
+                    <div class="commodity-name">Haryana</div>
+                </div>
+                <div class="commodity-item" data-region="up">
+                    <div class="commodity-icon">🏙️</div>
+                    <div class="commodity-name">Uttar Pradesh</div>
+                </div>
+                <div class="commodity-item" data-region="mp">
+                    <div class="commodity-icon">🏙️</div>
+                    <div class="commodity-name">Madhya Pradesh</div>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="commodity-title">Wheat (NCDEX: WHEATJUL25)</h1>
+                    <div class="time-filters">
+                        <div class="time-filter active" data-time="1d">1D</div>
+                        <div class="time-filter" data-time="1w">1W</div>
+                        <div class="time-filter" data-time="1m">1M</div>
+                        <div class="time-filter" data-time="3m">3M</div>
+                    </div>
+                </div>
+                <div>
+                    <span class="price-display">₹2,450</span>
+                    <span class="price-change price-up">+1.8%</span>
+                </div>
+            </div>
+            
+            <div class="msp-alert">
+                <i class="fas fa-exclamation-circle"></i>
+                <p><strong>MSP Alert:</strong> Government MSP for Wheat 2025-26 is ₹2,275/quintal (+₹125 from last year)</p>
+            </div>
+            
+            <div class="market-alert">
+                <i class="fas fa-chart-line"></i>
+                <p><strong>Market Update:</strong> Wheat prices rising due to increased export demand and lower stock levels</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Open Price</div>
+                    <div class="stat-value">₹2,420</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Daily High</div>
+                    <div class="stat-value">₹2,465</div>
+                    <div class="stat-change up">+45 (1.8%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Daily Low</div>
+                    <div class="stat-value">₹2,395</div>
+                    <div class="stat-change down">-25 (1.0%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Volume</div>
+                    <div class="stat-value">8.2K</div>
+                    <div class="stat-change up">+15.2%</div>
+                </div>
+            </div>
+            
+            <div id="commodity-3d"></div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">Price History (30 days)</div>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Production & Demand (2025)</div>
+                    <div class="chart-container">
+                        <canvas id="supplyDemandChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">State-wise Production</div>
+                    <div class="chart-container">
+                        <canvas id="regionalChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Yield Trends</div>
+                    <div class="yield-chart-container">
+                        <canvas id="yieldChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">Export/Import Trends (2025)</div>
+                <div class="trade-chart-container">
+                    <canvas id="tradeChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">Production Trends (2015-2025)</div>
+                <div class="production-trends-container">
+                    <canvas id="productionTrendsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">Market Sentiment Analysis</div>
+                <div class="market-sentiment-container">
+                    <canvas id="marketSentimentChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">Futures Contracts (NCDEX)</div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Contract</th>
+                                <th>Last Price</th>
+                                <th>Change</th>
+                                <th>% Change</th>
+                                <th>Volume</th>
+                                <th>Open Interest</th>
+                                <th>MSP</th>
+                                <th>Expiration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>WHEATJUL25</td>
+                                <td>₹2,450</td>
+                                <td><span class="badge badge-success">+45</span></td>
+                                <td><span class="badge badge-success">+1.8%</span></td>
+                                <td>8,200</td>
+                                <td>42,500</td>
+                                <td>₹2,275</td>
+                                <td>Jul 15, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>WHEATSEP25</td>
+                                <td>₹2,480</td>
+                                <td><span class="badge badge-success">+38</span></td>
+                                <td><span class="badge badge-success">+1.5%</span></td>
+                                <td>6,750</td>
+                                <td>38,200</td>
+                                <td>₹2,275</td>
+                                <td>Sep 15, 2025</td>
+                            </tr>
+                            <tr>
+                                <td>RICENOV25</td>
+                                <td>₹3,120</td>
+                                <td><span class="badge badge-danger">-25</span></td>
+                                <td><span class="badge badge-danger">-0.8%</span></td>
+                                <td>5,300</td>
+                                <td>28,400</td>
+                                <td>₹2,850</td>
+                                <td>Nov 15, 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">State-wise Production Data (2025)</div>
+                <div style="overflow-x: auto;">
+                    <table class="state-data-table">
+                        <thead>
+                            <tr>
+                                <th>State</th>
+                                <th>Area (Lakh Ha)</th>
+                                <th>Production (MT)</th>
+                                <th>Yield (Kg/Ha)</th>
+                                <th>Growth YoY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Punjab</td>
+                                <td>35.2</td>
+                                <td>18.5</td>
+                                <td>5,256</td>
+                                <td><span class="badge badge-success">+4.2%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Haryana</td>
+                                <td>25.1</td>
+                                <td>13.2</td>
+                                <td>5,259</td>
+                                <td><span class="badge badge-success">+3.8%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Uttar Pradesh</td>
+                                <td>98.5</td>
+                                <td>32.6</td>
+                                <td>3,310</td>
+                                <td><span class="badge badge-warning">+1.2%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Madhya Pradesh</td>
+                                <td>54.3</td>
+                                <td>18.7</td>
+                                <td>3,444</td>
+                                <td><span class="badge badge-success">+5.4%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card full-width">
+                <div class="card-header">Market Indicators</div>
+                <div style="overflow-x: auto;">
+                    <table class="market-table">
+                        <thead>
+                            <tr>
+                                <th>Indicator</th>
+                                <th>Value</th>
+                                <th>Previous</th>
+                                <th>Change</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Stock Levels (MMT)</td>
+                                <td>15.2</td>
+                                <td>16.8</td>
+                                <td>-1.6</td>
+                                <td><i class="fas fa-arrow-down text-danger"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Export Orders (KT)</td>
+                                <td>850</td>
+                                <td>720</td>
+                                <td>+130</td>
+                                <td><i class="fas fa-arrow-up text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td>FCI Procurement (MMT)</td>
+                                <td>30.5</td>
+                                <td>28.2</td>
+                                <td>+2.3</td>
+                                <td><i class="fas fa-arrow-up text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Monsoon Progress</td>
+                                <td>92%</td>
+                                <td>88%</td>
+                                <td>+4%</td>
+                                <td><i class="fas fa-arrow-up text-success"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+                sidebar.classList.remove('active');
+            }
+        });
+        
+        // Initialize 3D scene (Wheat Field)
+        const init3DScene = () => {
+            const container = document.getElementById('commodity-3d');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Create wheat stalk
+            const createWheatStalk = () => {
+                const group = new THREE.Group();
+                
+                // Stalk
+                const stalkGeometry = new THREE.CylinderGeometry(0.03, 0.05, 1.5, 6);
+                const stalkMaterial = new THREE.MeshPhongMaterial({ color: 0x8bc34a });
+                const stalk = new THREE.Mesh(stalkGeometry, stalkMaterial);
+                group.add(stalk);
+                
+                // Wheat head
+                const headGeometry = new THREE.SphereGeometry(0.15, 8, 8);
+                const headMaterial = new THREE.MeshPhongMaterial({ color: 0xf5deb3 });
+                const head = new THREE.Mesh(headGeometry, headMaterial);
+                head.position.y = 0.8;
+                group.add(head);
+                
+                return group;
+            };
+            
+            // Create wheat field
+            for (let i = 0; i < 20; i++) {
+                const stalk = createWheatStalk();
+                stalk.position.x = (Math.random() - 0.5) * 6;
+                stalk.position.z = (Math.random() - 0.5) * 6;
+                stalk.scale.setScalar(0.8 + Math.random() * 0.5);
+                scene.add(stalk);
+            }
+            
+            // Add ground
+            const groundGeometry = new THREE.PlaneGeometry(20, 20, 10, 10);
+            const groundMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0x795548,
+                side: THREE.DoubleSide
+            });
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            ground.position.y = -0.5;
+            scene.add(ground);
+            
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+            
+            // Position camera
+            camera.position.set(0, 3, 8);
+            camera.lookAt(0, 0, 0);
+            
+            // Add controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableZoom = false;
+            controls.enablePan = false;
+            controls.maxPolarAngle = Math.PI / 2;
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        };
+        
+        // Initialize all charts
+        const initCharts = () => {
+            // Price History Chart
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+            const priceChart = new Chart(priceCtx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 30}, (_, i) => `${i+1} Jun`),
+                    datasets: [{
+                        label: 'Wheat Price (₹/quintal)',
+                        data: [2350, 2345, 2330, 2325, 2318, 2325, 2335, 2340, 2350, 2360, 
+                               2370, 2380, 2390, 2400, 2410, 2420, 2425, 2430, 2435, 2440, 
+                               2445, 2448, 2450, 2452, 2450, 2448, 2445, 2442, 2440, 2450],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 2300,
+                            max: 2500
+                        }
+                    }
+                }
+            });
+            
+            // Supply & Demand Chart
+            const supplyDemandCtx = document.getElementById('supplyDemandChart').getContext('2d');
+            const supplyDemandChart = new Chart(supplyDemandCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2022', '2023', '2024', '2025 (est)'],
+                    datasets: [
+                        {
+                            label: 'Production (million tonnes)',
+                            data: [107, 110, 108, 112],
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Demand (million tonnes)',
+                            data: [105, 108, 110, 111],
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 100
+                        }
+                    }
+                }
+            });
+            
+            // Regional Production Chart
+            const regionalCtx = document.getElementById('regionalChart').getContext('2d');
+            const regionalChart = new Chart(regionalCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Punjab', 'Haryana', 'Uttar Pradesh', 'Madhya Pradesh', 'Others'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#8BC34A',
+                            '#CDDC39',
+                            '#FFC107',
+                            '#FF9800'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Yield Trends Chart
+            const yieldCtx = document.getElementById('yieldChart').getContext('2d');
+            const yieldChart = new Chart(yieldCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: 'Yield (Kg/Ha)',
+                        data: [3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000, 4100],
+                        borderColor: '#FF9800',
+                        backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Trade Chart
+            const tradeCtx = document.getElementById('tradeChart').getContext('2d');
+            const tradeChart = new Chart(tradeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [
+                        {
+                            label: 'Export (million tonnes)',
+                            data: [2.5, 3.1, 4.2, 3.8, 4.5, 5.0, 4.7, 5.2, 5.5, 6.0, 6.5, 7.0],
+                            backgroundColor: 'rgba(76, 175, 80, 0.7)',
+                            borderColor: 'rgba(76, 175, 80, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Import (million tonnes)',
+                            data: [0.2, 0.1, 0.3, 0.5, 0.4, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.2],
+                            backgroundColor: 'rgba(244, 67, 54, 0.7)',
+                            borderColor: 'rgba(244, 67, 54, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+            
+            // Production Trends Chart
+            const productionTrendsCtx = document.getElementById('productionTrendsChart').getContext('2d');
+            const productionTrendsChart = new Chart(productionTrendsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: 'Production (million tonnes)',
+                        data: [86, 92, 95, 98, 102, 105, 107, 110, 108, 112, 115],
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Market Sentiment Chart
+            const marketSentimentCtx = document.getElementById('marketSentimentChart').getContext('2d');
+            const marketSentimentChart = new Chart(marketSentimentCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Demand', 'Supply', 'Exports', 'Weather', 'Stock Levels', 'Global Prices'],
+                    datasets: [{
+                        label: 'Market Sentiment',
+                        data: [85, 65, 75, 60, 70, 80],
+                        backgroundColor: 'rgba(255, 152, 0, 0.2)',
+                        borderColor: '#FF9800',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            return {
+                priceChart,
+                supplyDemandChart,
+                regionalChart,
+                yieldChart,
+                tradeChart,
+                productionTrendsChart,
+                marketSentimentChart
+            };
+        };
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            init3DScene();
+            const charts = initCharts();
+            
+            // Commodity selection
+            document.querySelectorAll('.commodity-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    document.querySelectorAll('.commodity-item').forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const commodityName = this.querySelector('.commodity-name').textContent;
+                    document.querySelector('.commodity-title').textContent = `${commodityName} (${getIndianContract(commodityName)})`;
+                    
+                    // Update MSP alert based on commodity
+                    updateMSPAlert(commodityName);
+                    
+                    // Update charts with new data
+                    updateCharts(charts, commodityName);
+                });
+            });
+            
+            // Time filters
+            document.querySelectorAll('.time-filter').forEach(filter => {
+                filter.addEventListener('click', function() {
+                    document.querySelectorAll('.time-filter').forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    updateTimePeriod(charts, this.dataset.time);
+                });
+            });
+        });
+        
+        function getIndianContract(commodity) {
+            const contracts = {
+                'Wheat': 'NCDEX: WHEATJUL25',
+                'Rice': 'NCDEX: RICENOV25',
+                'Soybean': 'NCDEX: SOYBEANOCT25',
+                'Cotton': 'MCX: COTTONJUL25',
+                'Sugarcane': 'NCDEX: SUGARSEP25'
+            };
+            return contracts[commodity] || 'NCDEX: COMMODITY25';
+        }
+        
+        function updateMSPAlert(commodity) {
+            const mspData = {
+                'Wheat': '₹2,275 (+₹125)',
+                'Rice': '₹2,850 (+₹150)',
+                'Soybean': '₹4,300 (+₹200)',
+                'Cotton': '₹6,600 (+₹300)',
+                'Sugarcane': '₹340 (+₹15)'
+            };
+            
+            const mspAlert = document.querySelector('.msp-alert p');
+            mspAlert.innerHTML = `<strong>MSP Alert:</strong> Government MSP for ${commodity} 2025-26 is ${mspData[commodity]}/quintal`;
+        }
+        
+        function updateCharts(charts, commodity = 'Wheat') {
+            // Generate commodity-specific data
+            const commodityData = {
+                'Wheat': {
+                    price: [2350, 2345, 2330, 2325, 2318, 2325, 2335, 2340, 2350, 2360, 2370, 2380, 2390, 2400, 2410, 2420, 2425, 2430, 2435, 2440, 2445, 2448, 2450, 2452, 2450, 2448, 2445, 2442, 2440, 2450],
+                    production: [107, 110, 108, 112],
+                    demand: [105, 108, 110, 111],
+                    regions: [35, 25, 20, 15, 5],
+                    yield: [3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000, 4100],
+                    trade: {
+                        export: [2.5, 3.1, 4.2, 3.8, 4.5, 5.0, 4.7, 5.2, 5.5, 6.0, 6.5, 7.0],
+                        import: [0.2, 0.1, 0.3, 0.5, 0.4, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.2]
+                    },
+                    productionTrends: [86, 92, 95, 98, 102, 105, 107, 110, 108, 112, 115],
+                    sentiment: [85, 65, 75, 60, 70, 80]
+                },
+                'Rice': {
+                    price: [3050, 3040, 3030, 3025, 3030, 3040, 3050, 3060, 3070, 3080, 3090, 3100, 3110, 3120, 3115, 3110, 3105, 3100, 3105, 3110, 3115, 3120, 3125, 3120, 3115, 3110, 3105, 3100, 3105, 3110],
+                    production: [120, 122, 125, 128],
+                    demand: [118, 120, 123, 126],
+                    regions: [30, 25, 20, 15, 10],
+                    yield: [2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500],
+                    trade: {
+                        export: [8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0],
+                        import: [0.1, 0.1, 0.2, 0.1, 0.1, 0.2, 0.1, 0.1, 0.2, 0.1, 0.1, 0.2]
+                    },
+                    productionTrends: [100, 105, 108, 112, 115, 118, 120, 122, 125, 128, 130],
+                    sentiment: [75, 70, 80, 65, 75, 85]
+                },
+                'Soybean': {
+                    price: [4200, 4210, 4220, 4230, 4240, 4250, 4260, 4250, 4240, 4230, 4220, 4210, 4200, 4210, 4220, 4230, 4240, 4250, 4260, 4270, 4280, 4290, 4300, 4290, 4280, 4270, 4260, 4250, 4240, 4250],
+                    production: [14, 15, 16, 17],
+                    demand: [13, 14, 15, 16],
+                    regions: [40, 30, 15, 10, 5],
+                    yield: [1200, 1250, 1300, 1350, 1400, 1450, 1500, 1550, 1600, 1650, 1700],
+                    trade: {
+                        export: [1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2],
+                        import: [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6]
+                    },
+                    productionTrends: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                    sentiment: [65, 60, 70, 55, 65, 75]
+                }
+            };
+            
+            const data = commodityData[commodity] || commodityData['Wheat'];
+            
+            // Update price chart
+            charts.priceChart.data.datasets[0].data = data.price;
+            charts.priceChart.update();
+            
+            // Update supply/demand chart
+            charts.supplyDemandChart.data.datasets[0].data = data.production;
+            charts.supplyDemandChart.data.datasets[1].data = data.demand;
+            charts.supplyDemandChart.update();
+            
+            // Update regional chart
+            charts.regionalChart.data.datasets[0].data = data.regions;
+            charts.regionalChart.update();
+            
+            // Update yield chart
+            charts.yieldChart.data.datasets[0].data = data.yield;
+            charts.yieldChart.update();
+            
+            // Update trade chart
+            charts.tradeChart.data.datasets[0].data = data.trade.export;
+            charts.tradeChart.data.datasets[1].data = data.trade.import;
+            charts.tradeChart.update();
+            
+            // Update production trends chart
+            charts.productionTrendsChart.data.datasets[0].data = data.productionTrends;
+            charts.productionTrendsChart.update();
+            
+            // Update market sentiment chart
+            charts.marketSentimentChart.data.datasets[0].data = data.sentiment;
+            charts.marketSentimentChart.update();
+        }
+        
+        function updateTimePeriod(charts, timePeriod) {
+            // This would adjust the data range based on the selected time period
+            console.log(`Time period changed to ${timePeriod}`);
+            // In a real app, we would fetch or filter data based on the time period
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- Trending Commodities -->
+    <div class="trending-section">
+        <h2>Trending Commodities</h2>
+        <div class="trending-cards">
+          <div class="trending-card">
+            <h3>Wheat</h3>
+            <p class="price">₹25.00</p>
+            <p class="trend">↑ 2% this week</p>
+          </div>
+          <div class="trending-card">
+            <h3>Tomato</h3>
+            <p class="price">₹40.00</p>
+            <p class="trend">↓ 5% this week</p>
+          </div>
+          <div class="trending-card">
+            <h3>Apple</h3>
+            <p class="price">₹80.00</p>
+            <p class="trend">↑ 3% this week</p>
+          </div>
+        </div>
+      </div>
+
+    
+     <!-- Call-to-Action -->
+    
+
+    <!-- Price Trend Graph Section Start -->
+     <style>
+         header {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+   
+    
+    
+    
+    .trending-section {
+      margin-top: 40px;
+    }
+    .trending-section h2 {
+      font-size: 2rem;
+      color: #3498db;
+      margin-bottom: 20px;
+    }
+    .trending-cards {
+      display: flex;
+      gap: 20px;
+    }
+    .trending-card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      text-align: center;
+    }
+    .trending-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+    .trending-card p {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #555;
+    }
+    .trending-card .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #3498db;
+    }
+    .trending-card .trend {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background: #2980b9;
+    }
+     </style>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-6 mb-5">Price Trends & Predictions</h1>
+                    <div class="graph-container">
+                        <canvas id="priceTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Price Trend Graph Section End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Services</h5>
+                        <a class="btn btn-link" href="">Market Insights</a>
+                        <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                        <a class="btn btn-link" href="">Logistics & Trade</a>
+                        <a class="btn btn-link" href="">Expert Guidance</a>
+                        <a class="btn btn-link" href="">Crop Insurance</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="about.html">About Us</a>
+                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link" href="service.html">Our Services</a>
+                        <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                        <a class="btn btn-link" href="404.html">Support</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Newsletter</h5>
+                        <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                            helping farmers and agribusinesses thrive.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Chart.js Script -->
+    <script>
+        const ctx = document.getElementById('priceTrendChart').getContext('2d');
+        const priceTrendChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Historical Prices',
+                        data: [22, 23, 24, 25, 26, 25, 24, 25, 26, 27, 28, 29],
+                        borderColor: '#3498db',
+                        fill: false,
+                    },
+                    {
+                        label: 'Current Prices',
+                        data: [null, null, null, null, null, null, null, null, null, 27, 28, 29],
+                        borderColor: '#2ecc71',
+                        fill: false,
+                    },
+                    {
+                        label: 'Predicted Prices (Low)',
+                        data: [null, null, null, null, null, null, null, null, null, 27, 26, 25],
+                        borderColor: '#e74c3c',
+                        borderDash: [5, 5],
+                        fill: false,
+                    },
+                    {
+                        label: 'Predicted Prices (High)',
+                        data: [null, null, null, null, null, null, null, null, null, 27, 30, 32],
+                        borderColor: '#f1c40f',
+                        borderDash: [5, 5],
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

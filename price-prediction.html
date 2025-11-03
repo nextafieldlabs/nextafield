@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <meta name="description" content="Profit Tracker leverages advanced AI technology to provide predictive analytics, R&D insights, and expert guidance for your business growth.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="profit-tracker.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+
+<!-- solutions start -->
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<style>
+    :root {
+        --primary: #4CAF50;
+        --secondary: #8BC34A;
+        --dark: #2E7D32;
+        --light: #DCEDC8;
+        --accent: #FFC107;
+        --text: #333;
+        --bg: #f9f9f9;
+        --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        --prediction-up: #4CAF50;
+        --prediction-down: #F44336;
+        --prediction-neutral: #FFC107;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+    }
+    
+    
+    
+    header {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, var(--primary), var(--dark));
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 100;
+        position: sticky;
+        top: 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .sidebar {
+        background: white;
+        padding: 1rem;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+        overflow-y: auto;
+        transition: transform 0.3s ease;
+        z-index: 90;
+    }
+    
+    .main-content {
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    
+    /* Search & Filters */
+    .search-box {
+        margin-left: auto;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .search-box input {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        border-radius: 30px;
+        border: none;
+        background: rgba(255,255,255,0.2);
+        color: white;
+        font-size: 0.9rem;
+    }
+    
+    /* Commodity List */
+    .commodity-list {
+        margin-top: 1rem;
+    }
+    
+    .commodity-item {
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    
+    .commodity-item:hover {
+        background: var(--light);
+    }
+    
+    .commodity-item.active {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .commodity-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 0.8rem;
+        background: var(--secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+    
+    /* Dashboard Header */
+    .dashboard-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .commodity-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+    }
+    
+    .price-display {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    .price-change {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+    }
+    
+    .price-up {
+        background: #E8F5E9;
+        color: #2E7D32;
+    }
+    
+    .price-down {
+        background: #FFEBEE;
+        color: #C62828;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: var(--card-shadow);
+    }
+    
+    .stat-title {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0.3rem;
+    }
+    
+    .stat-value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--dark);
+    }
+    
+    .stat-change {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+    }
+    
+    .up { color: #2E7D32; }
+    .down { color: #C62828; }
+    
+    /* 3D Visualization */
+    #commodity-3d {
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+        background: #f5f5f5;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Dashboard Grid */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.2rem;
+        box-shadow: var(--card-shadow);
+    }
+    
+    .card-header {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: var(--dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .chart-container {
+        height: 250px;
+        position: relative;
+    }
+    
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    
+    /* Prediction Cards */
+    .prediction-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: var(--card-shadow);
+        border-left: 4px solid var(--accent);
+    }
+    
+    .prediction-card.up {
+        border-left-color: var(--prediction-up);
+    }
+    
+    .prediction-card.down {
+        border-left-color: var(--prediction-down);
+    }
+    
+    .prediction-card.neutral {
+        border-left-color: var(--prediction-neutral);
+    }
+    
+    .prediction-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    
+    .prediction-title {
+        font-weight: 600;
+        color: var(--dark);
+    }
+    
+    .prediction-value {
+        font-weight: 700;
+    }
+    
+    .prediction-value.up {
+        color: var(--prediction-up);
+    }
+    
+    .prediction-value.down {
+        color: var(--prediction-down);
+    }
+    
+    .prediction-value.neutral {
+        color: var(--prediction-neutral);
+    }
+    
+    .prediction-details {
+        font-size: 0.9rem;
+        color: #666;
+    }
+    
+    /* Confidence Meter */
+    .confidence-meter {
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin-top: 0.5rem;
+        overflow: hidden;
+    }
+    
+    .confidence-level {
+        height: 100%;
+        background: var(--primary);
+    }
+    
+    /* Model Selection */
+    .model-selector {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .model-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 0.8rem;
+    }
+    
+    .model-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .container {
+            grid-template-columns: 1fr;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 280px;
+            height: calc(100vh - 60px);
+            transform: translateX(-100%);
+        }
+        
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        
+        .main-content {
+            grid-column: 1;
+            padding: 1rem;
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">        </button>
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span>AgriPredict Pro</span>
+        </div>
+        
+    </header>
+    
+    <aside class="sidebar" id="sidebar">
+        <h3>Commodities</h3>
+        <div class="commodity-list">
+            <div class="commodity-item active" data-commodity="wheat">
+                <div class="commodity-icon">🌾</div>
+                <div class="commodity-name">Wheat</div>
+            </div>
+            <div class="commodity-item" data-commodity="corn">
+                <div class="commodity-icon">🌽</div>
+                <div class="commodity-name">Corn</div>
+            </div>
+            <div class="commodity-item" data-commodity="soybean">
+                <div class="commodity-icon">🥜</div>
+                <div class="commodity-name">Soybean</div>
+            </div>
+            <div class="commodity-item" data-commodity="rice">
+                <div class="commodity-icon">🍚</div>
+                <div class="commodity-name">Rice</div>
+            </div>
+            <div class="commodity-item" data-commodity="cotton">
+                <div class="commodity-icon">🧵</div>
+                <div class="commodity-name">Cotton</div>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 1.5rem;">Prediction Models</h3>
+        <div class="commodity-list">
+            <div class="commodity-item" data-model="lstm">
+                <div class="commodity-icon">🧠</div>
+                <div class="commodity-name">LSTM Neural Net</div>
+            </div>
+            <div class="commodity-item" data-model="arima">
+                <div class="commodity-icon">📈</div>
+                <div class="commodity-name">ARIMA</div>
+            </div>
+            <div class="commodity-item" data-model="prophet">
+                <div class="commodity-icon">🔮</div>
+                <div class="commodity-name">Facebook Prophet</div>
+            </div>
+            <div class="commodity-item" data-model="ensemble">
+                <div class="commodity-icon">🤖</div>
+                <div class="commodity-name">Ensemble Model</div>
+            </div>
+        </div>
+    </aside>
+    
+    <main class="main-content">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="commodity-title">Wheat Price Predictions</h1>
+                <div class="time-filters">
+                    <div class="time-filter active" data-time="7d">7D</div>
+                    <div class="time-filter" data-time="30d">30D</div>
+                    <div class="time-filter" data-time="90d">90D</div>
+                    <div class="time-filter" data-time="1y">1Y</div>
+                </div>
+            </div>
+            <div>
+                <span class="price-display">$6.52</span>
+                <span class="price-change price-up">+2.4%</span>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-title">Current Price</div>
+                <div class="stat-value">$6.52</div>
+                <div class="stat-change up">+$0.15 (2.4%)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">30-Day Volatility</div>
+                <div class="stat-value">12.5%</div>
+                <div class="stat-change down">-1.2%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Prediction Confidence</div>
+                <div class="stat-value">84%</div>
+                <div class="confidence-meter">
+                    <div class="confidence-level" style="width: 84%"></div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Model Accuracy</div>
+                <div class="stat-value">92.3%</div>
+                <div class="stat-change up">+0.8%</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">Price Forecast</div>
+                <div class="chart-container">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Model Predictions</div>
+                <div class="model-selector">
+                    <button class="model-btn active" data-model="lstm">LSTM</button>
+                    <button class="model-btn" data-model="arima">ARIMA</button>
+                    <button class="model-btn" data-model="prophet">Prophet</button>
+                    <button class="model-btn" data-model="ensemble">Ensemble</button>
+                </div>
+                <div class="prediction-card up">
+                    <div class="prediction-header">
+                        <div class="prediction-title">7-Day Forecast</div>
+                        <div class="prediction-value up">$6.68 (+2.5%)</div>
+                    </div>
+                    <div class="prediction-details">
+                        Model predicts upward trend with 82% confidence based on recent demand increases
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-level" style="width: 82%"></div>
+                    </div>
+                </div>
+                <div class="prediction-card up">
+                    <div class="prediction-header">
+                        <div class="prediction-title">30-Day Forecast</div>
+                        <div class="prediction-value up">$6.85 (+5.1%)</div>
+                    </div>
+                    <div class="prediction-details">
+                        Seasonal factors and export demand driving prices higher
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-level" style="width: 76%"></div>
+                    </div>
+                </div>
+                <div class="prediction-card neutral">
+                    <div class="prediction-header">
+                        <div class="prediction-title">90-Day Forecast</div>
+                        <div class="prediction-value neutral">$6.72 (±1.2%)</div>
+                    </div>
+                    <div class="prediction-details">
+                        Potential market correction expected after harvest
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-level" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Key Drivers</div>
+                <div class="prediction-card up">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Demand Strength</div>
+                        <div class="prediction-value up">Strong</div>
+                    </div>
+                    <div class="prediction-details">
+                        Export orders up 15% month-over-month
+                    </div>
+                </div>
+                <div class="prediction-card down">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Supply Pressure</div>
+                        <div class="prediction-value down">Moderate</div>
+                    </div>
+                    <div class="prediction-details">
+                        Harvest projections 3% above last year
+                    </div>
+                </div>
+                <div class="prediction-card up">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Market Sentiment</div>
+                        <div class="prediction-value up">Bullish</div>
+                    </div>
+                    <div class="prediction-details">
+                        78% of traders holding long positions
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Risk Factors</div>
+                <div class="prediction-card down">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Weather Risk</div>
+                        <div class="prediction-value down">High</div>
+                    </div>
+                    <div class="prediction-details">
+                        Drought conditions in 15% of growing regions
+                    </div>
+                </div>
+                <div class="prediction-card neutral">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Policy Risk</div>
+                        <div class="prediction-value neutral">Medium</div>
+                    </div>
+                    <div class="prediction-details">
+                        Potential export restrictions being discussed
+                    </div>
+                </div>
+                <div class="prediction-card down">
+                    <div class="prediction-header">
+                        <div class="prediction-title">Macro Risk</div>
+                        <div class="prediction-value down">Increasing</div>
+                    </div>
+                    <div class="prediction-details">
+                        Rising interest rates may reduce demand
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card full-width">
+            <div class="card-header">Historical Accuracy</div>
+            <div class="chart-container" style="height: 300px;">
+                <canvas id="accuracyChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="card full-width">
+            <div class="card-header">Price Simulation</div>
+            <div class="chart-container" style="height: 350px;">
+                <canvas id="simulationChart"></canvas>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button class="model-btn active">Base Case</button>
+                <button class="model-btn">Bull Scenario</button>
+                <button class="model-btn">Bear Scenario</button>
+                <button class="model-btn">Stress Test</button>
+            </div>
+        </div>
+        
+        <div class="card full-width">
+            <div class="card-header">Model Comparison</div>
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>30-Day Accuracy</th>
+                            <th>90-Day Accuracy</th>
+                            <th>Volatility Capture</th>
+                            <th>Trend Accuracy</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LSTM Neural Network</td>
+                            <td>92.3%</td>
+                            <td>88.7%</td>
+                            <td>94%</td>
+                            <td>91%</td>
+                            <td>Today</td>
+                        </tr>
+                        <tr>
+                            <td>ARIMA</td>
+                            <td>87.5%</td>
+                            <td>82.1%</td>
+                            <td>79%</td>
+                            <td>85%</td>
+                            <td>Today</td>
+                        </tr>
+                        <tr>
+                            <td>Facebook Prophet</td>
+                            <td>89.2%</td>
+                            <td>84.6%</td>
+                            <td>82%</td>
+                            <td>87%</td>
+                            <td>Today</td>
+                        </tr>
+                        <tr>
+                            <td>Ensemble Model</td>
+                            <td>93.1%</td>
+                            <td>89.3%</td>
+                            <td>95%</td>
+                            <td>92%</td>
+                            <td>Today</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Initialize the dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && e.target !== mobileMenuBtn) {
+                sidebar.classList.remove('active');
+            }
+        });
+        
+        // Initialize charts
+        initCharts();
+        
+        // Model selection
+        document.querySelectorAll('.model-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateModel(this.dataset.model);
+            });
+        });
+        
+        // Time period selection
+        document.querySelectorAll('.time-filter').forEach(filter => {
+            filter.addEventListener('click', function() {
+                document.querySelectorAll('.time-filter').forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+                updateTimePeriod(this.dataset.time);
+            });
+        });
+        
+        // Commodity selection
+        document.querySelectorAll('.commodity-item[data-commodity]').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.commodity-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                updateCommodity(this.dataset.commodity);
+            });
+        });
+    });
+    
+    function initCharts() {
+        // Forecast Chart
+        const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+        const forecastChart = new Chart(forecastCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Actual Price',
+                        data: [5.82, 5.91, 6.05, 6.12, 6.23, 6.31, 6.28, 6.35, 6.42, 6.38, 6.45, 6.52],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: false
+                    },
+                    {
+                        label: 'Predicted Price',
+                        data: [null, null, null, null, null, null, null, null, null, 6.38, 6.45, 6.52, 6.60, 6.68, 6.72, 6.78, 6.85, 6.82, 6.78, 6.72, 6.68],
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false
+                    },
+                    {
+                        label: 'Confidence Interval',
+                        data: [null, null, null, null, null, null, null, null, null, 6.38, 6.45, 6.52, 6.55, 6.62, 6.65, 6.72, 6.78, 6.75, 6.68, 6.62, 6.55],
+                        backgroundColor: 'rgba(33, 150, 243, 0.2)',
+                        borderWidth: 0,
+                        fill: 1
+                    },
+                    {
+                        label: 'Confidence Interval',
+                        data: [null, null, null, null, null, null, null, null, null, 6.38, 6.45, 6.52, 6.65, 6.74, 6.79, 6.84, 6.92, 6.89, 6.88, 6.82, 6.81],
+                        backgroundColor: 'rgba(33, 150, 243, 0.2)',
+                        borderWidth: 0,
+                        fill: '-1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 5.5,
+                        max: 7.0
+                    }
+                }
+            }
+        });
+        
+        // Accuracy Chart
+        const accuracyCtx = document.getElementById('accuracyChart').getContext('2d');
+        const accuracyChart = new Chart(accuracyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['1-Day', '7-Day', '30-Day', '90-Day', '180-Day'],
+                datasets: [
+                    {
+                        label: 'LSTM Accuracy',
+                        data: [98.2, 95.4, 92.3, 88.7, 85.2],
+                        backgroundColor: 'rgba(76, 175, 80, 0.7)',
+                        borderColor: 'rgba(76, 175, 80, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Benchmark Accuracy',
+                        data: [96.5, 90.1, 84.3, 79.8, 75.4],
+                        backgroundColor: 'rgba(158, 158, 158, 0.7)',
+                        borderColor: 'rgba(158, 158, 158, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Accuracy (%)'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Simulation Chart
+        const simulationCtx = document.getElementById('simulationChart').getContext('2d');
+        const simulationChart = new Chart(simulationCtx, {
+            type: 'line',
+            data: {
+                labels: ['Now', '+1M', '+2M', '+3M', '+4M', '+5M', '+6M'],
+                datasets: [
+                    {
+                        label: 'Base Case',
+                        data: [6.52, 6.68, 6.85, 6.72, 6.65, 6.58, 6.52],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 3,
+                        fill: false
+                    },
+                    {
+                        label: 'Bull Scenario',
+                        data: [6.52, 6.75, 7.02, 7.25, 7.42, 7.65, 7.82],
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false
+                    },
+                    {
+                        label: 'Bear Scenario',
+                        data: [6.52, 6.42, 6.25, 6.12, 5.95, 5.82, 5.65],
+                        borderColor: '#F44336',
+                        backgroundColor: 'rgba(244, 67, 54, 0.1)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 5.0,
+                        max: 8.0
+                    }
+                }
+            }
+        });
+        
+        return {
+            forecastChart,
+            accuracyChart,
+            simulationChart
+        };
+    }
+    
+    function updateModel(model) {
+        console.log(`Switched to ${model} model`);
+        // In a real app, this would fetch new predictions for the selected model
+    }
+    
+    function updateTimePeriod(period) {
+        console.log(`Time period changed to ${period}`);
+        // In a real app, this would adjust the forecast horizon
+    }
+    
+    function updateCommodity(commodity) {
+        console.log(`Commodity changed to ${commodity}`);
+        // In a real app, this would load data for the new commodity
+        document.querySelector('.commodity-title').textContent = `${commodity} Price Predictions`;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- solutions end -->
+
+
+         <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Services</h5>
+                    <a class="btn btn-link" href="">Market Insights</a>
+                    <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                    <a class="btn btn-link" href="">Logistics & Trade</a>
+                    <a class="btn btn-link" href="">Expert Guidance</a>
+                    <a class="btn btn-link" href="">Crop Insurance</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="service.html">Our Services</a>
+                    <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                    <a class="btn btn-link" href="404.html">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Newsletter</h5>
+                    <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                        helping farmers and agribusinesses thrive.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

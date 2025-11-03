@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="profit-tracker.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+     <!--
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+-->
+    <!-- Page Header End -->
+
+
+    <!-- About Start -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent: #8bc34a;
+            --text: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background Canvas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: #555;
+        }
+        
+        /* 3D Earth Container */
+        #earth-container {
+            width: 300px;
+            height: 300px;
+            margin: 3rem auto;
+            position: relative;
+        }
+        
+        /* About Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .member-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .member-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Values Section */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(139, 195, 74, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .value-item:hover {
+            background: rgba(139, 195, 74, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            #earth-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforming Agriculture Through Innovation</h1>
+            <p>Where tradition meets cutting-edge technology to create sustainable farming solutions for the future</p>
+            
+            <!-- 3D Earth Model -->
+            <div id="earth-container" class="floating"></div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section">
+        <h2 class="section-title">Our Story</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.8;">
+            Founded in 2024 May by agricultural visionary Srinu Naik Katravath, Next Afield began as a small initiative to bridge the gap between traditional farming practices and modern technology. Today, we've grown into a leading agri-tech solutions provider, serving thousands of farmers across multiple countries with our innovative approaches to sustainable agriculture.
+        </p>
+        
+        <div class="mission-vision">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To empower farmers and agricultural stakeholders by providing innovative, sustainable, and client-focused agricultural services and solutions. We aim to enhance productivity, promote environmentally friendly practices, and foster long-term partnerships through personalized support and cutting-edge technologies.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>A world where technology and tradition work hand-in-hand to create abundant, To be a global leader in agriculture solutions, transforming the industry through innovation and sustainability, while improving the livelihoods of farmers and creating a positive impact on the environment and society.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+
+    <script>
+        // Background Animation
+        const bgCanvas = document.getElementById('bg-canvas');
+        const bgRenderer = new THREE.WebGLRenderer({
+            canvas: bgCanvas,
+            alpha: true
+        });
+        bgRenderer.setSize(window.innerWidth, window.innerHeight);
+        
+        const bgScene = new THREE.Scene();
+        const bgCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        bgCamera.position.z = 5;
+        
+        // Create particles for background
+        const bgParticlesGeometry = new THREE.BufferGeometry();
+        const particleCount = 500;
+        
+        const posArray = new Float32Array(particleCount * 3);
+        for(let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        
+        bgParticlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        const bgParticlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0x4caf50,
+            transparent: true,
+            opacity: 0.5
+        });
+        
+        const bgParticlesMesh = new THREE.Points(bgParticlesGeometry, bgParticlesMaterial);
+        bgScene.add(bgParticlesMesh);
+        
+        // Earth Animation
+        const earthContainer = document.getElementById('earth-container');
+        const earthRenderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true
+        });
+        earthRenderer.setSize(earthContainer.clientWidth, earthContainer.clientHeight);
+        earthContainer.appendChild(earthRenderer.domElement);
+        
+        const earthScene = new THREE.Scene();
+        const earthCamera = new THREE.PerspectiveCamera(75, earthContainer.clientWidth / earthContainer.clientHeight, 0.1, 1000);
+        earthCamera.position.z = 5;
+        
+        // Create Earth
+        const earthGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+        const earthTexture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            map: earthTexture,
+            specular: new THREE.Color(0x333333),
+            shininess: 5
+        });
+        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        earthScene.add(earth);
+        
+        // Add clouds
+        const cloudGeometry = new THREE.SphereGeometry(1.55, 32, 32);
+        const cloudTexture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
+        const cloudMaterial = new THREE.MeshPhongMaterial({
+            map: cloudTexture,
+            transparent: true,
+            opacity: 0.4
+        });
+        const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        earthScene.add(clouds);
+        
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+        earthScene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(1, 1, 1);
+        earthScene.add(directionalLight);
+        
+        // Add stars
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.1
+        });
+        
+        const starsVertices = [];
+        for (let i = 0; i < 1000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starsVertices.push(x, y, z);
+        }
+        
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+        const stars = new THREE.Points(starsGeometry, starsMaterial);
+        earthScene.add(stars);
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Background animation
+            bgParticlesMesh.rotation.x += 0.0005;
+            bgParticlesMesh.rotation.y += 0.0005;
+            bgRenderer.render(bgScene, bgCamera);
+            
+            // Earth animation
+            earth.rotation.y += 0.005;
+            clouds.rotation.y += 0.006;
+            earthRenderer.render(earthScene, earthCamera);
+        }
+        
+        animate();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Background
+            bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            bgCamera.aspect = window.innerWidth / window.innerHeight;
+            bgCamera.updateProjectionMatrix();
+            
+            // Earth
+            earthRenderer.setSize(earthContainer.clientWidth, earthContainer.clientHeight);
+            earthCamera.aspect = earthContainer.clientWidth / earthContainer.clientHeight;
+            earthCamera.updateProjectionMatrix();
+        });
+        
+        // GSAP animations for scroll
+        gsap.from(".hero h1", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power3.out"
+        });
+        
+        gsap.from(".hero p", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+        
+        gsap.from("#earth-container", {
+            duration: 1.5,
+            scale: 0.5,
+            opacity: 0,
+            delay: 0.6,
+            ease: "elastic.out(1, 0.5)"
+        });
+        
+        // Scroll animations for sections
+        const sections = document.querySelectorAll(".section");
+        sections.forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+    </script>
+
+
+
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid rounded w-75 align-self-end" src="img/carousel-1.jpg" alt="">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="img/about-2.jpg" alt="" style="margin-top: -25%;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">About Us</p>
+                    <h2 class="mb-4">Next Afield
+                        <br>Agriculture Services and Solutions!</h2>
+                    <p>
+                        At Next Afield, we are more than just an agricultural service provider; we are a catalyst for change, committed to redefining 
+                        the agricultural landscape. Our mission is to empower farmers, agribusinesses, and stakeholders by fostering sustainable, innovative, 
+                        and profitable practices. Through a combination of tradition and cutting-edge technology, we offer a wide range of services designed to 
+                        optimize operations, enhance productivity, and promote long-term sustainability.
+                        
+                        Our approach is data-driven and tailored to meet the diverse needs of modern agriculture. We specialize in precision agriculture, 
+                        leveraging data analytics, GPS-guided equipment, and real-time monitoring through drones and satellites to enable informed decision-making. 
+                        Our irrigation solutions focus on efficient water management through smart irrigation systems and practices that conserve resources.
+                        
+                        Sustainability is at the core of our services, with a focus on soil health, integrated pest management, and the adoption of renewable energy. 
+                        We also provide comprehensive crop and farm management support, including strategic planning, supply chain management, and expert consulting on regulatory compliance and market trends.
+                        
+                        In addition to our core services, we offer a market price tracking system, integrating with platforms like Digital Mandi, to keep our clients informed on market fluctuations. 
+                        Our research and development initiatives ensure that our clients stay ahead with the latest technologies and practices.
+                        
+                        Our commitment extends to training and capacity building, offering workshops, on-farm training, and online resources. We also facilitate local to global transportation and provide crop 
+                        insurance and financial services to ensure the stability and growth of our clients' operations. 
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Values Section -->
+    <section class="section" style="background-color: rgba(139, 195, 74, 0.05);">
+        <h2 class="section-title">Our Core Values</h2>
+        
+        <div class="values-container">
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3>Innovation</h3>
+                <p>Constantly pushing boundaries to develop groundbreaking agricultural solutions</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3>Sustainability</h3>
+                <p>Commited to practices that protect our environment and resources</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-users"></i></div>
+                <h3>Community</h3>
+                <p>Building strong relationships with farmers and local communities</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Growth</h3>
+                <p>Helping farmers achieve both personal and professional growth</p>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Team Section -->
+    <section class="section">
+        <h2 class="section-title">Meet Our Leadership</h2>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://images.unsplash.com/phoo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auw=500&q=60');"></div>
+                <div class="member-info">
+                    <h3>Srinu Naik Katravath</h3>
+                    <p>Chief Executive Officer</p>
+                </div>
+            </div>
+
+            
+            
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://images.unsplash.com/phto-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="member-info">
+                    <h3>Sreeja Reddy</h3>
+                    <p>Chief Technology Officer</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://images.unsplash.com/phto-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="member-info">
+                    <h3>Sruthy Y. V</h3>
+                    <p>Chief Marketing Officer</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image" style="background-image: url('https://images.unsplash.com/poto-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="member-info">
+                    <h3>Isha Sikh</h3>
+                    <p>Head of Field Operations</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- About End -->
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Next Afield</p>
+                <!-- <h1>Health Care Solutions</h1> -->
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">The Alchemy of Tradition and Tomorrow</h4>
+                        <p class="mb-4">At Next Afield, we're not just cultivating crops; we're cultivating a revolution. Imagine a place where the wisdom of generations past 
+                            intertwines seamlessly with the pulse of cutting-edge technology. This is our reality. We are the architects of agricultural evolution, transforming 
+                            the very essence of farming. Our mission transcends mere service provision; we are here to ignite a spark, to empower every farmer, every agribusiness, 
+                            every stakeholder, to not just survive, but to flourish in the face of unprecedented change.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">Beyond Slogans, a Symphony of Solutions</h4>
+                        <p class="mb-4">"Agriculture Services and Solutions" isn't a catchphrase; it's our creed. It's the beating heart of our commitment to the land and its stewards. We envision an agricultural ecosystem that 
+                            thrives on sustainability, blossoms with innovation, and yields prosperity for all. This vision fuels our diverse array of services, each meticulously 
+                            crafted to elevate the industry and equip our clients with the tools they need to conquer today's challenges and seize tomorrow's opportunities. We are the conductors of this symphony, 
+                            harmonizing tradition with technology.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">From Seed to Success, a Holistic Harvest</h4>
+                        <p class="mb-4">Our services are a tapestry woven with threads of expertise and innovation. We delve into the intricacies of modern agriculture, offering a comprehensive suite of solutions 
+                            that span from the soil to the market. We are more than service providers; we are partners in your journey, guiding you through every stage of the agricultural lifecycle. From optimizing 
+                            transportation logistics to safeguarding your investments with robust crop insurance, we ensure that your path to success is paved with efficiency and security. We don't just offer services; we cultivate success.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">Financial Fortitude, the Roots of Resilience</h4>
+                        <p class="mb-4">In the unpredictable landscape of agriculture, financial stability is paramount. We understand that protecting your investment is not just about safeguarding crops; it's about securing your future. 
+                            Our crop insurance solutions are designed to shield you from the vagaries of nature, while our profit tracking and financial advisory services provide the insights and guidance you need to navigate the financial 
+                            terrain with confidence. We are your financial allies, empowering you to build a resilient and prosperous agricultural enterprise.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">Nurturing Growth Through Knowledge and Innovation</h4>
+                        <p class="mb-4">In the realm of agriculture, knowledge is the most potent fertilizer. We are committed to nurturing growth through continuous learning and innovation. Our training and capacity-building services 
+                            are designed to empower you with the latest insights and skills, ensuring that you are always at the forefront of agricultural advancements. From workshops and seminars to on-farm training and online resources, 
+                            we provide a holistic learning experience that caters to your unique needs. We are not just imparting knowledge; we are cultivating a community of informed and empowered agriculturalists, ready to embrace the future with confidence.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        
+                        <h4 class="mb-3">A Vision for a Sustainable Tomorrow</h4>
+                        <p class="mb-4">As we look to the future, our vision extends beyond immediate gains. We are deeply invested in the long-term health of our planet and the sustainability of our agricultural practices. Our research and development initiatives 
+                            are focused on pioneering new technologies and methods that minimize environmental impact while maximizing productivity. We are committed to the adoption of renewable energy, the promotion of biodiversity, and the development of resilient 
+                            agricultural systems that can withstand the challenges of a changing climate. We are not just farming for today; we are sowing the seeds for a sustainable tomorrow.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-primary overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <p class="d-inline-block border rounded-pill text-light py-1 px-4">Next Afield</p>
+                        <h1 class="text-white mb-4">Why Choose Us</h1>
+                        <p class="text-white mb-4 pb-2">At Next Afield, we merge innovative technology with time-honored agricultural practices, making us a catalyst for change in the modern farming landscape. We are committed to empowering our clients with sustainable, profitable solutions, ensuring they not only succeed but lead in an era of rapid transformation.</p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Comprehensive Service Range</h5>
+                                        <p class="text-white mb-2">We offer a wide array of services, from precision agriculture to crop insurance, addressing diverse needs.</p>
+                                    </div>
+                                </div>
+                            </div>        
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Innovation and Tradition</h5>
+                                        <p class="text-white mb-2">We blend cutting-edge technology with traditional farming wisdom.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Commitment to Sustainability</h5>
+                                        <p class="text-white mb-2">We prioritize sustainable practices for long-term agricultural health.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Client-Centric Approach</h5>
+                                        <p class="text-white mb-2">We focus on empowering farmers and agribusinesses to thrive.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Financial Stability Support</h5>
+                                        <p class="text-white mb-2">We provide crop insurance and financial advisory services.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-primary"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="text-white mb-0">Transportation and logistics</h5>
+                                        <p class="text-white mb-2">We provide transportation planning and optimization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/feature.jpg" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Services</h5>
+                        <a class="btn btn-link" href="">Market Insights</a>
+                        <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                        <a class="btn btn-link" href="">Logistics & Trade</a>
+                        <a class="btn btn-link" href="">Expert Guidance</a>
+                        <a class="btn btn-link" href="">Crop Insurance</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="about.html">About Us</a>
+                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link" href="service.html">Our Services</a>
+                        <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                        <a class="btn btn-link" href="404.html">Support</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Newsletter</h5>
+                        <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                            helping farmers and agribusinesses thrive.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

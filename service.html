@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="profit-tracker.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+     <!--
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Services</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+-->
+    <!-- Page Header End -->
+
+
+    <!-- Service Start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent: #8bc34a;
+            --text: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-icon {
+            font-size: 2.2rem;
+            margin-right: 1.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .service-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .service-body {
+            padding: 2rem;
+        }
+        
+        .service-description {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .features-list {
+            margin: 1.5rem 0;
+            padding-left: 1.2rem;
+        }
+        
+        .features-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        
+        .features-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 1.8rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+        }
+        
+        .sub-service {
+            margin: 1.8rem 0;
+        }
+        
+        .sub-service-title {
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .tech-highlight {
+            background-color: rgba(139, 195, 74, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tech-title {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tech-icon {
+            margin-right: 0.8rem;
+        }
+        
+        .canvas-container {
+            width: 100%;
+            height: 300px;
+            background-color: #f5f5f5;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Next Afield Services</h1>
+            <div class="tagline">Agriculture Services and Solutions</div>
+            <p class="intro-text">Empowering farmers and agribusinesses with innovative solutions to meet the challenges of modern agriculture while ensuring sustainability and profitability.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Precision Agriculture -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-satellite-dish"></i></div>
+                <h2 class="service-title">Precision Agriculture</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Data-driven farming solutions that optimize every aspect of your operations for maximum yield and efficiency through advanced technology integration.</p>
+                
+                <div class="canvas-container" id="precision-agri-3d"></div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Data Analytics and Farm Mapping</h3>
+                    <ul class="features-list">
+                        <li>High-resolution 3D field mapping using drone and satellite imagery</li>
+                        <li>Soil property analysis with multi-spectral sensors</li>
+                        <li>Crop health monitoring through NDVI and other vegetation indices</li>
+                        <li>Historical data comparison for trend analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">GPS-Guided Equipment</h3>
+                    <ul class="features-list">
+                        <li>Autonomous tractor guidance systems with centimeter accuracy</li>
+                        <li>Section control for planters and sprayers to minimize overlaps</li>
+                        <li>Real-time implement adjustment based on field conditions</li>
+                        <li>Fleet management and coordination</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Drone and Satellite Monitoring</h3>
+                    <ul class="features-list">
+                        <li>Weekly high-resolution aerial surveys</li>
+                        <li>Early detection of pests, diseases, and nutrient deficiencies</li>
+                        <li>Thermal imaging for water stress identification</li>
+                        <li>Automated alert system for problem areas</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-highlight">
+                    <h3 class="tech-title"><i class="fas fa-brain tech-icon"></i>AI-Powered Variable Rate Technology</h3>
+                    <p>Our proprietary VRT systems analyze over 50 data points per square meter to automatically adjust seed populations, fertilizer rates, and pesticide applications with millimeter precision. This technology has demonstrated yield increases of 15-25% while reducing input costs by 20-35% across various crop types.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Irrigation Solutions -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-tint"></i></div>
+                <h2 class="service-title">Irrigation Solutions</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Comprehensive water management systems that optimize irrigation efficiency while conserving precious water resources.</p>
+                
+                <div class="canvas-container" id="irrigation-3d"></div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Smart Irrigation Systems</h3>
+                    <ul class="features-list">
+                        <li>IoT-enabled controllers with real-time soil moisture data</li>
+                        <li>Weather forecast integration for predictive watering</li>
+                        <li>Crop-specific evapotranspiration calculations</li>
+                        <li>Mobile app control and monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Drip and Micro-Irrigation</h3>
+                    <ul class="features-list">
+                        <li>High-efficiency low-volume irrigation systems</li>
+                        <li>Pressure-compensated emitters for uniform distribution</li>
+                        <li>Root zone targeted delivery</li>
+                        <li>Fertigation integration capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Water Resource Management</h3>
+                    <ul class="features-list">
+                        <li>Watershed analysis and planning</li>
+                        <li>Rainwater harvesting system design</li>
+                        <li>Water recycling and reuse solutions</li>
+                        <li>Aquifer recharge strategies</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-highlight">
+                    <h3 class="tech-title"><i class="fas fa-water tech-icon"></i>Quantum Soil Moisture Sensing</h3>
+                    <p>Our patented quantum sensor technology measures soil water content at the molecular level with 100x greater accuracy than conventional sensors. These sensors provide real-time data to our AI irrigation controllers, enabling perfect water application timing and reducing usage by 40-60% while improving crop health and yield consistency.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sustainable Farming Practices -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                <h2 class="service-title">Sustainable Farming Practices</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Regenerative agricultural solutions that improve soil health, biodiversity, and farm resilience while maintaining productivity.</p>
+                
+                <div class="canvas-container" id="sustainability-3d"></div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Soil Health Management</h3>
+                    <ul class="features-list">
+                        <li>Comprehensive soil testing and analysis</li>
+                        <li>Microbial community profiling</li>
+                        <li>Customized organic amendment plans</li>
+                        <li>Reduced tillage system design</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Integrated Pest Management</h3>
+                    <ul class="features-list">
+                        <li>Biological control organism introduction</li>
+                        <li>Pest monitoring and threshold systems</li>
+                        <li>Habitat manipulation strategies</li>
+                        <li>Precision pesticide application</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Organic Farming Solutions</h3>
+                    <ul class="features-list">
+                        <li>Organic certification guidance</li>
+                        <li>Biofertilizer and compost production</li>
+                        <li>Natural pest deterrent systems</li>
+                        <li>Crop rotation planning</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-highlight">
+                    <h3 class="tech-title"><i class="fas fa-dna tech-icon"></i>Microbial Genome Mapping</h3>
+                    <p>Our advanced soil microbiome analysis identifies and quantifies over 15,000 microbial species present in your fields. Using this data, we develop custom probiotic treatments that enhance nutrient cycling, improve disease suppression, and boost plant growth. Farmers using this system report 25-35% reductions in fertilizer requirements while seeing improved soil structure and water retention.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Crop and Farm Management -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-tractor"></i></div>
+                <h2 class="service-title">Crop and Farm Management</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Comprehensive farm management solutions that optimize productivity and profitability across all operations.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Farm Planning and Optimization</h3>
+                    <ul class="features-list">
+                        <li>Whole-farm system design</li>
+                        <li>Crop rotation planning</li>
+                        <li>Land use optimization</li>
+                        <li>Resource allocation strategies</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Crop Management Support</h3>
+                    <ul class="features-list">
+                        <li>Variety selection guidance</li>
+                        <li>Planting date optimization</li>
+                        <li>Growth stage monitoring</li>
+                        <li>Harvest timing recommendations</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Supply Chain Management</h3>
+                    <ul class="features-list">
+                        <li>Input procurement coordination</li>
+                        <li>Harvest logistics planning</li>
+                        <li>Storage optimization</li>
+                        <li>Market access strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Agricultural Consulting -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h2 class="service-title">Agricultural Consulting</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Expert advisory services to navigate the complexities of modern agriculture and agribusiness.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Strategic Planning</h3>
+                    <ul class="features-list">
+                        <li>Business development strategies</li>
+                        <li>Risk management planning</li>
+                        <li>Succession planning</li>
+                        <li>Diversification strategies</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Regulatory Compliance</h3>
+                    <ul class="features-list">
+                        <li>Organic certification support</li>
+                        <li>Food safety compliance</li>
+                        <li>Environmental regulations</li>
+                        <li>Labor law compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Market Analysis</h3>
+                    <ul class="features-list">
+                        <li>Commodity price trends</li>
+                        <li>Consumer demand analysis</li>
+                        <li>Export market opportunities</li>
+                        <li>Value-added product development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Market Price Tracking -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-rupee-sign"></i></div>
+                <h2 class="service-title">Market Price Tracking</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Comprehensive market intelligence to optimize your sales strategy and maximize profitability.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Three-Level Price Tracking</h3>
+                    <ul class="features-list">
+                        <li>Local mandi price monitoring</li>
+                        <li>National commodity exchanges</li>
+                        <li>Global market trends</li>
+                        <li>Historical price analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Digital Mandi Integration</h3>
+                    <ul class="features-list">
+                        <li>Real-time price updates</li>
+                        <li>Online trading platform access</li>
+                        <li>Quality standard information</li>
+                        <li>Transportation cost calculators</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Personalized Alerts</h3>
+                    <ul class="features-list">
+                        <li>Custom price threshold notifications</li>
+                        <li>Market trend updates</li>
+                        <li>Mobile app and SMS alerts</li>
+                        <li>WhatsApp business updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Research and Development -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-flask"></i></div>
+                <h2 class="service-title">Research and Development</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Cutting-edge agricultural research to keep your operations at the forefront of innovation.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Technology Trials</h3>
+                    <ul class="features-list">
+                        <li>New equipment evaluation</li>
+                        <li>Sensor technology testing</li>
+                        <li>Automation system pilots</li>
+                        <li>Alternative crop trials</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Collaborative Research</h3>
+                    <ul class="features-list">
+                        <li>University partnerships</li>
+                        <li>Government research programs</li>
+                        <li>Private sector innovation</li>
+                        <li>Farmer participatory research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Training and Capacity Building -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h2 class="service-title">Training and Capacity Building</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Comprehensive education programs to build skills and knowledge across your organization.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Workshops and Seminars</h3>
+                    <ul class="features-list">
+                        <li>Precision agriculture training</li>
+                        <li>Sustainable practices</li>
+                        <li>Farm business management</li>
+                        <li>Technology adoption</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">On-Farm Training</h3>
+                    <ul class="features-list">
+                        <li>Equipment operation</li>
+                        <li>System implementation</li>
+                        <li>Troubleshooting</li>
+                        <li>Safety protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Transportation Services -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h2 class="service-title">Transportation Services</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Efficient logistics solutions to connect your products with markets worldwide.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Cold Chain Logistics</h3>
+                    <ul class="features-list">
+                        <li>Temperature-controlled transport</li>
+                        <li>Pre-cooling facilities</li>
+                        <li>Monitoring systems</li>
+                        <li>Quality maintenance</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Global Shipping</h3>
+                    <ul class="features-list">
+                        <li>Export documentation</li>
+                        <li>Container logistics</li>
+                        <li>Customs clearance</li>
+                        <li>International regulations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Crop Insurance -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="service-title">Crop Insurance</h2>
+            </div>
+            <div class="service-body">
+                <p class="service-description">Comprehensive risk management solutions to protect your agricultural investments.</p>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Insurance Products</h3>
+                    <ul class="features-list">
+                        <li>Yield protection</li>
+                        <li>Revenue protection</li>
+                        <li>Weather index insurance</li>
+                        <li>Whole farm coverage</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-service">
+                    <h3 class="sub-service-title">Financial Services</h3>
+                    <ul class="features-list">
+                        <li>Profit tracking</li>
+                        <li>Cost analysis</li>
+                        <li>Loan facilitation</li>
+                        <li>Investment planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Initialize 3D scenes
+        function initScene(containerId, config) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Create objects based on service type
+            let mainObject;
+            if (containerId === 'precision-agri-3d') {
+                // Create a farm field with grid and crops
+                const grid = new THREE.GridHelper(20, 20, 0x4caf50, 0x4caf50);
+                scene.add(grid);
+                
+                // Add crop representations
+                for(let i = 0; i < 100; i++) {
+                    const crop = new THREE.Mesh(
+                        new THREE.ConeGeometry(0.2, 0.5, 4),
+                        new THREE.MeshPhongMaterial({ color: 0x4caf50 })
+                    );
+                    crop.position.x = (Math.random() - 0.5) * 15;
+                    crop.position.z = (Math.random() - 0.5) * 15;
+                    crop.position.y = 0.25;
+                    scene.add(crop);
+                }
+                
+                // Add a drone
+                const drone = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 0.2, 1),
+                    new THREE.MeshPhongMaterial({ color: 0x333333 })
+                );
+                drone.position.y = 3;
+                scene.add(drone);
+                
+                camera.position.set(10, 10, 10);
+                
+            } else if (containerId === 'irrigation-3d') {
+                // Create irrigation system visualization
+                const ground = new THREE.Mesh(
+                    new THREE.PlaneGeometry(20, 20),
+                    new THREE.MeshPhongMaterial({ color: 0x8bc34a })
+                );
+                ground.rotation.x = -Math.PI / 2;
+                scene.add(ground);
+                
+                // Add drip irrigation lines
+                for(let i = -8; i <= 8; i += 2) {
+                    const line = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.05, 0.05, 15),
+                        new THREE.MeshPhongMaterial({ color: 0x2196F3 })
+                    );
+                    line.rotation.z = Math.PI / 2;
+                    line.position.x = i;
+                    scene.add(line);
+                    
+                    // Add emitters
+                    for(let j = -7; j <= 7; j += 1.5) {
+                        const emitter = new THREE.Mesh(
+                            new THREE.SphereGeometry(0.1),
+                            new THREE.MeshPhongMaterial({ color: 0x00BCD4 })
+                        );
+                        emitter.position.set(i, 0.1, j);
+                        scene.add(emitter);
+                    }
+                }
+                
+                camera.position.set(0, 5, 10);
+                
+            } else if (containerId === 'sustainability-3d') {
+                // Create sustainable farm visualization
+                const ground = new THREE.Mesh(
+                    new THREE.PlaneGeometry(20, 20),
+                    new THREE.MeshPhongMaterial({ color: 0x8bc34a })
+                );
+                ground.rotation.x = -Math.PI / 2;
+                scene.add(ground);
+                
+                // Add diverse elements
+                const solarPanel = new THREE.Mesh(
+                    new THREE.BoxGeometry(3, 0.1, 2),
+                    new THREE.MeshPhongMaterial({ color: 0x333333 })
+                );
+                solarPanel.position.set(-5, 0.5, 0);
+                scene.add(solarPanel);
+                
+                const windTurbine = new THREE.Group();
+                const tower = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.3, 0.5, 4),
+                    new THREE.MeshPhongMaterial({ color: 0x757575 })
+                );
+                const blades = new THREE.Mesh(
+                    new THREE.BoxGeometry(4, 0.2, 0.5),
+                    new THREE.MeshPhongMaterial({ color: 0xE0E0E0 })
+                );
+                blades.position.y = 4;
+                windTurbine.add(tower);
+                windTurbine.add(blades);
+                windTurbine.position.set(5, 0, 0);
+                scene.add(windTurbine);
+                
+                // Add cover crops
+                for(let i = -7; i <= 7; i += 1.5) {
+                    for(let j = -7; j <= 7; j += 1.5) {
+                        const plant = new THREE.Mesh(
+                            new THREE.ConeGeometry(0.2, 0.5, 4),
+                            new THREE.MeshPhongMaterial({ color: 0x4CAF50 })
+                        );
+                        plant.position.set(i + Math.random()*0.5, 0.25, j + Math.random()*0.5);
+                        scene.add(plant);
+                    }
+                }
+                
+                camera.position.set(0, 5, 10);
+            }
+            
+            camera.lookAt(0, 0, 0);
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                if (containerId === 'precision-agri-3d') {
+                    // Animate drone
+                    const drone = scene.children.find(obj => obj.geometry && obj.geometry.type === 'BoxGeometry');
+                    if (drone) {
+                        drone.position.x = Math.sin(Date.now() * 0.001) * 5;
+                        drone.position.z = Math.cos(Date.now() * 0.001) * 5;
+                    }
+                } else if (containerId === 'irrigation-3d') {
+                    // Animate water droplets
+                    const emitters = scene.children.filter(obj => obj.geometry && obj.geometry.type === 'SphereGeometry');
+                    emitters.forEach((emitter, i) => {
+                        if (Math.random() > 0.95) {
+                            emitter.scale.set(1.5, 1.5, 1.5);
+                        } else if (emitter.scale.x > 1) {
+                            emitter.scale.multiplyScalar(0.95);
+                        }
+                    });
+                } else if (containerId === 'sustainability-3d') {
+                    // Animate wind turbine
+                    const windTurbine = scene.children.find(obj => obj.type === 'Group');
+                    if (windTurbine) {
+                        const blades = windTurbine.children.find(child => child.geometry.type === 'BoxGeometry');
+                        if (blades) {
+                            blades.rotation.y += 0.1;
+                        }
+                    }
+                }
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            });
+        }
+        
+        // Initialize all scenes when page loads
+        window.addEventListener('load', () => {
+            initScene('precision-agri-3d');
+            initScene('irrigation-3d');
+            initScene('sustainability-3d');
+        });
+    </script>
+    <!-- Service End -->
+
+
+    
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Services</h5>
+                        <a class="btn btn-link" href="">Market Insights</a>
+                        <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                        <a class="btn btn-link" href="">Logistics & Trade</a>
+                        <a class="btn btn-link" href="">Expert Guidance</a>
+                        <a class="btn btn-link" href="">Crop Insurance</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="about.html">About Us</a>
+                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link" href="service.html">Our Services</a>
+                        <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                        <a class="btn btn-link" href="404.html">Support</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Newsletter</h5>
+                        <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                            helping farmers and agribusinesses thrive.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

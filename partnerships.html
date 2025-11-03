@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="profit-tracker.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+    
+    
+
+
+<!-- solutions start -->
+
+<style>
+    :root {
+        --primary-color: #2e7d32; /* Dark green */
+        --secondary-color: #4caf50; /* Medium green */
+        --accent-color: #8bc34a; /* Light green */
+        --text-color: #333;
+        --light-bg: #f5f5f5;
+        --white: #ffffff;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    
+    body {
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    
+    header {
+        background-color: var(--white);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .logo span {
+        color: var(--secondary-color);
+    }
+    
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        text-align: center;
+        padding: 5rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin: 3rem 0;
+        color: var(--primary-color);
+    }
+    
+    .section-subtitle {
+        text-align: center;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .benefits-section {
+        background-color: var(--light-bg);
+        padding: 4rem 0;
+    }
+    
+    .benefits-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .benefit-card {
+        background: var(--white);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .benefit-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .benefit-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .partners-section {
+        padding: 4rem 0;
+    }
+    
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        align-items: center;
+        justify-items: center;
+    }
+    
+    .partner-logo {
+        max-width: 180px;
+        max-height: 100px;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+    
+    .partner-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+    
+    .partnership-types {
+        margin: 4rem 0;
+    }
+    
+    .type-card {
+        display: flex;
+        background: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .type-image {
+        width: 40%;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .type-content {
+        width: 60%;
+        padding: 2rem;
+    }
+    
+    .type-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .type-features {
+        margin-bottom: 1.5rem;
+    }
+    
+    .type-features li {
+        margin-bottom: 0.5rem;
+        list-style-type: none;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .type-features li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        position: absolute;
+        left: 0;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    .cta-section {
+        background: linear-gradient(rgba(161, 193, 199, 0.9), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        text-align: center;
+        padding: 5rem 0;
+    }
+    
+    .cta-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    
+   
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-icons a {
+        color: var(--white);
+        font-size: 1.5rem;
+    }
+    
+    
+    
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+        
+        .type-card {
+            flex-direction: column;
+        }
+        
+        .type-image, .type-content {
+            width: 100%;
+        }
+        
+        .type-image {
+            height: 200px;
+        }
+        
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+       
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <h1>Strategic Partnerships</h1>
+        <p>Collaborating to transform agriculture through innovation, technology, and shared expertise. Together, we're building a more sustainable and productive future for farming.</p>
+    </div>
+</section>
+
+<section class="container">
+    <h2 class="section-title">Why Partner With Next Afield?</h2>
+    <p class="section-subtitle">We believe in the power of collaboration to drive meaningful change in agriculture. Our partnerships create value for all stakeholders while advancing the industry as a whole.</p>
+    
+    <div class="benefits-container">
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="benefit-title">Mutual Growth</h3>
+            <p>Our partnerships are designed to create win-win scenarios where both organizations can grow and succeed together.</p>
+        </div>
+        
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="benefit-title">Expanded Reach</h3>
+            <p>Access new markets and customer segments through our established agricultural networks across India.</p>
+        </div>
+        
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="benefit-title">Innovation</h3>
+            <p>Combine your expertise with ours to develop groundbreaking solutions for modern farming challenges.</p>
+        </div>
+    </div>
+</section>
+
+<section class="partners-section">
+    <div class="container">
+        <h2 class="section-title">Our Valued Partners</h2>
+        <p class="section-subtitle">We're proud to collaborate with industry leaders, research institutions, and technology providers who share our vision for agricultural transformation.</p>
+        
+        <div class="partners-grid">
+            <img src="https://via.placeholder.com/180x80?text=AgTech+Inc" alt="AgTech Inc" class="partner-logo">
+            <img src="https://via.placeholder.com/180x80?text=GreenHarvest" alt="GreenHarvest" class="partner-logo">
+            <img src="https://via.placeholder.com/180x80?text=AgriResearch" alt="AgriResearch Foundation" class="partner-logo">
+            <img src="https://via.placeholder.com/180x80?text=FarmSolutions" alt="FarmSolutions" class="partner-logo">
+            <img src="https://via.placeholder.com/180x80?text=WaterWise" alt="WaterWise Technologies" class="partner-logo">
+            <img src="https://via.placeholder.com/180x80?text=DigitalMandi" alt="Digital Mandi" class="partner-logo">
+        </div>
+    </div>
+</section>
+
+<section class="benefits-section">
+    <div class="container">
+        <h2 class="section-title">Partnership Opportunities</h2>
+        <p class="section-subtitle">We offer several partnership models tailored to different types of organizations and collaboration goals.</p>
+        
+        <div class="partnership-types">
+            <div class="type-card">
+                <div class="type-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="type-content">
+                    <h3 class="type-title">Technology Partnerships</h3>
+                    <p>Integrate your agricultural technologies with our service offerings and farmer networks.</p>
+                    <ul class="type-features">
+                        <li>Co-develop precision agriculture solutions</li>
+                        <li>Test and validate new technologies with our farmer network</li>
+                        <li>Joint go-to-market strategies</li>
+                        <li>Technology transfer opportunities</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="type-content">
+                    <h3 class="type-title">Research Collaborations</h3>
+                    <p>Work with our team on agricultural research and innovation projects.</p>
+                    <ul class="type-features">
+                        <li>Joint research initiatives</li>
+                        <li>Field trials and data collection</li>
+                        <li>Access to our agricultural datasets</li>
+                        <li>Co-publishing opportunities</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-image" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="type-content">
+                    <h3 class="type-title">Distribution Partnerships</h3>
+                    <p>Leverage our network to distribute your agricultural products and services.</p>
+                    <ul class="type-features">
+                        <li>Access to our extensive farmer network</li>
+                        <li>Localized marketing and outreach</li>
+                        <li>Training and support infrastructure</li>
+                        <li>Performance-based partnership models</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-image" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="type-content">
+                    <h3 class="type-title">Corporate Social Responsibility</h3>
+                    <p>Align your CSR initiatives with our agricultural development programs.</p>
+                    <ul class="type-features">
+                        <li>Farmer training and capacity building</li>
+                        <li>Sustainable agriculture projects</li>
+                        <li>Rural development initiatives</li>
+                        <li>Impact measurement and reporting</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-title">Ready to Explore Partnership Opportunities?</h2>
+        <p>Whether you're a technology provider, research institution, agribusiness, or organization looking to make an impact in agriculture, we'd love to discuss how we can work together.</p>
+        
+        <div class="cta-buttons">
+            <a href="#" class="btn">Become a Partner</a>
+            <a href="#" class="btn btn-outline">Contact Our Team</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- solutions end -->
+
+
+         <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Services</h5>
+                    <a class="btn btn-link" href="">Market Insights</a>
+                    <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                    <a class="btn btn-link" href="">Logistics & Trade</a>
+                    <a class="btn btn-link" href="">Expert Guidance</a>
+                    <a class="btn btn-link" href="">Crop Insurance</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="service.html">Our Services</a>
+                    <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                    <a class="btn btn-link" href="404.html">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Newsletter</h5>
+                    <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                        helping farmers and agribusinesses thrive.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

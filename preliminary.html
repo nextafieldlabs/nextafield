@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="camera=(self)">
+    <title>Intern Exam Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #login-container, #exam-container, #admin-login-container, #admin-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 1000px;
+        }
+        #exam-container, #admin-login-container, #admin-container {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        .exam-header {
+            position: sticky;
+            top: 0;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .exam-header h1 {
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .exam-header .intern-info {
+            text-align: left;
+        }
+        .exam-header .media-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #video, #intern-avatar {
+            width: 100px;
+            height: 75px;
+            border: 2px solid #333;
+        }
+        #question-area {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            min-height: 400px;
+        }
+        .question-box {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            min-height: 200px;
+        }
+        .option-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .option-box:hover {
+            background-color: #e0e0e0;
+        }
+        .correct-option {
+            background-color: #28a745 !important;
+            color: white;
+        }
+        .wrong-option {
+            background-color: #dc3545 !important;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #submit-answer {
+            background-color: #007bff;
+        }
+        #submit-answer:hover {
+            background-color: #0056b3;
+        }
+        #next-button {
+            background-color: #28a745;
+        }
+        #next-button:hover {
+            background-color: #218838;
+        }
+        #submit-button {
+            background-color: #ff6200;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        #submit-button:hover {
+            background-color: #e55a00;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .option {
+            margin: 10px 0;
+            text-align: left;
+        }
+        .hidden {
+            display: none;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+        }
+        #edit-form {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .results-table th, .results-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .results-table tr:hover {
+            background-color: #e0e0e0;
+        }
+        #alert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+        .modal-content p {
+            margin: 0 0 15px;
+        }
+        .modal-content button {
+            background-color: #007bff;
+        }
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>NEXT AFIELD <br>Intern Exam Login</h2>
+        <input type="text" id="intern-id" placeholder="Enter Intern ID (e.g., NAINT25J00)" required><br>
+        <input type="password" id="intern-password" placeholder="Enter AICTE ID" required><br>
+        <button onclick="login()">Start Exam</button>
+        <button onclick="showAdminLogin()">Go to Admin Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+    <div id="admin-login-container">
+        <h2>Admin Login</h2>
+        <input type="text" id="admin-username" placeholder="Enter Username" required><br>
+        <input type="password" id="admin-password" placeholder="Enter Password" required><br>
+        <button onclick="adminLogin()">Login</button>
+        <button onclick="showInternLogin()">Go to Intern Login</button>
+        <p id="admin-error-message" style="color: red;"></p>
+    </div>
+    <div id="admin-container">
+        <h2>Admin Dashboard</h2>
+        <button onclick="adminLogout()">Logout</button>
+        <button onclick="toggleEditForm()">Edit Taken Exams</button>
+        <div id="edit-form" class="hidden">
+            <input type="text" id="remove-id" placeholder="Enter Intern ID to allow retest"><br>
+            <button onclick="removeTakenExam()">Remove</button>
+            <button onclick="toggleEditForm()">Cancel</button>
+        </div>
+        <div id="results-table"></div>
+    </div>
+    <div id="exam-container">
+        <div class="exam-header">
+            <div class="intern-info">
+                <p><strong>Name:</strong> <span id="display-name"></span></p>
+                <p><strong>Intern ID:</strong> <span id="display-id"></span></p>
+                <p><strong>Time Remaining:</strong> <span id="timer">30:00</span></p>
+            </div>
+            <h1>Next Afield <br> SAMPLE TEST - 1</h1>
+            <div class="media-container">
+                <img id="intern-avatar" src="" alt="Intern Avatar">
+                <video id="video" autoplay></video>
+            </div>
+        </div>
+        <div id="question-area"></div>
+        <div class="button-container">
+            <button onclick="submitAnswer()" id="submit-answer">Submit Answer</button>
+            <button onclick="nextQuestion()" id="next-button" class="hidden">Next Question</button>
+        </div>
+        <button onclick="submitExam()" id="submit-button" class="hidden">Submit Exam</button>
+    </div>
+    <div id="alert-modal">
+        <div class="modal-content">
+            <p id="alert-message"></p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const internData = {
+            "NAINT25J00": {
+                name: "Srinu Naik Katravath",
+                email: "srinunaik@nextafield.link",
+                aicte: "AICTE67890",
+                avatar: "img/j000.png",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J01": {
+                name: "Deepti Sharma",
+                email: "deepsharma1292004@gmail.com",
+                aicte: "STU6831ee697bb751748102761",
+                avatar: "img/j01.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 21, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 21, 2025" }
+                ]
+            },
+            "NAINT25J02": {
+                name: "Lavanya Shahapur",
+                email: "shahapurlavanya@gmail.com",
+                aicte: "STU6842eddb31e061749216731",
+                avatar: "img/j02.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J03": {
+                name: "Himaksh Yadav",
+                email: "himaksh25@gmail.com",
+                aicte: "STU683d944a6bc571748866122",
+                avatar: "img/j03.jpeg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J04": {
+                name: "Srawan Pandey",
+                email: "srawanp14@gmail.com",
+                aicte: "STU683ed7f009f481748948976",
+                avatar: "img/j04.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J05": {
+                name: "Poola Nikhila",
+                email: "poolanikhila2604@gmail.com",
+                aicte: "STU684665da8f1491749444058",
+                avatar: "img/j05.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J06": {
+                name: "Kolluru Veda Sri Surya Sasank",
+                email: "sasankkolluuru@gmail.com",
+                aicte: "STU67fe207ff27021744707711",
+                avatar: "img/j06.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J07": {
+                name: "Vaishnavi P",
+                email: "vaishnavipp444@gmail.com",
+                aicte: "STU684454ff800371749308671",
+                avatar: "img/j07.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J08": {
+                name: "Metta Subhash",
+                email: "subhashmetta1@gmail.com",
+                aicte: "STU671d0911045311729956113",
+                avatar: "img/j08.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J09": {
+                name: "G Bhavya",
+                email: "bhavyagovindaswamy2003@gmail.com",
+                aicte: "STU68426212a98e01749180946",
+                avatar: "img/j09.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J10": {
+                name: "Bholane Siddhi Shailesh",
+                email: "siddhi.22311881@viit.ac.in",
+                aicte: "STU6801f6c7f36211744959175",
+                avatar: "img/j10.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J11": {
+                name: "Kanak Sharma",
+                email: "sharmakanak043@gmail.com",
+                aicte: "STU662f4a866aa6a1714375302",
+                avatar: "img/j11.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J12": {
+                name: "Sneha Gupta",
+                email: "snehagupta25092004@gmail.com",
+                aicte: "STU6570b5274e4721701885223",
+                avatar: "img/j12.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J13": {
+                name: "Tanvi Sunil Khicchi",
+                email: "tanvikhicchi@gmail.com",
+                aicte: "STU6824c4063d4ed1747239942",
+                avatar: "img/j13.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J14": {
+                name: "Shikhar Sharma",
+                email: "shik99990@gmail.com",
+                aicte: "STU642bdb159bf811680595733",
+                avatar: "img/j14.jpeg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J15": {
+                name: "Riya Mangesh Kulkarni",
+                email: "kulkarniriya.07@gmail.com",
+                aicte: "STU680294e27566f1744999650",
+                avatar: "img/j15.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J16": {
+                name: "Tejeswini R",
+                email: "tejeswinir2005@gmail.com",
+                aicte: "STU68492ca663a8b1749626022",
+                avatar: "img/j16.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J17": {
+                name: "Sareddy Poojya Sree",
+                email: "sareddypoojyasree@gmail.com",
+                aicte: "STU681ba2b0506ba1746641584",
+                avatar: "img/j17.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J18": {
+                name: "Mutchi Divya",
+                email: "mutchidivyas05@gmail.com",
+                aicte: "NA",
+                avatar: "img/j18.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J19": {
+                name: "Soni Kumari Mehta",
+                email: "sonimehta2005@gmail.com",
+                aicte: "STU66585b88ed20f1717066632",
+                avatar: "img/j19.jpg",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J20": {
+                name: "Vanarasi Satya Siva Chaturvedi",
+                email: "vchatur281p@gmail.com",
+                aicte: "STU673af217c8b701731916311",
+                avatar: "img/j20.png",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            },
+            "NAINT25J21": {
+                name: "Nandana Balakrishnan",
+                email: "nandanabalakrishnan07@gmail.com",
+                aicte: "STU68426226058001749180966",
+                avatar: "img/j21.png",
+                results: [
+                    { test: "HTML Basics Test", score: 0, date: "June 16, 2025" },
+                    { test: "CSS Fundamentals", score: 0, date: "June 18, 2025" }
+                ]
+            }
+        };
+
+        const questionBank = [
+            { question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tabular Markup Language", "None of these"], answer: 0 },
+            { question: "Which CSS property controls text size?", options: ["font-style", "text-size", "font-size", "text-font"], answer: 2 },
+            { question: "What is the correct way to declare a JavaScript variable?", options: ["var myVar;", "variable myVar;", "v myVar;", "let myVar"], answer: 0 },
+            { question: "Which HTTP method is used to retrieve data?", options: ["POST", "GET", "PUT", "DELETE"], answer: 1 },
+            { question: "What does SQL stand for?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Logic", "Sequential Query Language"], answer: 0 },
+            { question: "Which HTML tag is used for creating a hyperlink?", options: ["<link>", "<a>", "<href>", "<url>"], answer: 1 },
+            { question: "What is the purpose of CSS Flexbox?", options: ["To create animations", "To manage layout alignment", "To handle database queries", "To optimize images"], answer: 1 },
+            { question: "Which JavaScript method adds an element to the end of an array?", options: ["pop()", "push()", "shift()", "unshift()"], answer: 1 },
+            { question: "What is the REST API primarily used for?", options: ["Styling web pages", "Data transfer over HTTP", "Database management", "Server-side rendering"], answer: 1 },
+            { question: "Which database is a NoSQL database?", options: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"], answer: 2 },
+            { question: "What is the purpose of the 'alt' attribute in an <img> tag?", options: ["To set image size", "To provide alternative text", "To link images", "To style images"], answer: 1 },
+            { question: "Which CSS unit is relative to the font size of the root element?", options: ["px", "vw", "rem", "em"], answer: 2 },
+            { question: "What does the JavaScript 'async' keyword do?", options: ["Makes a function return a promise", "Runs a function synchronously", "Delays function execution", "Stops function execution"], answer: 0 },
+            { question: "Which HTTP status code indicates 'Not Found'?", options: ["200", "404", "500", "301"], answer: 1 },
+            { question: "What is the primary function of Node.js?", options: ["Client-side scripting", "Server-side JavaScript execution", "Database management", "CSS preprocessing"], answer: 1 },
+            { question: "Which HTML element is used for a paragraph?", options: ["<p>", "<div>", "<span>", "<section>"], answer: 0 },
+            { question: "What is the purpose of media queries in CSS?", options: ["To animate elements", "To apply styles based on device characteristics", "To manage fonts", "To handle events"], answer: 1 },
+            { question: "Which JavaScript method removes the last element from an array?", options: ["pop()", "push()", "shift()", "slice()"], answer: 0 },
+            { question: "What does CRUD stand for in database operations?", options: ["Create, Read, Update, Delete", "Connect, Retrieve, Update, Drop", "Call, Read, Use, Delete", "Create, Run, Update, Deploy"], answer: 0 },
+            { question: "Which framework is used for building user interfaces?", options: ["Node.js", "React", "Express", "Django"], answer: 1 },
+            { question: "What is the purpose of the 'fetch' API in JavaScript?", options: ["To style elements", "To make HTTP requests", "To manage local storage", "To handle events"], answer: 1 },
+            { question: "Which CSS property is used to create space between elements?", options: ["padding", "margin", "border", "spacing"], answer: 1 },
+            { question: "What is the difference between 'let' and 'const' in JavaScript?", options: ["'let' is for arrays, 'const' is for objects", "'let' allows reassignment, 'const' does not", "'let' is for strings, 'const' is for numbers", "'let' is global, 'const' is local"], answer: 1 },
+            { question: "Which SQL command is used to retrieve data?", options: ["INSERT", "UPDATE", "SELECT", "DELETE"], answer: 2 },
+            { question: "What is the purpose of Express.js?", options: ["Frontend framework", "Backend framework for Node.js", "Database management", "CSS preprocessor"], answer: 1 },
+            { question: "Which HTML tag is used for creating a form?", options: ["<form>", "<input>", "<button>", "<div>"], answer: 0 },
+            { question: "What does the CSS 'position: absolute' do?", options: ["Positions element relative to its parent", "Positions element relative to the viewport", "Keeps element in normal flow", "Hides the element"], answer: 0 },
+            { question: "Which JavaScript event is triggered when a user clicks an element?", options: ["onhover", "onclick", "onchange", "onload"], answer: 1 },
+            { question: "What is the purpose of a primary key in a database?", options: ["To store data", "To uniquely identify a record", "To link tables", "To sort data"], answer: 1 },
+            { question: "Which tool is commonly used for version control?", options: ["Git", "NPM", "Webpack", "Babel"], answer: 0 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let timeLeft = 30 * 60; // 30 minutes in seconds
+        let timerInterval;
+        let internId;
+        let score = 0;
+        let attemptedQuestions = [];
+        let cameraAlertInterval;
+        let isPersonVisible = true;
+
+        // Check Secure Context
+        if (!window.isSecureContext) {
+            showCustomAlert('This application requires a secure context (HTTPS or localhost). Please serve the page using a local server or deploy it to an HTTPS server.');
+        }
+
+        // Custom Alert Function
+        function showCustomAlert(message) {
+            document.getElementById('alert-message').textContent = message;
+            document.getElementById('alert-modal').style.display = 'flex';
+            if (!document.fullscreenElement && document.getElementById('exam-container').style.display === 'flex') {
+                document.getElementById('exam-container').requestFullscreen().catch(err => {
+                    console.error('Fullscreen re-request error:', err.message);
+                });
+            }
+        }
+
+        function closeAlert() {
+            document.getElementById('alert-modal').style.display = 'none';
+        }
+
+        // Show Admin Login
+        function showAdminLogin() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('admin-login-container').style.display = 'flex';
+        }
+
+        // Show Intern Login
+        function showInternLogin() {
+            document.getElementById('admin-login-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'flex';
+        }
+
+        // Admin Login
+        function adminLogin() {
+            const username = document.getElementById('admin-username').value.trim();
+            const password = document.getElementById('admin-password').value.trim();
+            const errorMessage = document.getElementById('admin-error-message');
+
+            if (!username || !password) {
+                errorMessage.textContent = 'Please enter both username and password.';
+                return;
+            }
+            if (username !== 'admin' || password !== '@#$Admin123') {
+                errorMessage.textContent = 'Invalid username or password.';
+                return;
+            }
+
+            localStorage.setItem('adminSession', 'true');
+            document.getElementById('admin-login-container').style.display = 'none';
+            document.getElementById('admin-container').style.display = 'flex';
+            displayAdminDashboard();
+        }
+
+        // Admin Logout
+        function adminLogout() {
+            localStorage.removeItem('adminSession');
+            document.getElementById('admin-container').style.display = 'none';
+            document.getElementById('admin-login-container').style.display = 'flex';
+        }
+
+        // Toggle Edit Form
+        function toggleEditForm() {
+            const editForm = document.getElementById('edit-form');
+            editForm.classList.toggle('hidden');
+            document.getElementById('remove-id').value = '';
+        }
+
+        // Remove Taken Exam
+        function removeTakenExam() {
+            const removeId = document.getElementById('remove-id').value.trim();
+            const takenExams = JSON.parse(localStorage.getItem('takenExams') || '{}');
+            if (!removeId) {
+                showCustomAlert('Please enter an Intern ID.');
+                return;
+            }
+            if (!takenExams[removeId]) {
+                showCustomAlert('This Intern ID has not taken the exam.');
+                return;
+            }
+            delete takenExams[removeId];
+            const examData = JSON.parse(localStorage.getItem('examData') || '{}');
+            delete examData[removeId];
+            const examResults = JSON.parse(localStorage.getItem('examResults') || '[]');
+            const updatedResults = examResults.filter(result => result.internId !== removeId);
+            localStorage.setItem('takenExams', JSON.stringify(takenExams));
+            localStorage.setItem('examData', JSON.stringify(examData));
+            localStorage.setItem('examResults', JSON.stringify(updatedResults));
+            console.log('Stored exam data:', JSON.stringify(examData));
+            console.log('Stored exam results:', JSON.stringify(updatedResults));
+            showCustomAlert(`${removeId} can now retake the exam.`);
+            document.getElementById('remove-id').value = '';
+            document.getElementById('edit-form').classList.add('hidden');
+            displayAdminDashboard();
+        }
+
+        // Format Date/Time (IST)
+        function formatDateTime(isoString) {
+            if (!isoString) return 'N/A';
+            const date = new Date(isoString);
+            return date.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+        }
+
+        // Format Duration
+        function formatDuration(startTime, endTime) {
+            if (!startTime || !endTime) return 'N/A';
+            const start = new Date(startTime);
+            const end = new Date(endTime);
+            const diffMs = end - start;
+            const minutes = Math.floor(diffMs / 60000);
+            const seconds = Math.floor((diffMs % 60000) / 1000);
+            return `${minutes} min ${seconds} sec`;
+        }
+
+        // Format Suspicious Activities
+        function formatActivities(activities) {
+            if (!activities || activities.length === 0) return 'None';
+            return activities.map(activity => {
+                const time = formatDateTime(activity.timestamp);
+                return `${activity.type === 'fullscreen_exit' ? 'Exited Fullscreen' :
+                        activity.type === 'person_not_visible' ? 'Person Not Visible' :
+                        activity.type === 'focus_reminder' ? 'Focus Reminder Issued' :
+                        'Copied Intern ID'} at ${time}`;
+            }).join('<br>');
+        }
+
+        // Display Admin Dashboard
+        function displayAdminDashboard() {
+            const resultsTable = document.getElementById('results-table');
+            const examData = JSON.parse(localStorage.getItem('examData') || '{}');
+            const examResults = JSON.parse(localStorage.getItem('examResults') || '[]');
+            let tableRows = '';
+
+            Object.keys(internData).forEach(id => {
+                const intern = internData[id];
+                const data = examData[id] || {};
+                const result = examResults.find(r => r.internId === id) || {};
+                tableRows += `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${intern.name}</td>
+                        <td>${intern.email}</td>
+                        <td>${intern.aicte}</td>
+                        <td>${formatDateTime(data.startTime)}</td>
+                        <td>${formatDateTime(data.exitTime)}</td>
+                        <td>${formatDuration(data.startTime, data.exitTime)}</td>
+                        <td>${formatActivities(data.activities)}</td>
+                        <td>${result.score ? `${result.score}/30` : 'N/A'}</td>
+                    </tr>
+                `;
+            });
+
+            resultsTable.innerHTML = `
+                <h3>Intern Exam Activity</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Intern ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>AICTE ID</th>
+                            <th>Start Time</th>
+                            <th>Exit Time</th>
+                            <th>Duration</th>
+                            <th>Suspicious Activities</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>${tableRows}</tbody>
+                </table>
+            `;
+        }
+
+        // Log Suspicious Activity
+        function logActivity(activityType) {
+            const examData = JSON.parse(localStorage.getItem('examData') || '{}');
+            examData[internId] = examData[internId] || { activities: [] };
+            examData[internId].activities.push({ type: activityType, timestamp: new Date().toISOString() });
+            localStorage.setItem('examData', JSON.stringify(examData));
+            console.log('Logged activity:', activityType, 'for intern:', internId);
+        }
+
+        // Monitor Camera
+        function monitorCamera() {
+            const video = document.getElementById('video');
+            if (!video.srcObject) {
+                isPersonVisible = false;
+                showCustomAlert('Person not visible, please return to the screen.');
+                logActivity('person_not_visible');
+                return;
+            }
+            if (video.paused || video.ended) {
+                isPersonVisible = false;
+                showCustomAlert('Person not visible, please return to the screen.');
+                logActivity('person_not_visible');
+            } else {
+                isPersonVisible = true;
+            }
+        }
+
+        // Start Camera Alerts
+        function startCameraAlerts() {
+            cameraAlertInterval = setInterval(() => {
+                showCustomAlert('Stay focused and look at the screen.');
+                logActivity('focus_reminder');
+            }, 5 * 60 * 1000);
+            setInterval(monitorCamera, 30 * 1000);
+        }
+
+        // Stop Camera Alerts
+        function stopCameraAlerts() {
+            clearInterval(cameraAlertInterval);
+        }
+
+        // Fullscreen and Webcam
+        function startExam() {
+            score = 0;
+            attemptedQuestions = [];
+            const examData = JSON.parse(localStorage.getItem('examData') || '{}');
+            examData[internId] = { startTime: new Date().toISOString(), activities: [] };
+            localStorage.setItem('examData', JSON.stringify(examData));
+            console.log('Exam data initialized:', examData[internId]);
+
+            document.getElementById('exam-container').requestFullscreen().then(() => {
+                console.log('Fullscreen enabled.');
+            }).catch(err => {
+                console.error('Fullscreen error:', err.message);
+                showCustomAlert('Fullscreen mode could not be enabled. Exam will be submitted.');
+                logActivity('fullscreen_exit');
+                submitExam(true);
+            });
+
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement && document.getElementById('exam-container').style.display === 'flex') {
+                    showCustomAlert('You exited full-screen. Exam will be submitted, and your score will be displayed.');
+                    logActivity('fullscreen_exit');
+                    submitExam(true);
+                }
+            });
+
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(stream => {
+                        const videoElement = document.getElementById('video');
+                        videoElement.srcObject = stream;
+                        console.log('Camera access granted.');
+                        startCameraAlerts();
+                    })
+                    .catch(err => {
+                        console.error('Camera error:', err.name, err.message);
+                        let errorMessage = 'Unable to access camera. ';
+                        if (err.name === 'NotAllowedError') {
+                            errorMessage += 'Please allow camera access in your browser settings and reload the page.';
+                        } else if (err.name === 'NotFoundError') {
+                            errorMessage += 'No camera found on this device.';
+                        } else if (err.name === 'SecurityError') {
+                            errorMessage += 'Camera access is blocked due to security policy. Ensure the page is served over HTTPS or localhost.';
+                        } else {
+                            errorMessage += 'An unexpected error occurred. Please check your camera and browser settings.';
+                        }
+                        showCustomAlert(errorMessage + ' You can still proceed with the exam.');
+                        document.getElementById('video').style.display = 'none';
+                    });
+            } else {
+                console.error('Camera error: getUserMedia not supported by this browser.');
+                showCustomAlert('Your browser does not support camera access. You can still proceed with the exam.');
+                document.getElementById('video').style.display = 'none';
+            }
+
+            startTimer();
+            displayQuestion();
+        }
+
+        // Login Logic with Validation
+        function login() {
+            internId = document.getElementById('intern-id').value.trim();
+            const internPassword = document.getElementById('intern-password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+            const idRegex = /^NAINT25J\d{2}$/;
+
+            if (!internId || !internPassword) {
+                errorMessage.textContent = 'Please enter both Intern ID and AICTE ID.';
+                return;
+            }
+            if (!idRegex.test(internId)) {
+                errorMessage.textContent = 'Invalid Intern ID. Must be in format NAINT25JXX (e.g., NAINT25J00).';
+                return;
+            }
+            if (!internData[internId]) {
+                errorMessage.textContent = 'Intern ID not found.';
+                return;
+            }
+            if (internData[internId].aicte !== internPassword) {
+                errorMessage.textContent = 'Incorrect AICTE ID.';
+                return;
+            }
+
+            const takenExams = JSON.parse(localStorage.getItem('takenExams') || '{}');
+            if (takenExams[internId]) {
+                errorMessage.textContent = 'You have already taken the exam. No further attempts allowed.';
+                return;
+            }
+
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('exam-container').style.display = 'flex';
+            document.getElementById('display-name').textContent = internData[internId].name;
+            document.getElementById('display-id').textContent = internId;
+            document.getElementById('intern-avatar').src = internData[internId].avatar;
+            startExam();
+        }
+
+        // Timer Logic
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (timeLeft <= 0) {
+                    submitExam(true);
+                }
+            }, 1000);
+        }
+
+        // Display Question
+        function displayQuestion() {
+            const questionArea = document.getElementById('question-area');
+            const currentQuestion = questionBank[currentQuestionIndex];
+
+            if (!currentQuestion || !currentQuestion.options || !currentQuestion.options.length) {
+                console.error('No question or invalid question found at index:', currentQuestionIndex);
+                showCustomAlert('Error loading question. Exam will be submitted.');
+                submitExam(true);
+                return false;
+            }
+
+            console.log(`Rendering question ${currentQuestionIndex + 1}:`, currentQuestion);
+
+            questionArea.innerHTML = `
+                <div class="question-box">
+                    <h3>Question ${currentQuestionIndex + 1}: ${currentQuestion.question}</h3>
+                    ${currentQuestion.options.map((option, index) => `
+                        <div class="option-box option" id="option-box-${index}">
+                            <input type="radio" name="answer" id="option${index}" value="${index}" ${attemptedQuestions.includes(currentQuestionIndex) ? 'disabled' : ''}>
+                            <label for="option${index}">${option}</label>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            const optionBoxes = document.querySelectorAll('.option-box');
+            console.log(`Rendered ${optionBoxes.length} options for question ${currentQuestionIndex + 1}`);
+            optionBoxes.forEach((box, idx) => {
+                if (!box.offsetHeight) {
+                    console.warn(`Option ${idx} is not visible for question ${currentQuestionIndex + 1}`);
+                }
+            });
+
+            document.getElementById('submit-answer').classList.toggle('hidden', attemptedQuestions.includes(currentQuestionIndex));
+            document.getElementById('next-button').classList.toggle('hidden', !attemptedQuestions.includes(currentQuestionIndex));
+            document.getElementById('submit-button').classList.toggle('hidden', attemptedQuestions.length !== questionBank.length);
+            questionArea.scrollTop = 0;
+            return true;
+        }
+
+        // Submit Answer and Track Score
+        function submitAnswer() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+            const currentQuestion = questionBank[currentQuestionIndex];
+
+            if (!selectedOption) {
+                showCustomAlert('Please select an answer.');
+                return;
+            }
+
+            const selectedAnswer = parseInt(selectedOption.value);
+            const correctAnswer = currentQuestion.answer;
+
+            if (!attemptedQuestions.includes(currentQuestionIndex)) {
+                if (selectedAnswer === correctAnswer) {
+                    score++;
+                }
+                attemptedQuestions.push(currentQuestionIndex);
+            }
+
+            document.querySelectorAll('input[name="answer"]').forEach(input => {
+                input.disabled = true;
+            });
+
+            const correctLabel = document.querySelector(`label[for="option${correctAnswer}"]`).parentElement;
+            correctLabel.classList.add('correct-option');
+
+            if (selectedAnswer !== correctAnswer) {
+                const wrongLabel = document.querySelector(`label[for="option${selectedAnswer}"]`).parentElement;
+                wrongLabel.classList.add('wrong-option');
+            }
+
+            document.getElementById('submit-answer').classList.add('hidden');
+            document.getElementById('next-button').classList.remove('hidden');
+            if (attemptedQuestions.length === questionBank.length) {
+                document.getElementById('submit-button').classList.remove('hidden');
+            }
+        }
+
+        // Next Question
+        function nextQuestion() {
+            if (currentQuestionIndex < questionBank.length - 1) {
+                currentQuestionIndex++;
+                console.log('Navigating to question:', currentQuestionIndex + 1);
+                displayQuestion();
+            } else {
+                const firstUnanswered = questionBank.findIndex((_, index) => !attemptedQuestions.includes(index));
+                if (firstUnanswered !== -1) {
+                    console.log('Navigating to first unanswered question:', firstUnanswered + 1);
+                    currentQuestionIndex = firstUnanswered;
+                    displayQuestion();
+                } else {
+                    console.log('No unanswered questions remaining.');
+                }
+            }
+        }
+
+        // Submit Exam
+        function submitExam(forceSubmit = false) {
+            if (!forceSubmit && attemptedQuestions.length !== questionBank.length) {
+                showCustomAlert('Please answer all questions before submitting the exam.');
+                const firstUnanswered = questionBank.findIndex((_, index) => !attemptedQuestions.includes(index));
+                if (firstUnanswered !== -1) {
+                    currentQuestionIndex = firstUnanswered;
+                    console.log('Redirecting to unanswered question:', firstUnanswered + 1);
+                    displayQuestion();
+                }
+                return;
+            }
+
+            clearInterval(timerInterval);
+            stopCameraAlerts();
+            const takenExams = JSON.parse(localStorage.getItem('takenExams') || '{}');
+            takenExams[internId] = true;
+
+            const examData = JSON.parse(localStorage.getItem('examData') || '{}');
+            examData[internId].exitTime = new Date().toISOString();
+            localStorage.setItem('takenExams', JSON.stringify(takenExams));
+            localStorage.setItem('examData', JSON.stringify(examData));
+
+            const examResults = JSON.parse(localStorage.getItem('examResults') || '[]');
+            examResults.push({
+                internId: internId,
+                name: internData[internId].name,
+                score: score
+            });
+            localStorage.setItem('examResults', JSON.stringify(examResults));
+
+            const message = forceSubmit 
+                ? `Exam submitted due to exiting full-screen or error. You scored ${score} out of 30. No further attempts allowed.`
+                : `You scored ${score} out of 30. Exam submitted. No further attempts allowed.`;
+            showCustomAlert(message);
+
+            setTimeout(() => {
+                document.exitFullscreen().catch(err => {
+                    console.error('Exit fullscreen error:', err.message);
+                });
+                document.getElementById('exam-container').style.display = 'none';
+                document.getElementById('login-container').style.display = 'block';
+                const videoElement = document.getElementById('video');
+                const stream = videoElement.srcObject;
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                    videoElement.srcObject = null;
+                    console.log('Camera stream stopped.');
+                }
+            }, 3000);
+        }
+
+        // Check Admin Session on Load
+        if (localStorage.getItem('adminSession') === 'true') {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('admin-container').style.display = 'flex';
+            displayAdminDashboard();
+        }
+    </script>
+</body>
+</html>

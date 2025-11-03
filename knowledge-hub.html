@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Next Afield...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+     <!--
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>123 Street, New York, USA</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+012 345 6789</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square rounded-circle bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Brand Name -->
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <img src="img/logo.png" alt="Next Afield Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <div>
+                    <h1 class="m-0" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="m-0" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                            </a>
+    
+            <!-- 🔹 Fading RGB Greeting Message (Right Side of "Next Afield") -->
+            <p id="greetingMessage" class="fs-5 fw-bold mb-0 me-4"></p>
+    
+            <!-- Navbar Toggler (Mobile View) -->
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Service</a>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.querySelectorAll(".dropdown-toggle").forEach(function (toggle) {
+                                    toggle.addEventListener("click", function (event) {
+                                        event.preventDefault(); // Prevent default anchor behavior
+                    
+                                        // Close all open submenus except the one clicked
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            if (menu !== toggle.nextElementSibling) {
+                                                menu.style.display = "none";
+                                            }
+                                        });
+                    
+                                        // Toggle the clicked submenu
+                                        let submenu = toggle.nextElementSibling;
+                                        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+                                    });
+                                });
+                    
+                                // Close submenu when clicking outside
+                                document.addEventListener("click", function (event) {
+                                    if (!event.target.closest(".dropdown-submenu")) {
+                                        document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(function (menu) {
+                                            menu.style.display = "none";
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
+                    </head>
+                    <body>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="feature.html" class="dropdown-item">Feature</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                
+                                <!-- Core Business Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Core Business Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="solutions.html" class="dropdown-item">Solutions</a>
+                                        <a href="manapanta.html" class="dropdown-item">Mana Panta</a>
+                                    </div>
+                                </div>
+                                <!-- Farmer & Client Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Farmer & Client Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="market-prices.html" class="dropdown-item">Market Prices</a>
+                                        <a href="crop-insurance.html" class="dropdown-item">Crop Insurance</a>
+                                        <a href="transport-logistics.html" class="dropdown-item">Transport & Logistics</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Profit Tracker</a>
+                                        <a href="price-prediction.html" class="dropdown-item">Advanced Price Prediction</a>
+                                        <a href="knowledge-hub.html" class="dropdown-item">Knowledge Hub</a>
+                                        <a href="testimonial.html" class="dropdown-item">Success Stories</a>
+                                    </div>
+                                </div>
+                                <!-- Engagement & Support Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Engagement & Support</a>
+                                    <div class="dropdown-menu">
+                                        <a href="contact.html" class="dropdown-item">Contact Us</a>
+                                        <a href="faq.html" class="dropdown-item">FAQs</a>
+                                        <a href="support.html" class="dropdown-item">Help & Support</a>
+                                        <a href="quote.html" class="dropdown-item">Get a Quote</a>
+                                    </div>
+                                </div>
+                                <!-- Business Growth Pages -->
+                                <div class="dropdown-item dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle">Business Growth</a>
+                                    <div class="dropdown-menu">
+                                        <a href="investor-relations.html" class="dropdown-item">Investor Relations</a>
+                                        <a href="careers.html" class="dropdown-item">Careers</a>
+                                        <a href="partnerships.html" class="dropdown-item">Partnerships</a>
+                                        <a href="events.html" class="dropdown-item">Events & Webinars</a>
+                                        <a href="case-studies.html" class="dropdown-item">Case Studies</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                        
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Let’s grow together.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Agriculture meets innovation.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    
+    <!-- 🔹 Fading RGB Greeting Message -->
+    <!-- <div class="text-center my-2">
+        <p id="greetingMessage" class="fs-5 fw-bold">Welcome to Next Afield!</p>
+    </div>
+-->
+    
+    <style>
+        @keyframes fadeColors {
+            0% { color: rgb(255, 0, 0); }   /* Red */
+            20% { color: rgb(0, 255, 0); }  /* Green */
+            40% { color: rgb(0, 0, 255); }  /* Blue */
+            60% { color: rgb(255, 255, 0); } /* Yellow */
+            80% { color: rgb(255, 0, 255); } /* Purple */
+            100% { color: rgb(0, 255, 255); } /* Cyan */
+        }
+    
+        #greetingMessage {
+            animation: fadeColors 5s infinite ease-in-out;
+            transition: color 1s ease-in-out;
+        }
+    </style>
+    
+    <script>
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+    
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Welcome to Next Afield.";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Welcome to Next Afield.";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Welcome to Next Afield.";
+            } else {
+                message = "🌜 Good Night! Planning for tomorrow’s success.";
+            }
+    
+            document.getElementById("greetingMessage").innerText = message;
+        }
+    
+        updateGreeting();
+    </script>
+    
+    <!-- Navbar End -->
+
+
+<!-- solutions start -->
+
+<style>
+    /* General Styles */
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+        background: #f9f9f9;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Poppins', sans-serif;
+        color: #2c3e50;
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Header Styles */
+    header {
+        background: #2c3e50;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    header p {
+        margin: 10px 0 0;
+        font-size: 1.2rem;
+    }
+
+    header nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+    }
+
+    header nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+
+    header nav ul li a {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    header nav ul li a:hover {
+        color: #3498db;
+    }
+
+    /* Hero Section */
+    #hero {
+        background: #3498db;
+        color: #fff;
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    #hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    #hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .cta-button {
+        background: #149488;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: #c0392b;
+    }
+
+    /* Knowledge Hub Sections */
+    .section {
+        padding: 80px 0;
+        text-align: center;
+        background: #fff;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+        margin-bottom: 40px;
+        font-size: 2rem;
+        color: #2c3e50;
+    }
+
+    .section h3 {
+        margin-bottom: 20px;
+        color: #3498db;
+        font-size: 1.5rem;
+    }
+
+    .section p {
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 0 auto 20px;
+        color: #666;
+    }
+
+    .section ul {
+        text-align: left;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .section ul li {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .section ul li strong {
+        color: #2c3e50;
+    }
+
+   
+</style>
+</head>
+
+
+
+<section id="hero">
+    <div class="container">
+        <h2>Empowering Farmers with Knowledge</h2>
+        <p>Explore the latest trends, tools, and technologies in agriculture to optimize your operations and achieve sustainable growth.</p>
+        <a href="login.html" class="cta-button">Get Started</a>
+    </div>
+</section>
+
+<!-- Precision Agriculture Section -->
+<section id="precision-agriculture" class="section">
+    <div class="container">
+        <h2>Precision Agriculture</h2>
+        <p>At Next Afield, we leverage cutting-edge technologies to help farmers make data-driven decisions and optimize their farming operations. Our precision agriculture solutions include:</p>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Data Analytics and Farm Mapping:</strong> We use advanced analytics to create detailed field maps, highlighting variations in soil properties, crop health, and other key factors. This allows for targeted interventions to maximize productivity.</li>
+            <li><strong>GPS-Guided Equipment:</strong> Our GPS-guided machinery ensures precise planting, fertilization, and harvesting, reducing waste and improving efficiency.</li>
+            <li><strong>Drone and Satellite Monitoring:</strong> Real-time monitoring of crops helps detect issues like pests, diseases, or nutrient deficiencies early, allowing for timely interventions.</li>
+            <li><strong>Variable Rate Technology (VRT):</strong> We implement VRT solutions to apply inputs like fertilizers, seeds, and pesticides precisely based on field conditions, optimizing resource utilization.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Sustainable Farming Section -->
+<section id="sustainable-farming" class="section">
+    <div class="container">
+        <h2>Sustainable Farming Practices</h2>
+        <p>Next Afield is committed to promoting eco-friendly farming practices that protect the environment while boosting productivity. Our sustainable farming solutions include:</p>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Soil Health Management:</strong> We offer soil testing, analysis, and customized fertility plans to enhance soil health and productivity.</li>
+            <li><strong>Integrated Pest Management (IPM):</strong> Our IPM services focus on reducing pesticide use by integrating biological control methods and resistant crop varieties.</li>
+            <li><strong>Organic Farming Solutions:</strong> We provide expert guidance on organic certification, crop rotation, and natural pest control to help farmers transition to organic practices.</li>
+            <li><strong>Renewable Energy Integration:</strong> We assist in adopting renewable energy sources like solar panels and wind turbines to reduce energy costs and carbon footprints.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Market Insights Section -->
+<section id="market-insights" class="section">
+    <div class="container">
+        <h2>Market Insights and Price Tracking</h2>
+        <p>Stay ahead of market trends with Next Afield's advanced market insights and price tracking tools. Our services include:</p>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Three-Level Market Price Tracking:</strong> Monitor local, national, and global commodity prices to make informed decisions.</li>
+            <li><strong>Advanced Price Prediction:</strong> Leverage AI-driven forecasts to plan sales strategies and manage risks effectively.</li>
+            <li><strong>Digital Mandi Integration:</strong> Access real-time market prices and trading opportunities across India through our integration with the Digital Mandi platform.</li>
+            <li><strong>Personalized Notifications:</strong> Receive real-time updates on market trends via SMS, WhatsApp, or phone calls to stay informed and act quickly.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Training and Capacity Building Section -->
+<section id="training" class="section">
+    <div class="container">
+        <h2>Training and Capacity Building</h2>
+        <p>Next Afield empowers farmers and agribusinesses with the knowledge and skills needed to succeed in modern agriculture. Our training programs include:</p>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Workshops and Seminars:</strong> Learn about precision agriculture, sustainable practices, and farm management through interactive sessions.</li>
+            <li><strong>On-Farm Training:</strong> Get hands-on training to implement new technologies and practices effectively on your farm.</li>
+            <li><strong>Online Learning Resources:</strong> Access a wealth of knowledge through our online platform, featuring courses, webinars, and resources on the latest agricultural trends.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Research and Development Section -->
+<section id="research-development" class="section">
+    <div class="container">
+        <h2>Research and Development (R&D)</h2>
+        <p>Innovation is at the core of Next Afield's mission. Our R&D services help farmers and agribusinesses stay at the cutting edge of the industry. Our offerings include:</p>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>New Technology Trials:</strong> We conduct trials of emerging technologies, such as advanced sensors and automation tools, to assess their effectiveness on your farm.</li>
+            <li><strong>Collaborative Research Projects:</strong> We partner with agricultural research institutions and universities to drive innovation in farming practices.</li>
+            <li><strong>Custom R&D Solutions:</strong> We develop and implement custom R&D projects tailored to your specific challenges and opportunities.</li>
+        </ul>
+    </div>
+</section>
+
+
+
+
+
+<!-- solutions end -->
+
+
+         <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>H Block, Sector 63, Noida, Uttar Pradesh, India, 201301</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 99496 99496</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info.nextafield@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Services</h5>
+                    <a class="btn btn-link" href="">Market Insights</a>
+                    <a class="btn btn-link" href="">Smart Farming Solutions</a>
+                    <a class="btn btn-link" href="">Logistics & Trade</a>
+                    <a class="btn btn-link" href="">Expert Guidance</a>
+                    <a class="btn btn-link" href="">Crop Insurance</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="service.html">Our Services</a>
+                    <a class="btn btn-link" href="404.html">Terms & Condition</a>
+                    <a class="btn btn-link" href="404.html">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Newsletter</h5>
+                    <p>We are committed to bringing innovation, sustainability, and technology to agriculture, 
+                        helping farmers and agribusinesses thrive.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Next Afield</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By <a class="border-bottom" href="https://www.nextafield.link">Team NA - Solutions & Networks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

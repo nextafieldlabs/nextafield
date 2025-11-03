@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>Next Afield - Intern Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Preload Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</noscript>
+    
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/stylesheet@0.9.1/loader/normal-loader.min.js"></script>
+    
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- In head -->
+<!-- Preload critical CSS -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"></noscript>
+
+<!-- Load Tailwind asynchronously -->
+<script>
+  (function() {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.tailwindcss.com';
+    link.type = 'text/css';
+    link.media = 'all';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  })();
+</script>
+
+<!-- Defer non-critical JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+<!-- Load AOS CSS asynchronously -->
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+
+<!-- Move your custom styles to external file -->
+<link rel="stylesheet" href="/css/styles.css" media="print" onload="this.media='all'">
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --dark: #1b263b;
+            --darker: #0d1b2a;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Glass card effect */
+        .glass-card {
+            background: rgba(27, 38, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(67, 97, 238, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse animation for active dot */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(76, 201, 240, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 201, 240, 0); }
+        }
+
+        .active-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--success);
+            border-radius: 50%;
+            bottom: 5px;
+            right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Gradient border */
+        .gradient-border {
+            position: relative;
+            border-radius: 16px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.7;
+            background-size: 300% 300%;
+            animation: gradientBG 5s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        /* Avatar styling */
+        .avatar-container {
+            position: relative;
+            width: fit-content;
+        }
+
+        .avatar-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--accent));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Table styling */
+        .table-row {
+            transition: all 0.3s ease;
+        }
+
+        .table-row:hover {
+            background: rgba(67, 97, 238, 0.1) !important;
+            transform: translateX(5px);
+        }
+
+        /* Login form styling */
+        .login-form {
+            background: rgba(27, 38, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-form input {
+            background: rgba(13, 27, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: rgba(28, 72, 120, 0.8) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dashboard header */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Resource link styling */
+        .resource-link {
+            color: #93c5fd;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .resource-link:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        /* Highlight text */
+        .highlight-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(247, 37, 133, 0.3);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-text:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Section divider */
+        .section-divider {
+            position: relative;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            margin: 40px 0;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Badge styling */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-primary {
+            background: rgba(67, 97, 238, 0.2);
+            color: var(--primary-light);
+            border: 1px solid var(--primary);
+        }
+
+        .badge-success {
+            background: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        /* Progress bar */
+        .progress-container {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Notification dot */
+        .notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Custom checkbox */
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-checkbox.checked {
+            background-color: var(--primary);
+        }
+
+        .custom-checkbox.checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 12px;
+        }
+        
+        /* Performance card styling */
+        .performance-card {
+            background: rgba(27, 38, 59, 0.7);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .performance-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary-light);
+        }
+        
+        .performance-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .performance-item span:first-child {
+            color: var(--light);
+        }
+        
+        .performance-item span:last-child {
+            font-weight: 600;
+        }
+        
+        /* Day-wise schedule styling */
+        .day-schedule {
+            margin-top: 16px;
+        }
+        
+        .day-schedule-item {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .day-schedule-time {
+            width: 80px;
+            color: var(--primary-light);
+            font-weight: 500;
+        }
+        
+        .day-schedule-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        
+        .day-schedule-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: white;
+        }
+        
+        .day-schedule-desc {
+            font-size: 12px;
+            color: var(--light);
+            opacity: 0.8;
+        }
+        
+        /* Tab styling */
+        .tab-button {
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-button:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+        
+        .tab-button:not(.active):hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Project submission styling */
+        .submission-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .submission-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: white;
+        }
+        
+        .submission-date {
+            font-size: 12px;
+            color: var(--light);
+            opacity: 0.8;
+        }
+        
+        .submission-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        .submission-status.pending {
+            background: rgba(248, 150, 30, 0.2);
+            color: var(--warning);
+        }
+        
+        .submission-status.completed {
+            background: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+        }
+    </style>
+</head>
+
+<body class="bg-darker">
+    <!-- Spinner -->
+    <div id="spinner" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+        <div class="spinner">
+            <div class="double-bounce1 bg-primary w-12 h-12 rounded-full opacity-60"></div>
+            <div class="double-bounce2 bg-primary w-12 h-12 rounded-full opacity-60"></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-3">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex align-items-center">
+                <img src="img/logo.png" alt="Next Afield Logo" class="h-10 mr-3 floating">
+                <div>
+                    <h1 class="m-0 text-gradient">Next Afield</h1>
+                    <p class="m-0 text-xs text-primary-light">Intern Portal</p>
+                </div>
+            </a>
+            
+            <p id="greetingMessage" class="text-sm sm:text-base font-medium text-gray-300 mb-0 me-4 d-none d-md-block"></p>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <button id="logout-btn" class="btn-primary ms-auto d-none d-lg-block" style="display: none;">
+                    Logout <i class="fas fa-sign-out-alt ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="login-form p-8 sm:p-10 w-full max-w-md" data-aos="zoom-in">
+            <div class="text-center mb-8">
+                <img src="img/logo.png" alt="Next Afield Logo" class="w-20 h-20 mx-auto mb-4 floating">
+                <div>
+                    <h1 class="text-3xl font-bold text-gradient mb-2" style="color: #247a9f;">Next Afield</h1>
+                    <h6 class="text-0xl font-bold text-gradient mb-2" style="color: #71C0B3;">Agriculture Services and Solutions</h6>
+                </div>
+                <h1 class="text-3xl font-bold text-gradient mb-2">Welcome Back</h1>
+                <p class="text-gray-400">Sign in to access your intern dashboard</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="userId" class="block text-sm font-medium text-gray-300 mb-2">Intern ID</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-id-card text-gray-500"></i>
+                        </div>
+                        <input type="text" id="userId" name="userId" required
+                            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition duration-200"
+                            placeholder="NAINT25J00">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-500"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required
+                            class="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition duration-200"
+                            placeholder="••••••••">
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="custom-checkbox">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">Remember me</label>
+                    </div>
+                    
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-primary-light hover:text-primary">Forgot password?</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn-primary w-full flex justify-center py-3 px-4 rounded-lg text-lg font-semibold">
+                        Sign In <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <a href="https://nextafield.link/verify.html" target="_blank"
+                   class="text-sm text-primary-light hover:text-primary font-medium">
+                    <i class="fas fa-search mr-1"></i> Verify Certificate
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboard-screen" class="container px-4 py-8 mx-auto" style="display: none;">
+        <!-- Header -->
+        <header class="dashboard-header p-6 sm:p-8 rounded-xl mb-8 flex flex-col sm:flex-row justify-between items-center" data-aos="fade-down">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Intern Dashboard</h1>
+                <p class="text-lg text-gray-200">Welcome back, <span id="intern-name" class="font-semibold text-white">Intern</span>!</p>
+            </div>
+            
+            <div class="flex items-center mt-4 sm:mt-0">
+                <div class="relative mr-4">
+                    <i class="fas fa-bell text-xl text-gray-300 cursor-pointer"></i>
+                    <span class="notification-dot">3</span>
+                </div>
+                <button onclick="logout()" class="btn-primary bg-gradient-to-r from-accent to-pink-600 hover:from-accent hover:to-pink-700">
+                    Logout <i class="fas fa-sign-out-alt ml-2"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-400">Completed Tasks</p>
+                        <h3 class="text-2xl font-bold text-white">12</h3>
+                    </div>
+                    <div class="bg-accent bg-accent-20 p-3 rounded-full">
+                        <i class="fas fa-check-circle text-primary text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center justify-between text-sm mb-1">
+                        <span class="text-gray-400">Progress</span>
+                        <span class="font-medium text-primary-light">50%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="150">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-400">Upcoming Meetings</p>
+                        <h3 class="text-2xl font-bold text-white">1</h3>
+                    </div>
+                    <div class="bg-accent bg-accent-20 p-3 rounded-full">
+                        <i class="fas fa-video text-accent text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-400">Next meeting:</p>
+                    <p class="text-sm font-medium text-white">Fri, July 04 • 7:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-400">Pending Tasks</p>
+                        <h3 class="text-2xl font-bold text-white">1</h3>
+                    </div>
+                    <div class="bg-accent bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-tasks text-warning text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-400">Due soon:</p>
+                    <p class="text-sm font-medium text-white">JavaScript Calculator (Due: July 8)</p>
+                </div>
+            </div>
+            
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="250">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-400">Assessment Score</p>
+                        <h3 class="text-2xl font-bold text-white"><span id="overall-score">85</span>/50</h3>
+                    </div>
+                    <div class="bg-accent bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-chart-line text-success text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-400">Last test:</p>
+                    <p class="text-sm font-medium text-white" id="last-test">HTML Basics (Jun 16)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Profile Card -->
+            <div class="glass-card p-6 rounded-xl gradient-border" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-white">My Profile</h2>
+                    <button onclick="alert('Profile updated!')" class="text-primary-light hover:text-primary">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+                
+                <div class="flex items-center mb-6">
+                    <div class="avatar-container mr-4">
+                        <img id="intern-avatar" src="" alt="Intern Picture" class="avatar-img">
+                        <div class="active-dot"></div>
+                    </div>
+                    
+                    <div>
+                        <h3 id="intern-fullname" class="text-lg font-bold text-white mb-1"></h3>
+                        <p class="text-sm text-gray-400 mb-1">Intern ID: <span id="intern-id" class="text-primary-light"></span></p>
+                        <p class="text-sm text-gray-400">AICTE ID: <span id="intern-aicte" class="text-primary-light"></span></p>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <div class="bg-gray-800 p-2 rounded-lg mr-3">
+                            <i class="fas fa-envelope text-primary-light"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400">Email</p>
+                            <p id="intern-email" class="text-sm font-medium text-white"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="bg-gray-800 p-2 rounded-lg mr-3">
+                            <i class="fas fa-calendar-alt text-primary-light"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400">Joined</p>
+                            <p class="text-sm font-medium text-white">June 16, 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="bg-gray-800 p-2 rounded-lg mr-3">
+                            <i class="fas fa-briefcase text-primary-light"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400">Role</p>
+                            <p class="text-sm font-medium text-white">Full Stack Developer Intern</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Submissions -->
+                 <!--
+                <div class="mt-6">
+                    <h3 class="text-md font-bold text-white mb-3">Project Submissions</h3>
+                    <div class="submission-item">
+                        <div class="submission-title">Portfolio Website</div>
+                        <div class="submission-date">Submitted: June 25, 2025</div>
+                        <div class="submission-status completed"> Not Approved</div>
+                    </div>
+                    <div class="submission-item">
+                        <div class="submission-title">Login System</div>
+                        <div class="submission-date">Due: June 28, 2025</div>
+                        <div class="submission-status pending">Not Approved</div>
+                    </div>
+                </div>
+                
+                 -->
+
+
+                <!-- Performance Test Results -->
+                <div class="mt-6">
+                    <h3 class="text-md font-bold text-white mb-3">Performance Results</h3>
+                    <div class="performance-card">
+                        <h3>June 2025, Performance Test</h3>
+                        <div id="june-results">
+                            <!-- June results will be populated here -->
+                        </div>
+                    </div>
+                    <div class="performance-card">
+                        <h3>July 2025</h3>
+                        <div id="july-results">
+                            <!-- July results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+    <h3 class="text-md font-bold text-white mb-3">FSD Internship: Learning Opportunities</h3>
+    <div class="learning-opportunities">
+        <h4 class="text-sm font-semibold text-gray-200 mb-2">What an Intern Can Learn</h4>
+        <ul class="list-disc list-inside text-gray-300 text-sm">
+            <li><strong>Front-End Development:</strong> Master HTML, CSS, JavaScript, and frameworks like React or Vue.js to build responsive and interactive user interfaces.</li>
+            <li><strong>Back-End Development:</strong> Gain expertise in server-side technologies like Node.js, Express.js, and database management with SQL or NoSQL (e.g., MongoDB).</li>
+            <li><strong>Full-Stack Integration:</strong> Learn to connect front-end and back-end systems using REST APIs, ensuring seamless data flow and functionality.</li>
+            <li><strong>Version Control:</strong> Understand Git and platforms like GitHub for collaborative coding and version management.</li>
+            <li><strong>Deployment & DevOps:</strong> Explore cloud platforms (e.g., AWS, Vercel) and CI/CD pipelines for deploying scalable applications.</li>
+            <li><strong>Testing & Debugging:</strong> Develop skills in unit testing (e.g., Jest), API testing (e.g., Postman), and debugging using browser tools.</li>
+            <li><strong>Agile Methodologies:</strong> Participate in team meetings, sprints, and code reviews to understand Agile project management practices.</li>
+            <li><strong>Web Accessibility & Best Practices:</strong> Learn to create accessible, user-friendly applications adhering to modern web standards.</li>
+        </ul>
+    </div>
+
+</div>
+
+
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="space-y-6" data-aos="fade-up" data-aos-delay="150">
+                <div class="glass-card p-6 rounded-xl">
+                    <h2 class="text-xl font-bold text-white mb-4">Quick Actions</h2>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="https://meet.google.com/gpj-hbyi-ksw" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex flex-col items-center justify-center transition duration-200">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mb-2">
+                                <i class="fas fa-video text-accent text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white text-center">Join Meeting</span>
+                            <span class="text-xs text-gray-400 mt-1">Google Meet</span>
+                        </a>
+                        
+                        <a href="https://forms.gle/F4ZZEmpyrSUpQZvR6" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex flex-col items-center justify-center transition duration-200">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mb-2">
+                                <i class="fas fa-calendar-check text-accent text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white text-center">Mark Attendance</span>
+                            <span class="text-xs text-gray-400 mt-1">Daily Check-in</span>
+                        </a>
+                        
+                        <a href="https://forms.gle/ZwFKSjG7TmsaU1FS6" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex flex-col items-center justify-center transition duration-200">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mb-2">
+                                <i class="fas fa-pencil-alt text-warning text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white text-center">Take Test</span>
+                            <span class="text-xs text-gray-400 mt-1">Weekly Assessment</span>
+                        </a>
+                        
+                        <a href="https://wa.me/qr/2QGKCLFEL2SXC1" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex flex-col items-center justify-center transition duration-200">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mb-2">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                            </div>
+                            <span class="text-sm font-medium text-white text-center">Project Submission</span>
+                            <span class="text-xs text-gray-400 mt-1">Project Submission</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Current Project -->
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-white">Current Project</h2>
+                        <span class="badge badge-primary">In Progress</span>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold text-white mb-2">AI Dashboard Development</h3>
+                    <p class="text-sm text-gray-400 mb-4">Build a responsive dashboard for interns to track tasks and schedules with React.js and Chart.js</p>
+                    
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between text-sm mb-1">
+                            <span class="text-gray-400">Progress</span>
+                            <span class="font-medium text-primary-light">45%</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Deadline: <span class="text-white">Jul 26, 2025</span></span>
+                        <button class="text-primary-light hover:text-primary text-sm font-medium">
+                            View Details <i class="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Learning Process -->
+                <div class="glass-card p-6 rounded-xl">
+                    <h2 class="text-xl font-bold text-white mb-4">Learning Process</h2>
+                    <p class="text-sm text-gray-400 mb-4">Your day-to-day learning schedule and progress</p>
+                    
+                    <div class="day-schedule">
+                        <div class="day-schedule-item">
+                            <div class="day-schedule-time">6:00 PM</div>
+                            <div class="day-schedule-content">
+                                <div class="day-schedule-title">NA</div>
+                                <div class="day-schedule-desc">Concepts review and exercises</div>
+                            </div>
+                        </div>
+                        <div class="day-schedule-item">
+                            <div class="day-schedule-time">07:00 PM</div>
+                            <div class="day-schedule-content">
+                                <div class="day-schedule-title">NA</div>
+                                <div class="day-schedule-desc">Self Learning</div>
+                            </div>
+                        </div>
+                        <div class="day-schedule-item">
+                            <div class="day-schedule-time">8:00 PM</div>
+                            <div class="day-schedule-content">
+                                <div class="day-schedule-title">NA</div>
+                                <div class="day-schedule-desc">fundamentals and practice</div>
+                            </div>
+                        </div>
+                        <div class="day-schedule-item">
+                            <div class="day-schedule-time">8:00 PM</div>
+                            <div class="day-schedule-content">
+                                <div class="day-schedule-title">Project Work</div>
+                                <div class="day-schedule-desc">Apply learned concepts to current project</div>
+                            </div>
+                        </div>
+                        <div class="day-schedule-item">
+                            <div class="day-schedule-time">09:00 PM</div>
+                            <div class="day-schedule-content">
+                                <div class="day-schedule-title">NA</div>
+                                <div class="day-schedule-desc">Daily review and Learn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upcoming Tasks -->
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-white">Upcoming Tasks</h2>
+                    <button class="text-primary-light hover:text-primary text-sm font-medium">
+                        View All
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="custom-checkbox mr-3 mt-1"></div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Complete JavaScript Calculator</h3>
+                                <p class="text-xs text-gray-400 mb-2">Create a fully working calculator UI + logic</p>
+                                <div class="flex items-center text-xs text-gray-400">
+                                    <i class="fas fa-calendar-alt mr-1"></i>
+                                    <span>Due: July 08, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-tag mr-1"></i>
+                                    <span class="text-primary-light">Project</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="custom-checkbox mr-3 mt-1"></div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Team Meeting</h3>
+                                <p class="text-xs text-gray-400 mb-2">Weekly progress review and planning</p>
+                                <div class="flex items-center text-xs text-gray-400">
+                                    <i class="fas fa-calendar-alt mr-1"></i>
+                                    <span>Fri, July 04 • 07:00 PM</span>
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-video mr-1"></i>
+                                    <span class="text-primary-light">Google Meet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="custom-checkbox mr-3 mt-1"></div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Complete JavaScript Basics</h3>
+                                <p class="text-xs text-gray-400 mb-2">Study variables, functions and DOM manipulation</p>
+                                <div class="flex items-center text-xs text-gray-400">
+                                    <i class="fas fa-calendar-alt mr-1"></i>
+                                    <span>Due: July 04, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-book mr-1"></i>
+                                    <span class="text-primary-light">Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="custom-checkbox mr-3 mt-1"></div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Submit Weekly Report</h3>
+                                <p class="text-xs text-gray-400 mb-2">Document progress and challenges</p>
+                                <div class="flex items-center text-xs text-gray-400">
+                                    <i class="fas fa-calendar-alt mr-1"></i>
+                                    <span>Due: July 04, 2025</span>
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-file-alt mr-1"></i>
+                                    <span class="text-primary-light">Documentation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-primary w-full mt-6">
+                    Add New Task <i class="fas fa-plus ml-2"></i>
+                </button>
+<diV>
+                <h2 class="text-2xl font-bold text-white-800 mb-4">Career Preparation Session</h2>
+                <p class="text-white-700 mb-4">
+                  This final week is designed to prepare you for the real world with hands-on guidance on career essentials. Here's what each session covers:
+                </p>
+                <ul class="text-white-700 list-disc pl-6 mb-4 space-y-2">
+                  <li><strong>Resume Building (Sept 1):</strong> Learn how to draft a professional resume tailored to full stack roles. Focus on real project experience, tech stack, and achievements.</li>
+                  <li><strong>LinkedIn Profile Setup (Sept 2):</strong> Create a powerful profile with a headline, summary, skills, endorsements, and custom URL to get noticed by recruiters.</li>
+                  <li><strong>Interview Preparation (Sept 3):</strong> Get familiar with common HR and technical questions. Practice answering confidently with structured responses.</li>
+                  <li><strong>Mock Interview (Sept 4):</strong> Participate in a live mock interview. Understand feedback, improve body language, and communication style.</li>
+                  <li><strong>Soft Skills (Sept 5):</strong> Build confidence, clarity, and communication skills through activities and tips for both online and offline interviews.</li>
+                </ul>
+                
+              </div>
+            </div>
+        </div>
+
+        <!-- Projects Timeline -->
+        <div class="glass-card p-6 rounded-xl mb-8" data-aos="fade-up">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-white">Projects Timeline</h2>
+                <!--
+                <div class="flex space-x-2">
+                    <button class="tab-button active">All</button>
+                    <button class="tab-button">Current</button>
+                    <button class="tab-button">Upcoming</button>
+                    <button class="tab-button">Completed</button>
+                </div>
+            -->
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-400">
+                    <thead class="text-xs text-gray-300 uppercase bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Project</th>
+                            <th scope="col" class="px-6 py-3">Start Date</th>
+                            <th scope="col" class="px-6 py-3">Deadline</th>
+                            <th scope="col" class="px-6 py-3">Status</th>
+                            <th scope="col" class="px-6 py-3">Progress</th>
+                            <th scope="col" class="px-6 py-3 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Portfolio Website
+                            </th>
+                            <td class="px-6 py-4">Jun 21, 2025</td>
+                            <td class="px-6 py-4">Jun 25, 2025</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">Completed</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#" class="text-primary-light hover:text-primary">View</a>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Login System
+                            </th>
+                            <td class="px-6 py-4">Jun 25, 2025</td>
+                            <td class="px-6 py-4">Jun 28, 2025</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">Completed</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#" class="text-primary-light hover:text-primary">View</a>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                JavaScript Calculator
+                            </th>
+                            <td class="px-6 py-4">Jun 28, 2025</td>
+                            <td class="px-6 py-4">Jul 08, 2025</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">In Progress</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#" class="text-primary-light hover:text-primary">View</a>
+                            </td>
+                        </tr>
+                        <tr class="table-row hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Responsive Landing Page
+                            </th>
+                            <td class="px-6 py-4">Jun 08, 2025</td>
+                            <td class="px-6 py-4">Jun 15, 2025</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-success">Upcoming</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#" class="text-primary-light hover:text-primary">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Learning Resources -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Learning Plan -->
+            <div class="glass-card p-6 rounded-xl" data-aos="fade-up">
+                <h2 class="text-xl font-bold text-white mb-4">Learning Plan</h2>
+                <p class="text-sm text-gray-400 mb-6">Your personalized learning path for the internship program</p>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <i class="fas fa-check-circle text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Fundamentals</h3>
+                                <p class="text-xs text-gray-400 mb-2">Completed on Jun 30, 2025</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-success">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <i class="fas fa-book text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">Basics of FSD</h3>
+                                <p class="text-xs text-gray-400 mb-2">Due: Jul 23, 2025</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary">In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-gray-700 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <i class="fas fa-lock text-gray-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-white mb-1">FSD</h3>
+                                <p class="text-xs text-gray-400 mb-2">Starts: Aug 31, 2025</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="badge badge-primary">Upcoming</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-primary w-full mt-6">
+                    View Full Plan <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+            
+            <!-- Resources -->
+<div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+    <h2 class="text-xl font-bold text-white mb-4">Reference Documents</h2>
+    <p class="text-sm text-gray-400 mb-6">Access important documents and guides to support your internship journey.</p>
+    
+    <div class="space-y-4">
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-file-code text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">HTML Beginner Notes (MDN)</h3>
+                <p class="text-xs text-gray-400">Complete guide to HTML5 elements and structure</p>
+            </div>
+        </a>
+        
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fab fa-css3-alt text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">CSS Styling Guide (MDN)</h3>
+                <p class="text-xs text-gray-400">Learn modern CSS techniques and layouts</p>
+            </div>
+        </a>
+        
+        <a href="https://roadmap.sh/frontend" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-map text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Frontend Developer Roadmap</h3>
+                <p class="text-xs text-gray-400">Comprehensive guide to frontend development</p>
+            </div>
+        </a>
+        
+        <a href="https://roadmap.sh/backend" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-map text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Backend Developer Roadmap</h3>
+                <p class="text-xs text-gray-400">Comprehensive guide to backend development</p>
+            </div>
+        </a>
+        
+        <a href="https://www.freecodecamp.org/news/git-and-github-crash-course/" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fab fa-git-alt text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Git & GitHub Crash Course</h3>
+                <p class="text-xs text-gray-400">Learn version control with Git and GitHub</p>
+            </div>
+        </a>
+        
+        <a href="https://www.figma.com/community/file/903341644622520942" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-palette text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Figma UI/UX Design Templates</h3>
+                <p class="text-xs text-gray-400">Explore UI/UX design templates in Figma</p>
+            </div>
+        </a>
+        
+        <a href="https://www.linkedin.com/pulse/ultimate-guide-creating-perfect-linkedin-profile-2023-samuel-edwards/" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fab fa-linkedin text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">LinkedIn Profile Setup Guide</h3>
+                <p class="text-xs text-gray-400">Optimize your LinkedIn profile for networking</p>
+            </div>
+        </a>
+        
+        <a href="https://novoresume.com/career-blog/resume-examples" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-file-alt text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Resume Format Samples (By Job Role)</h3>
+                <p class="text-xs text-gray-400">Professional resume templates for various roles</p>
+            </div>
+        </a>
+        
+        <a href="https://www.geeksforgeeks.org/top-interview-questions-and-answers/" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-question-circle text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Top Interview Questions – GeeksforGeeks</h3>
+                <p class="text-xs text-gray-400">Prepare for technical interviews with key questions</p>
+            </div>
+        </a>
+        
+        <a href="https://docs.github.com/en/get-started/quickstart/github-glossary" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fab fa-github text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">GitHub Glossary & Workflow Terms</h3>
+                <p class="text-xs text-gray-400">Understand GitHub terms and workflows</p>
+            </div>
+        </a>
+        
+        <a href="https://internshala.com/internship-guide" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-briefcase text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Internship Guide – Internshala</h3>
+                <p class="text-xs text-gray-400">Tips and strategies for landing internships</p>
+            </div>
+        </a>
+        
+        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-th text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">CSS Flexbox Guide – CSS Tricks</h3>
+                <p class="text-xs text-gray-400">Master CSS Flexbox for responsive layouts</p>
+            </div>
+        </a>
+        
+        <a href="https://www.codecademy.com/learn/paths/full-stack-engineer-career-path" target="_blank" class="bg-gray-800 hover:bg-gray-700 p-4 rounded-lg flex items-start transition duration-200">
+            <div class="bg-primary bg-opacity-20 p-2 rounded-lg mr-3 flex-shrink-0">
+                <i class="fas fa-code text-primary"></i>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-white mb-1">Full Stack Engineer Path – Codecademy</h3>
+                <p class="text-xs text-gray-400">Complete learning path for full-stack development</p>
+            </div>
+        </a>
+    </div>
+    
+    <a href="https://drive.google.com/drive/folders/1MkgDkStWmJjvCBfShhBtXHdXr8gvjO9Q" target="_blank" class="btn-primary w-full mt-6">
+        View All Documents & Resources <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+        </div>
+        </div>
+        
+        <!-- Weekly Schedule -->
+        <div class="glass-card p-6 rounded-xl" data-aos="fade-up">
+            <h2 class="text-xl font-bold text-white mb-4">Weekly Schedule</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-400">
+                    <thead class="text-xs text-gray-300 uppercase bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Day</th>
+                            <th scope="col" class="px-6 py-3">Time</th>
+                            <th scope="col" class="px-6 py-3">Activity</th>
+                            <th scope="col" class="px-6 py-3">Location</th>
+                            <th scope="col" class="px-6 py-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Monday
+                            </th>
+                            <td class="px-6 py-4">6:00 PM - 9:00 PM</td>
+                            <td class="px-6 py-4">Team Standup</td>
+                            <td class="px-6 py-4">Google Meet</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-success">Completed</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Tuesday
+                            </th>
+                            <td class="px-6 py-4">6:00 PM - 9:00 PM</td>
+                            <td class="px-6 py-4">Code Review</td>
+                            <td class="px-6 py-4">Google Meet</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-success">Completed</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Wednesday
+                            </th>
+                            <td class="px-6 py-4">6:00 PM - 9:00 PM</td>
+                            <td class="px-6 py-4">Mentor Session</td>
+                            <td class="px-6 py-4">Google Meet</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">Upcoming</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row border-b border-gray-800 hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Thursday
+                            </th>
+                            <td class="px-6 py-4">6:00 PM - 9:00 PM</td>
+                            <td class="px-6 py-4">Project Update</td>
+                            <td class="px-6 py-4">Google Meet</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">Upcoming</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row hover:bg-gray-800/50">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                Friday
+                            </th>
+                            <td class="px-6 py-4">6:00 PM - 9:00 PM</td>
+                            <td class="px-6 py-4">Weekly Wrap-up</td>
+                            <td class="px-6 py-4">Google Meet</td>
+                            <td class="px-6 py-4">
+                                <span class="badge badge-primary">Upcoming</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- Styling Section -->
+<style>
+  .highlight-project {
+    font-weight: bold;
+    background-color: #e0f2fe;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .feature-box {
+    background-color: #f0fdf4;
+    border-left: 4px solid #34d399;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+  .feature-box h3 {
+    font-weight: 600;
+    color: #065f46;
+  }
+  .resource-link {
+    display: block;
+    font-size: 0.75rem;
+    color: #2563eb;
+    margin-top: 4px;
+  }
+  .june-table thead { background-color: #fde68a; }
+  .july-table thead { background-color: #a7f3d0; }
+  .august-table thead { background-color: #bfdbfe; }
+  .september-table thead { background-color: #fbcfe8; }
+</style>
+
+<!-- JUNE PROJECTS -->
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">June – Career-Focused Projects <span class='text-sm text-gray-500'>(June 21 – June 30)</span></h2>
+  <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden june-table">
+    <thead class="text-gray-800">
+      <tr>
+        <th class="px-4 py-2 border">S.No</th>
+        <th class="px-4 py-2 border">Project Title</th>
+        <th class="px-4 py-2 border">Description</th>
+        <th class="px-4 py-2 border">How to Build</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">1</td>
+        <td class="px-4 py-2 border highlight-project">Portfolio Website<br><span class='text-xs text-gray-500'>(Due: June 25)</span></td>
+        <td class="px-4 py-2 border">Create a personal portfolio using HTML/CSS</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=27JtRAI3QO8" target="_blank">Portfolio Website Video Guide</a>
+          <a class="resource-link" href="https://www.geeksforgeeks.org/javascript/how-to-create-a-portfolio-website-using-html-css-and-javascript/" target="_blank">GfG Portfolio Tutorial</a>
+          <a class="resource-link" href="https://www.tutorialspoint.com/design-a-portfolio-webpage-using-html-and-css" target="_blank">TutorialsPoint Portfolio Guide</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">2</td>
+        <td class="px-4 py-2 border highlight-project">Mini Login System<br><span class='text-xs text-gray-500'>(Due: June 28)</span></td>
+        <td class="px-4 py-2 border">Build a static login/signup UI</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=LUv7gs46JSk" target="_blank">Responsive Login/Signup Tutorial</a>
+          <a class="resource-link" href="https://www.codingnepalweb.com/free-login-registration-form-html-css/" target="_blank">Login/Registration Templates (CodingNepal)</a>
+          <a class="resource-link" href="https://dev.to/payne_001/how-to-create-a-responsive-loginsignup-form-using-html-and-css-5bip" target="_blank">Responsive Form Guide (Dev.to)</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- JULY PROJECTS -->
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">July – Intermediate Projects <span class='text-sm text-gray-500'>(July 1 – July 31)</span></h2>
+  <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden july-table">
+    <thead class="text-gray-800">
+      <tr>
+        <th class="px-4 py-2 border">S.No</th>
+        <th class="px-4 py-2 border">Project Title</th>
+        <th class="px-4 py-2 border">Description</th>
+        <th class="px-4 py-2 border">How to Build</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">3</td>
+        <td class="px-4 py-2 border highlight-project">JavaScript Calculator<br><span class='text-xs text-gray-500'>(Due: July 8)</span></td>
+        <td class="px-4 py-2 border">Make a fully working calculator UI + logic</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=j59qQ7YWLxw" target="_blank">JS Calculator Tutorial</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=0V8r4NDwaD4" target="_blank">DOM Manipulation Guide</a>
+          <a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">MDN DOM Docs</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">4</td>
+        <td class="px-4 py-2 border highlight-project">Responsive Landing Page<br><span class='text-xs text-gray-500'>(Due: July 15)</span></td>
+        <td class="px-4 py-2 border">A clean marketing page for any service</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=p0bGHP-PXD4" target="_blank">Bootstrap Landing Guide</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=3-ufN4hrn3c" target="_blank">TailwindCSS Tutorial</a>
+          <a class="resource-link" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">Bootstrap Docs</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">5</td>
+        <td class="px-4 py-2 border highlight-project">Form with Local Storage<br><span class='text-xs text-gray-500'>(Due: July 22)</span></td>
+        <td class="px-4 py-2 border">Build a form that stores values locally</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=6vQW8Tl_KLc" target="_blank">Local Storage JS Guide</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=PUkgK7e0AFE" target="_blank">Browser Storage Tutorial</a>
+          <a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank">MDN localStorage Docs</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- AUGUST PROJECTS -->
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">August – Team & Backend Projects <span class='text-sm text-gray-500'>(August 1 – August 31)</span></h2>
+  <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden august-table">
+    <thead class="text-gray-800">
+      <tr><th class="px-4 py-2 border">S.No</th><th class="px-4 py-2 border">Project Title</th><th class="px-4 py-2 border">Description</th><th class="px-4 py-2 border">How to Build</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">6</td>
+        <td class="px-4 py-2 border highlight-project">Team Farmer CRUD App<br><span class='text-xs text-gray-500'>(Due: August 10)</span></td>
+        <td class="px-4 py-2 border">Team task with add/edit/delete UI</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=vjf774RKrLc" target="_blank">Node.js CRUD Tutorial</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=1hpgG8fNi64" target="_blank">Firebase CRUD Guide</a>
+          <a class="resource-link" href="https://firebase.google.com/docs/firestore" target="_blank">Firebase Firestore Docs</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">7</td>
+        <td class="px-4 py-2 border highlight-project">Weather API App<br><span class='text-xs text-gray-500'>(Due: August 20)</span></td>
+        <td class="px-4 py-2 border">Fetch real-time weather data</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=MIYQR-Ybrn4" target="_blank">Weather App Tutorial</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=GuA0_Z1llYU" target="_blank">Axios Fetch Guide</a>
+          <a class="resource-link" href="https://openweathermap.org/api" target="_blank">OpenWeather API Docs</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">8</td>
+        <td class="px-4 py-2 border highlight-project">Team Chart Dashboard<br><span class='text-xs text-gray-500'>(Due: August 30)</span></td>
+        <td class="px-4 py-2 border">Show charts and graphs from dummy data</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=sE08f4iuOhA" target="_blank">Chart.js Dashboard Demo</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=Nq-jW9lMvfo" target="_blank">Recharts Tutorial</a>
+          <a class="resource-link" href="https://www.chartjs.org/docs/latest/" target="_blank">Chart.js Docs</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SEPTEMBER PROJECTS -->
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">September – Final Projects & Showcase <span class='text-sm text-gray-500'>(September 1 – September 10)</span></h2>
+  <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden september-table">
+    <thead class="text-gray-800">
+      <tr><th class="px-4 py-2 border">S.No</th><th class="px-4 py-2 border">Project Title</th><th class="px-4 py-2 border">Description</th><th class="px-4 py-2 border">How to Build</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">9</td>
+        <td class="px-4 py-2 border highlight-project">Capstone Project<br><span class='text-xs text-gray-500'>(Due: Sept 5)</span></td>
+        <td class="px-4 py-2 border">Build a fully functional project as a team or individual</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.freecodecamp.org/news/front-end-developer-portfolio-projects/" target="_blank">FreeCodeCamp Project Guide</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=0fYi8SGA20k" target="_blank">Responsive Design Tutorial</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">10</td>
+        <td class="px-4 py-2 border highlight-project">Deployment + Report<br><span class='text-xs text-gray-500'>(Due: Sept 8)</span></td>
+        <td class="px-4 py-2 border">Deploy and prepare a report</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=mg9muJv5T8Y" target="_blank">Deploy Tutorial</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=6FOq4cUd11U" target="_blank">Netlify Guide</a>
+          <a class="resource-link" href="https://www.netlify.com/docs/" target="_blank">Netlify Docs</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">11</td>
+        <td class="px-4 py-2 border highlight-project">Presentation Day<br><span class='text-xs text-gray-500'>(Due: Sept 10)</span></td>
+        <td class="px-4 py-2 border">Final live demo and presentation</td>
+        <td class="px-4 py-2 border">
+          <a class="resource-link" href="https://www.youtube.com/watch?v=f6hA4VnZLsc" target="_blank">Demo Tips</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=9YivEQF5anY" target="_blank">Presentation Skills</a>
+          <a class="resource-link" href="https://www.canva.com/learn/how-to-give-a-presentation/" target="_blank">Canva Presentation Guide</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+   <div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Advanced Projects</h2>
+  <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden">
+    <thead class="text-gray-800">
+      <tr>
+        <th class="px-4 py-2 border">S.No</th>
+        <th class="px-4 py-2 border">Project Title</th>
+        <th class="px-4 py-2 border">Description</th>
+        <th class="px-4 py-2 border">How to Build</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">1</td>
+        <td class="px-4 py-2 border highlight-project">Banking Management System</td>
+        <td class="px-4 py-2 border">Develop a web application to manage bank accounts, enabling users to create accounts, deposit/withdraw funds, transfer money, and view transaction histories. Features include secure user authentication and real-time balance updates.</td>
+        <td class="px-4 py-2 border">
+          Use Spring Boot, MySQL, Thymeleaf for UI. Implement account creation, transfers, balance checks. 
+          <a class="resource-link" href="https://www.youtube.com/playlist?list=PLD72JnLc4hpviJusvYgJJBupxRpflOAKc" target="_blank">Spring Boot Banking App Playlist</a>
+          <a class="resource-link" href="https://dev.to/bansikah/building-a-banking-portal-api-with-spring-boot-3ab1" target="_blank">Building Banking Portal API (Dev.to)</a>
+          <a class="resource-link" href="https://www.javaguides.net/2023/08/banking-application-using-spring-boot.html" target="_blank">JavaGuides Spring Boot REST Banking</a>
+          <a class="resource-link" href="https://github.com/kartik1502/Spring-Boot-Microservices-Banking-Application" target="_blank">Microservices Banking GitHub</a>
+          <a class="resource-link" href="https://spring.io/projects/spring-boot" target="_blank">Spring Boot Documentation</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">2</td>
+        <td class="px-4 py-2 border highlight-project">Farmer Commodity Project</td>
+        <td class="px-4 py-2 border">Create a web platform for farmers to list, manage, and sell agricultural commodities like crops or livestock. Buyers can browse listings, check prices, and send inquiries, with features for inventory tracking and price updates.</td>
+        <td class="px-4 py-2 border">
+          Use Laravel, Vue.js, PostgreSQL. Implement commodity listings, pricing, and buyer inquiries. 
+          <a class="resource-link" href="https://www.youtube.com/watch?v=ImtZ5yENzgE" target="_blank">Laravel E-commerce Tutorial</a>
+          <a class="resource-link" href="https://blog.stackpuz.com/building-a-vue-crud-app-with-a-laravel-api/" target="_blank">Vue + Laravel CRUD Guide</a>
+          <a class="resource-link" href="https://techsolutionstuff.com/post/how-to-connect-postgresql-in-laravel-11" target="_blank">PostgreSQL + Laravel Setup</a>
+          <a class="resource-link" href="https://laravel.com/docs/11.x" target="_blank">Laravel Documentation</a>
+          <a class="resource-link" href="https://github.com/Briankim254/Farm-manager-with-Laravel" target="_blank">Farm-manager GitHub</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">3</td>
+        <td class="px-4 py-2 border highlight-project">AI-Powered Resume Builder</td>
+        <td class="px-4 py-2 border">Build a web app that uses AI to generate professional resumes based on user input (skills, experience, education). Features include customizable templates, AI-suggested content, and PDF export functionality.</td>
+        <td class="px-4 py-2 border">
+          Use React, Node.js, and Hugging Face API for text generation. Store user data in MongoDB. 
+          <a class="resource-link" href="https://github.com/AutomateWithChatGPT/Resume-Builder-by-ChatGPT-" target="_blank">ChatGPT Resume Builder GitHub</a>
+          <a class="resource-link" href="https://huggingface.co/spaces/simanta9991/AI-Resume_Builder" target="_blank">AI-Resume Builder Space</a>
+          <a class="resource-link" href="https://www.datacamp.com/tutorial/category/Hugging-Face" target="_blank">Hugging Face Tutorials (DataCamp)</a>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=9vFxT6wQ-TM" target="_blank">AI Resume Analyzer YouTube</a>
+          <a class="resource-link" href="https://github.com/AutomateWithChatGPT/Resume-Builder-by-ChatGPT-" target="_blank">GitHub Repo (same as above)</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">4</td>
+        <td class="px-4 py-2 border highlight-project">Blockchain-Based Supply Chain Tracker</td>
+        <td class="px-4 py-2 border">Develop a decentralized application to track goods across a supply chain, ensuring transparency. Users can log product origins, movements, and deliveries on a blockchain, with a UI to view transaction histories.</td>
+        <td class="px-4 py-2 border">
+          Use Solidity, Truffle, and React. Deploy smart contracts on Ethereum testnet. 
+          <a class="resource-link" href="https://www.youtube.com/watch?v=i-_HCvSFHjI" target="_blank">Solidity Supply-Chain Tutorial</a>
+          <a class="resource-link" href="https://www.solidity-by-example.org/" target="_blank">Solidity by Example</a>
+          <a class="resource-link" href="https://github.com/celo-academy/Blockchain-Supply-Chain-Tracking-Assets-in-Solidity-Coding-Challenge/" target="_blank">GitHub Supply-Chain Challenge</a>
+          <a class="resource-link" href="https://learnsolidity.net/solidity-for-supply-chain/" target="_blank">Solidity for Supply Chain Guide</a>
+          <a class="resource-link" href="https://docs.soliditylang.org/en/latest/" target="_blank">Solidity Documentation</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">5</td>
+        <td class="px-4 py-2 border highlight-project">Cloud-Based File Sharing App</td>
+        <td class="px-4 py-2 border">Create a secure web platform for users to upload, store, and share files via cloud storage. Features include user authentication, file encryption, and shareable links with access controls.</td>
+        <td class="px-4 py-2 border">
+          Use AWS S3, Express.js, and Vue.js. Implement user authentication with JWT. 
+          <a class="resource-link" href="https://www.youtube.com/watch?v=6a5OR5aA9Nc" target="_blank">AWS S3 Bucket Guide (2025)</a>
+          <a class="resource-link" href="https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-2-upload-file.html" target="_blank">AWS Quick Start: Upload Files</a>
+          <a class="resource-link" href="https://www.geeksforgeeks.org/devops/how-to-upload-files-to-aws-s3-using-cli/" target="_blank">Upload Files to S3 via CLI</a>
+          <a class="resource-link" href="https://docs.aws.amazon.com/s3/index.html" target="_blank">AWS S3 Documentation</a>
+          <a class="resource-link" href="https://github.com/aws/aws-sdk-js" target="_blank">AWS SDK for JavaScript GitHub</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">6</td>
+        <td class="px-4 py-2 border highlight-project">Cybersecurity Dashboard</td>
+        <td class="px-4 py-2 border">Build a web dashboard to monitor and visualize network security threats in real-time. Features include log analysis, threat alerts, and interactive charts for tracking suspicious activities.</td>
+        <td class="px-4 py-2 border">
+          Use Python, Flask, and Elasticsearch. Visualize logs with Kibana. 
+          <a class="resource-link" href="https://www.elastic.co/guide/en/elasticsearch/reference/8.18/quickstart.html" target="_blank">Elasticsearch Quickstart + Python</a>
+          <a class="resource-link" href="https://www.geeksforgeeks.org/elasticsearch/elasticsearch-tutorial/" target="_blank">Elasticsearch Tutorial (GFG)</a>
+          <a class="resource-link" href="https://github.com/jannctu/Fast-Searching-using-Flask-and-Elasticsearch" target="_blank">Fast Searching Flask + Elastic GitHub</a>
+          <a class="resource-link" href="https://codezup.com/building-custom-elasticsearch-dashboard-kibana-python/" target="_blank">Kibana Dashboard Guide</a>
+          <a class="resource-link" href="https://github.com/elastic/elasticsearch-py" target="_blank">Elasticsearch-py GitHub</a>
+        </td>
+      </tr>
+      <tr class="bg-white">
+        <td class="px-4 py-2 border">7</td>
+        <td class="px-4 py-2 border highlight-project">Machine Learning Fraud Detection System</td>
+        <td class="px-4 py-2 border">Develop a system to identify fraudulent transactions using machine learning. The app processes transaction data, flags suspicious activities, and provides a UI to review flagged cases.</td>
+        <td class="px-4 py-2 border">
+          Use Python, Scikit-learn, and FastAPI. Train model on sample dataset. 
+          <a class="resource-link" href="https://dev.to/agustin_bereciartua/building-a-fraud-detection-system-in-python-with-machine-learning-1p3n" target="_blank">Fraud Detection w/ Scikit-Learn (DEV)</a>
+          <a class="resource-link" href="https://codezup.com/building-real-time-fraud-detection-system-python-machine-learning/" target="_blank">Real-Time Fraud Detection Python</a>
+          <a class="resource-link" href="https://pyquesthub.com/building-fraud-detection-models-using-machine-learning" target="_blank">Building Fraud Models (PyQuestHub)</a>
+          <a class="resource-link" href="https://scikit-learn.org/stable/documentation.html" target="_blank">Scikit-Learn Documentation</a>
+          <a class="resource-link" href="https://github.com/Abdoelbahli/Credit-Card-Fraud-Detection-using-Scikit-Learn-and-Snap-ML" target="_blank">Fraud-Detection GitHub</a>
+        </td>
+      </tr>
+      <tr class="bg-gray-50">
+        <td class="px-4 py-2 border">8</td>
+        <td class="px-4 py-2 border highlight-project">Serverless Event Management App</td>
+        <td class="px-4 py-2 border">Create a serverless web app for organizing events, allowing users to create events, manage RSVPs, and send notifications. The app leverages cloud functions for scalability and cost efficiency.</td>
+        <td class="px-4 py-2 border">
+          Use AWS Lambda, DynamoDB, and Next.js. Implement event creation and RSVPs. 
+          <a class="resource-link" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-dynamo-db.html" target="_blank">Lambda + DynamoDB HTTP API</a>
+          <a class="resource-link" href="https://clouddevs.com/next/s3-lambda-and-dynamodb-integration/" target="_blank">Next.js + AWS Integration Guide</a>
+          <a class="resource-link" href="https://dev.to/sshamza/building-a-serverless-backend-for-nextjs-with-aws-lambda-2oo6" target="_blank">Serverless Backend for Next.js</a>
+          <a class="resource-link" href="https://vercel.com/templates/next.js/aws-dynamodb-with-nextjs-api-routes" target="_blank">Next.js + DynamoDB Template</a>
+          <a class="resource-link" href="https://github.com/aws-samples/aws-lambda-nextjs" target="_blank">AWS Lambda + Next.js Sample GitHub</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+  <style>
+    .highlight-project {
+      font-weight: bold;
+      background-color: #e0f2fe;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .resource-link {
+      display: block;
+      font-size: 0.75rem;
+      color: #2563eb;
+      margin-top: 4px;
+    }
+    .project-container {
+      background-color: #f0fdf4;
+      border: 2px solid #34d399;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-top: 1rem;
+    }
+  </style>
+
+  <!-- Learning Plan -->
+<div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Learning Plan (June 16, 2025 - September 16, 2025)</h2>
+    <p class="text-gray-700 mb-4">Day-to-day learning topics excluding Saturdays and Sundays, organized by month. Fridays include team meetings from 6 PM to 8 PM.</p>
+
+    <!-- June 2025 -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">June 2025</h3>
+    <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="text-gray-800">
+        <tr>
+          <th class="px-4 py-2 border">Day</th>
+          <th class="px-4 py-2 border">Date</th>
+          <th class="px-4 py-2 border">Learning Topic</th>
+          <th class="px-4 py-2 border">Detailed Description</th>
+          <th class="px-4 py-2 border">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jun 16</td>
+          <td class="px-4 py-2 border">Orientation & Setup</td>
+          <td class="px-4 py-2 border">Install VS Code, Git, Node.js, and browser dev tools; understand workflow.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://docs.github.com/en/get-started" target="_blank">GitHub Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jun 17</td>
+          <td class="px-4 py-2 border">HTML Basics</td>
+          <td class="px-4 py-2 border">Learn HTML structure, tags, headings, paragraphs, and links.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN HTML</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jun 18</td>
+          <td class="px-4 py-2 border">CSS Basics</td>
+          <td class="px-4 py-2 border">Explore selectors, colors, fonts, and the box model.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN CSS</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jun 19</td>
+          <td class="px-4 py-2 border">CSS Layouts</td>
+          <td class="px-4 py-2 border">Learn Flexbox for creating responsive layouts.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Flexbox Guide</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jun 20</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review HTML, CSS basics, and setup progress (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jun 23</td>
+          <td class="px-4 py-2 border">HTML Forms</td>
+          <td class="px-4 py-2 border">Study form elements, inputs, buttons, and basic validation.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/html/html_forms.asp" target="_blank">HTML Forms</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jun 24</td>
+          <td class="px-4 py-2 border">Responsive Design</td>
+          <td class="px-4 py-2 border">Learn media queries and mobile-first design principles.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://web.dev/learn/design/" target="_blank">Web.dev Responsive</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jun 25</td>
+          <td class="px-4 py-2 border">CSS Animations</td>
+          <td class="px-4 py-2 border">Create simple animations using transitions and keyframes.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations" target="_blank">MDN Animations</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jun 26</td>
+          <td class="px-4 py-2 border">JavaScript Introduction</td>
+          <td class="px-4 py-2 border">Learn variables, data types, and basic console output.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/first-steps" target="_blank">JavaScript Info</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jun 27</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Recap forms, responsive design, and JS basics (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jun 30</td>
+          <td class="px-4 py-2 border">JavaScript Functions</td>
+          <td class="px-4 py-2 border">Understand function declarations and expressions.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/function-basics" target="_blank">JS Functions</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- July 2025 -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">July 2025</h3>
+    <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="text-gray-800">
+        <tr>
+          <th class="px-4 py-2 border">Day</th>
+          <th class="px-4 py-2 border">Date</th>
+          <th class="px-4 py-2 border">Learning Topic</th>
+          <th class="px-4 py-2 border">Detailed Description</th>
+          <th class="px-4 py-2 border">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jul 1</td>
+          <td class="px-4 py-2 border">JavaScript DOM Manipulation</td>
+          <td class="px-4 py-2 border">Learn to select and modify HTML elements using JavaScript.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/dom-nodes" target="_blank">JS DOM</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jul 2</td>
+          <td class="px-4 py-2 border">JavaScript Events</td>
+          <td class="px-4 py-2 border">Handle user interactions like clicks and form submissions.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/introduction-browser-events" target="_blank">JS Events</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jul 3</td>
+          <td class="px-4 py-2 border">JavaScript Arrays</td>
+          <td class="px-4 py-2 border">Explore array creation, methods, and iteration.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/array" target="_blank">JS Arrays</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jul 4</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review JavaScript DOM, events, and arrays (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jul 7</td>
+          <td class="px-4 py-2 border">Git Basics</td>
+          <td class="px-4 py-2 border">Learn Git commands, commits, and basic branching.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://git-scm.com/doc" target="_blank">Git Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jul 8</td>
+          <td class="px-4 py-2 border">JavaScript Objects</td>
+          <td class="px-4 py-2 border">Understand object properties, methods, and JSON basics.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/object" target="_blank">JS Objects</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jul 9</td>
+          <td class="px-4 py-2 border">Asynchronous JavaScript</td>
+          <td class="px-4 py-2 border">Learn callbacks and promises for async operations.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://javascript.info/promise-basics" target="_blank">JS Promises</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jul 10</td>
+          <td class="px-4 py-2 border">Fetch API</td>
+          <td class="px-4 py-2 border">Make HTTP requests to APIs using the Fetch API.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">MDN Fetch</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jul 11</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Discuss Git, objects, and async JavaScript (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jul 14</td>
+          <td class="px-4 py-2 border">React Introduction</td>
+          <td class="px-4 py-2 border">Set up React and create basic components with JSX.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn" target="_blank">React Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jul 15</td>
+          <td class="px-4 py-2 border">React Props</td>
+          <td class="px-4 py-2 border">Pass data between components using props.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/passing-props-to-a-component" target="_blank">React Props</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jul 16</td>
+          <td class="px-4 py-2 border">React State</td>
+          <td class="px-4 py-2 border">Manage dynamic UI updates using useState hook.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/state-a-components-memory" target="_blank">React State</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jul 17</td>
+          <td class="px-4 py-2 border">React Event Handling</td>
+          <td class="px-4 py-2 border">Handle user events like clicks in React components.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/responding-to-events" target="_blank">React Events</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jul 18</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review React basics and event handling (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jul 21</td>
+          <td class="px-4 py-2 border">React Forms</td>
+          <td class="px-4 py-2 border">Create and manage controlled forms in React.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/reacting-to-input-with-state" target="_blank">React Forms</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jul 22</td>
+          <td class="px-4 py-2 border">React useEffect</td>
+          <td class="px-4 py-2 border">Handle side effects like data fetching with useEffect.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/reference/react/useEffect" target="_blank">React useEffect</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jul 23</td>
+          <td class="px-4 py-2 border">Node.js Introduction</td>
+          <td class="px-4 py-2 border">Learn Node.js basics and create a simple server.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://nodejs.org/en/docs" target="_blank">Node.js Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jul 24</td>
+          <td class="px-4 py-2 border">Express.js Basics</td>
+          <td class="px-4 py-2 border">Set up Express.js and create basic routes.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://expressjs.com/en/starter/basic-routing.html" target="_blank">Express.js Docs</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Jul 25</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Discuss React forms, useEffect, and Express (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Jul 28</td>
+          <td class="px-4 py-2 border">Express Routing</td>
+          <td class="px-4 py-2 border">Organize routes and handle HTTP methods in Express.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Jul 29</td>
+          <td class="px-4 py-2 border">SQL Introduction</td>
+          <td class="px-4 py-2 border">Learn relational database concepts and basic SQL syntax.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/sql/" target="_blank">W3Schools SQL</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Jul 30</td>
+          <td class="px-4 py-2 border">SQL Tables and Queries</td>
+          <td class="px-4 py-2 border">Create tables and perform basic SELECT, INSERT, UPDATE, DELETE queries.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/sql/sql_create_table.asp" target="_blank">SQL Tables</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Jul 31</td>
+          <td class="px-4 py-2 border">SQL Joins</td>
+          <td class="px-4 py-2 border">Understand INNER, LEFT, and RIGHT joins to combine data.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/sql/sql_join.asp" target="_blank">SQL Joins</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- August 2025 -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">August 2025</h3>
+    <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="text-gray-800">
+        <tr>
+          <th class="px-4 py-2 border">Day</th>
+          <th class="px-4 py-2 border">Date</th>
+          <th class="px-4 py-2 border">Learning Topic</th>
+          <th class="px-4 py-2 border">Detailed Description</th>
+          <th class="px-4 py-2 border">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Aug 1</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review Express routes and SQL basics (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Aug 4</td>
+          <td class="px-4 py-2 border">REST API Basics</td>
+          <td class="px-4 py-2 border">Understand REST principles and HTTP methods.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://restfulapi.net/" target="_blank">REST API Guide</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Aug 5</td>
+          <td class="px-4 py-2 border">Express with SQL</td>
+          <td class="px-4 py-2 border">Connect Express to a SQL database using Sequelize.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://sequelize.org/docs/v6/getting-started/" target="_blank">Sequelize Docs</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Aug 6</td>
+          <td class="px-4 py-2 border">React API Integration</td>
+          <td class="px-4 py-2 border">Fetch and display data from APIs in React.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/fetching-data" target="_blank">React Data Fetching</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Aug 7</td>
+          <td class="px-4 py-2 border">React Routing</td>
+          <td class="px-4 py-2 border">Implement navigation using React Router.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://reactrouter.com/en/main" target="_blank">React Router</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Aug 8</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Discuss REST APIs, SQL integration, and React routing (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Aug 11</td>
+          <td class="px-4 py-2 border">Authentication Basics</td>
+          <td class="px-4 py-2 border">Learn user login and session management concepts.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.loginradius.com/blog/engineering/auth101/" target="_blank">Auth Basics</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Aug 12</td>
+          <td class="px-4 py-2 border">JWT Authentication</td>
+          <td class="px-4 py-2 border">Implement JSON Web Tokens for secure authentication.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://jwt.io/introduction" target="_blank">JWT Introduction</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Aug 13</td>
+          <td class="px-4 py-2 border">Express Middleware</td>
+          <td class="px-4 py-2 border">Use middleware for request processing in Express.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">Express Middleware</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Aug 14</td>
+          <td class="px-4 py-2 border">Error Handling</td>
+          <td class="px-4 py-2 border">Manage errors in Express and React applications.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://expressjs.com/en/guide/error-handling.html" target="_blank">Express Errors</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Aug 15</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review authentication and error handling (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Aug 18</td>
+          <td class="px-4 py-2 border">React Context API</td>
+          <td class="px-4 py-2 border">Manage global state using React Context.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/passing-data-deeply-with-context" target="_blank">React Context</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Aug 19</td>
+          <td class="px-4 py-2 border">Environment Variables</td>
+          <td class="px-4 py-2 border">Use environment variables in Node.js apps.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.npmjs.com/package/dotenv" target="_blank">Dotenv Docs</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Aug 20</td>
+          <td class="px-4 py-2 border">Deployment Basics</td>
+          <td class="px-4 py-2 border">Deploy apps using platforms like Vercel or Netlify.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://vercel.com/docs" target="_blank">Vercel Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Aug 21</td>
+          <td class="px-4 py-2 border">Web Accessibility</td>
+          <td class="px-4 py-2 border">Learn accessibility basics and semantic HTML.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://web.dev/accessibility/" target="_blank">Web.dev Accessibility</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Aug 22</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Discuss Context API, deployment, and accessibility (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Aug 25</td>
+          <td class="px-4 py-2 border">CSS Grid</td>
+          <td class="px-4 py-2 border">Learn CSS Grid for creating layouts.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://cssgridgarden.com/" target="_blank">Grid Garden</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Aug 26</td>
+          <td class="px-4 py-2 border">Bootstrap Basics</td>
+          <td class="px-4 py-2 border">Use Bootstrap for quick styling and responsive design.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">Bootstrap Docs</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Aug 27</td>
+          <td class="px-4 py-2 border">Tailwind CSS</td>
+          <td class="px-4 py-2 border">Learn utility-first styling with Tailwind CSS.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://tailwindcss.com/docs" target="_blank">Tailwind Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Aug 28</td>
+          <td class="px-4 py-2 border">Basic Testing</td>
+          <td class="px-4 py-2 border">Introduction to unit testing with Jest.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://jestjs.io/docs/getting-started" target="_blank">Jest Docs</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Aug 29</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review CSS Grid, frameworks, and testing (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- September 2025 -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">September 2025</h3>
+    <table class="w-full text-sm text-left text-gray-700 border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="text-gray-800">
+        <tr>
+          <th class="px-4 py-2 border">Day</th>
+          <th class="px-4 py-2 border">Date</th>
+          <th class="px-4 py-2 border">Learning Topic</th>
+          <th class="px-4 py-2 border">Detailed Description</th>
+          <th class="px-4 py-2 border">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Sep 1</td>
+          <td class="px-4 py-2 border">SQL Constraints</td>
+          <td class="px-4 py-2 border">Learn PRIMARY KEY, FOREIGN KEY, and UNIQUE constraints.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/sql/sql_constraints.asp" target="_blank">SQL Constraints</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Sep 2</td>
+          <td class="px-4 py-2 border">SQL Indexes</td>
+          <td class="px-4 py-2 border">Understand indexing to improve query performance.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.w3schools.com/sql/sql_create_index.asp" target="_blank">SQL Indexes</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Sep 3</td>
+          <td class="px-4 py-2 border">Sequelize Models</td>
+          <td class="px-4 py-2 border">Define and use Sequelize models for SQL databases.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://sequelize.org/docs/v6/core-concepts/model-basics/" target="_blank">Sequelize Models</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Sep 4</td>
+          <td class="px-4 py-2 border">Sequelize Queries</td>
+          <td class="px-4 py-2 border">Perform CRUD operations using Sequelize.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://sequelize.org/docs/v6/core-concepts/model-querying-basics/" target="_blank">Sequelize Queries</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Sep 5</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Review SQL constraints and Sequelize (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Sep 8</td>
+          <td class="px-4 py-2 border">React Component Reusability</td>
+          <td class="px-4 py-2 border">Create reusable React components.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/your-first-component" target="_blank">React Components</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Sep 9</td>
+          <td class="px-4 py-2 border">React Lifecycle</td>
+          <td class="px-4 py-2 border">Understand component lifecycle and useEffect.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://react.dev/learn/lifecycle-of-reactive-effects" target="_blank">React Lifecycle</a></td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Wednesday</td>
+          <td class="px-4 py-2 border">Sep 10</td>
+          <td class="px-4 py-2 border">Postman Basics</td>
+          <td class="px-4 py-2 border">Test APIs using Postman for HTTP requests.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://learning.postman.com/docs/getting-started/introduction/" target="_blank">Postman Docs</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Thursday</td>
+          <td class="px-4 py-2 border">Sep 11</td>
+          <td class="px-4 py-2 border">Basic Debugging</td>
+          <td class="px-4 py-2 border">Use browser dev tools and VS Code for debugging.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools" target="_blank">MDN Dev Tools</a></td>
+        </tr>
+        <tr class="bg-yellow-50">
+          <td class="px-4 py-2 border">Friday</td>
+          <td class="px-4 py-2 border">Sep 12</td>
+          <td class="px-4 py-2 border">Team Meeting</td>
+          <td class="px-4 py-2 border">Discuss React reusability, Postman, and debugging (6 PM – 8 PM).</td>
+          <td class="px-4 py-2 border">—</td>
+        </tr>
+        <tr class="bg-white">
+          <td class="px-4 py-2 border">Monday</td>
+          <td class="px-4 py-2 border">Sep 15</td>
+          <td class="px-4 py-2 border">Version Control with Git</td>
+          <td class="px-4 py-2 border">Learn Git branching and merging strategies.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank">Git Branching</a></td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border">Tuesday</td>
+          <td class="px-4 py-2 border">Sep 16</td>
+          <td class="px-4 py-2 border">Code Review Basics</td>
+          <td class="px-4 py-2 border">Learn best practices for reviewing code.</td>
+          <td class="px-4 py-2 border"><a class="resource-link" href="https://www.atlassian.com/blog/git/writing-effective-code-reviews" target="_blank">Code Review Guide</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-8 border-t border-gray-800">
+        <div class="container px-4 mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center mb-2">
+                        <img src="img/logo.png" alt="Next Afield Logo" class="h-8 w-auto mr-2">
+                        <span class="text-xl font-bold text-gradient">Next Afield</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Empowering the next generation of tech professionals</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 Next Afield. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Intern data for all users (NAINT25J00 to NAINT25J24)
+        const internData = {
+            "NAINT25J00": {
+                name: "Srinu Naik Katravath",
+                email: "srinunaik@nextafield.link",
+                aicte: "AICTE67890",
+                avatar: "img/j000.png",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J01": {
+                name: "Deepti Sharma",
+                email: "deepsharma1292004@gmail.com",
+                aicte: "STU6831ee697bb751748102761",
+                avatar: "img/j01.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 41, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J02": {
+                name: "Lavanya Shahapur",
+                email: "shahapurlavanya@gmail.com",
+                aicte: "STU6842eddb31e061749216731",
+                avatar: "img/j02.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 37, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J03": {
+                name: "Himaksh Yadav",
+                email: "himaksh25@gmail.com",
+                aicte: "STU683d944a6bc571748866122",
+                avatar: "img/j03.jpeg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 47, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J04": {
+                name: "Srawan Pandey",
+                email: "srawanp14@gmail.com",
+                aicte: "STU683ed7f009f481748948976",
+                avatar: "img/j04.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 42, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J05": {
+                name: "Bhagyalakshmi",
+                email: "bhagyalakshmi2716@gmail.com",
+                aicte: "STU685f9cefdb3f21751096559",
+                avatar: "img/j05.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 47, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J06": {
+                name: "Kolluru Veda Sri Surya Sasank",
+                email: "sasankkolluuru@gmail.com",
+                aicte: "STU67fe207ff27021744707711",
+                avatar: "img/j06.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 48, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J07": {
+                name: "Vaishnavi P",
+                email: "vaishnavipp444@gmail.com",
+                aicte: "STU684454ff800371749308671",
+                avatar: "img/j07.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 45, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J08": {
+                name: "Metta Subhash",
+                email: "subhashmetta1@gmail.com",
+                aicte: "STU671d0911045311729956113",
+                avatar: "img/j08.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 39, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J09": {
+                name: "G Bhavya",
+                email: "bhavyagovindaswamy2003@gmail.com",
+                aicte: "STU68426212a98e01749180946",
+                avatar: "img/j09.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 35, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J100": {
+                name: "Bholane Siddhi Shailesh",
+                email: "siddhi.22311881@viit.ac.in",
+                aicte: "STU6801f6c7f36211744959175",
+                avatar: "img/j10.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J11": {
+                name: "Kanak Sharma",
+                email: "sharmakanak043@gmail.com",
+                aicte: "STU662f4a866aa6a1714375302",
+                avatar: "img/j11.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 41, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J12": {
+                name: "Sneha Gupta",
+                email: "snehagupta25092004@gmail.com",
+                aicte: "STU6570b5274e4721701885223",
+                avatar: "img/j12.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 44, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J13": {
+                name: "Tanvi Sunil Khicchi",
+                email: "tanvikhicchi@gmail.com",
+                aicte: "STU6824c4063d4ed1747239942",
+                avatar: "img/j13.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 47, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J14": {
+                name: "Shikhar Sharma",
+                email: "shik99990@gmail.com",
+                aicte: "STU642bdb159bf811680595733",
+                avatar: "img/j14.jpeg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 49, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J15": {
+                name: "Riya Mangesh Kulkarni",
+                email: "kulkarniriya.07@gmail.com",
+                aicte: "STU680294e27566f1744999650",
+                avatar: "img/j15.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 46, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J16": {
+                name: "Tejeswini R",
+                email: "tejeswinir2005@gmail.com",
+                aicte: "STU68492ca663a8b1749626022",
+                avatar: "img/j16.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 46, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J107": {
+                name: "Sareddy Poojya Sree",
+                email: "sareddypoojyasree@gmail.com",
+                aicte: "STU681ba2b0506ba1746641584",
+                avatar: "img/j17.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J108": {
+                name: "Mutchi Divya",
+                email: "mutchidivyas05@gmail.com",
+                aicte: "NA",
+                avatar: "img/j18.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]  
+            },
+            "NAINT25J19": {
+                name: "Soni Kumari Mehta",
+                email: "sonimehta2005@gmail.com",
+                aicte: "STU66585b88ed20f1717066632",
+                avatar: "img/j19.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 44, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J20": {
+                name: "Vanarasi Satya Siva Chaturvedi",
+                email: "vchatur281p@gmail.com",
+                aicte: "STU673af217c8b701731916311",
+                avatar: "img/j20.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 50, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J21": {
+                name: "Nandana Balakrishnan",
+                email: "nandanabalakrishnan07@gmail.com",
+                aicte: "STU68426226058001749180966",
+                avatar: "img/j21.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 47, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J22": {
+                name: "Darshini K H ",
+                email: "darshini610@gmail.com",
+                aicte: "STU68495ed4c0ca31749638868",
+                avatar: "img/j22.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 47, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J203": {
+                name: "Priya Sharma",
+                email: "priyasharma@gmail.com",
+                aicte: "STU66585b88ed20f1717066636",
+                avatar: "img/j23.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]
+            },
+            "NAINT25J204": {
+                name: "Rohan Kumar",
+                email: "rohankumar@gmail.com",
+                aicte: "STU66585b88ed20f1717066637",
+                avatar: "img/j24.jpg",
+                results: [
+                    { test: "June 2025, Performance Test", score: 0, date: "June 30, 2025" }
+                ]
+            }
+        };
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userId = document.getElementById('userId').value.toUpperCase();
+            const password = document.getElementById('password').value;
+            
+            // Validate credentials pattern
+            const idPattern = /^NAINT25J\d{2}$/;
+            const passwordPattern = /^NAI25J\d{2}$/;
+            
+            if (idPattern.test(userId)) {
+                const expectedPassword = `NAI25J${userId.slice(-2)}`;
+                
+                if (password === expectedPassword && internData[userId]) {
+                    // Hide login, show dashboard
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('dashboard-screen').style.display = 'block';
+                    document.getElementById('logout-btn').style.display = 'block';
+                    
+                    // Hide spinner
+                    document.getElementById('spinner').style.display = 'none';
+                    
+                    // Load intern data
+                    loadInternData(userId);
+                    
+                    // Refresh AOS animations
+                    AOS.refresh();
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } else {
+                alert('Invalid Intern ID format. It should be in NAINT25JXX format where XX are numbers.');
+            }
+        });
+
+        // Load intern-specific data
+        function loadInternData(userId) {
+            const intern = internData[userId];
+            
+            // Update profile section
+            document.getElementById('intern-name').textContent = intern.name;
+            document.getElementById('intern-fullname').textContent = intern.name;
+            document.getElementById('intern-id').textContent = userId;
+            document.getElementById('intern-email').textContent = intern.email;
+            document.getElementById('intern-aicte').textContent = intern.aicte;
+            document.getElementById('intern-avatar').src = intern.avatar;
+            
+            // Update performance results
+            updatePerformanceResults(userId);
+        }
+
+        // Update performance results for specific intern
+        function updatePerformanceResults(userId) {
+            const intern = internData[userId];
+            const juneResults = document.getElementById('june-results');
+            const julyResults = document.getElementById('july-results');
+            
+            // Clear existing results
+            juneResults.innerHTML = '';
+            julyResults.innerHTML = '';
+            
+            // Calculate overall score
+            let totalScore = 0;
+            let testCount = 0;
+            let lastTest = '';
+            let lastTestDate = '';
+            
+            // Add results to appropriate month
+            if (intern.results && intern.results.length > 0) {
+                intern.results.forEach(result => {
+                    const month = new Date(result.date).getMonth();
+                    const container = month === 5 ? juneResults : julyResults; // June is month 5
+                    
+                    const item = document.createElement('div');
+                    item.className = 'performance-item';
+                    item.innerHTML = `
+                        <span>${result.test}</span>
+                        <span>${result.score}</span>
+                    `;
+                    container.appendChild(item);
+                    
+                    // Update overall score calculation
+                    totalScore += result.score;
+                    testCount++;
+                    
+                    // Track last test
+                    if (!lastTestDate || new Date(result.date) > new Date(lastTestDate)) {
+                        lastTest = result.test;
+                        lastTestDate = result.date;
+                    }
+                });
+                
+                // Calculate and display overall score
+                if (testCount > 0) {
+                    const overallScore = Math.round(totalScore / testCount);
+                    document.getElementById('overall-score').textContent = overallScore;
+                }
+                
+                // Display last test info
+                if (lastTest) {
+                    const lastTestElement = document.getElementById('last-test');
+                    const testDate = new Date(lastTestDate);
+                    const formattedDate = testDate.toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric' 
+                    });
+                    lastTestElement.textContent = `${lastTest} (${formattedDate})`;
+                }
+            } else {
+                // No results available
+                juneResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for June</div>';
+                julyResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for July</div>';
+                document.getElementById('overall-score').textContent = '0';
+                document.getElementById('last-test').textContent = 'No tests taken';
+            }
+        }
+
+        // Logout function
+        function logout() {
+            document.getElementById('dashboard-screen').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('logout-btn').style.display = 'none';
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Toggle checkbox
+        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+        
+        // Tab functionality for Projects Timeline
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Here you would typically filter the table content
+                // For this example, we'll just show all rows
+                document.querySelectorAll('.table-row').forEach(row => {
+                    row.style.display = '';
+                });
+            });
+        });
+
+        // Greeting message script
+        function updateGreeting() {
+            let now = new Date();
+            let hours = now.getHours();
+            let message = "";
+        
+            if (hours >= 5 && hours < 12) {
+                message = "🌞 Good Morning! Ready to learn something new today?";
+            } else if (hours >= 12 && hours < 17) {
+                message = "🌤 Good Afternoon! Keep up the great work!";
+            } else if (hours >= 17 && hours < 21) {
+                message = "🌙 Good Evening! Time to review your progress";
+            } else {
+                message = "🌜 Good Night! Rest well for another productive day";
+            }
+        
+            document.getElementById("greetingMessage").innerText = message;
+        }
+        
+        updateGreeting();
+        
+        // Hide spinner when page loads
+        window.addEventListener('load', function() {
+            document.getElementById('spinner').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

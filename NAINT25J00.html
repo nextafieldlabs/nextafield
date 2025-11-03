@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Glassmorphism Effect */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 3D Card Tilt Effect */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 3D Button Press Effect */
+        .btn-3d {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-3d:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Circular Marks with 3D Effect */
+        .circular-marks {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #34D399, #10B981);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profile Avatar Ring */
+        .avatar-ring {
+            position: relative;
+        }
+        .avatar-ring::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+            z-index: -1;
+            animation: ring-glow 2s infinite;
+        }
+        @keyframes ring-glow {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        /* Table Row Hover */
+        .table-row {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .table-row:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Collapsible Table Animation */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .collapsible-content.active {
+            max-height: 1000px; /* Adjust based on content */
+        }
+
+        /* Header Text Shadow */
+        .header-text {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563EB;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 font-sans">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="glassmorphism bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-xl shadow-2xl mb-8 flex flex-col sm:flex-row justify-between items-center">
+            <div class="header-text">
+                <h1 class="text-3xl sm:text-4xl font-extrabold">Next Afield <br>Intern Dashboard</h1>
+                <p class="text-lg sm:text-xl">Welcome to your personalized workspace!</p>
+            </div>
+            <button onclick="window.location.href='internlogin.html'" class="btn-3d bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-lg mt-4 sm:mt-0 hover:from-red-600 hover:to-pink-600">Logout</button>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Intern Profile -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Intern Profile</h2>
+                <div class="flex items-center mb-4">
+                    <div class="avatar-ring">
+                        <img src="img/j000.png" alt="Intern Picture" class="w-20 h-20 rounded-full">
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-700"><strong>Name:</strong> Srinu Naik Katravath</p>
+                        <p class="text-gray-700"><strong>Intern ID:</strong> NAINT25J000</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-2"><strong>Email:</strong> srinunaik@nextafield.link</p>
+                <p class="text-gray-700 mb-4"><strong>AICTE Registration ID:</strong> AICTE67890</p>
+                <button onclick="alert('Profile updated!')" class="btn-3d bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-lg w-full hover:from-blue-600 hover:to-indigo-600">Edit Profile</button>
+            </div>
+
+            <!-- Attend Meeting Session -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Attend Meeting</h2>
+                <p class="text-gray-700 mb-4">Join your scheduled team meetings.</p>
+                <a href="https://example.com/meeting" target="_blank" class="btn-3d bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-lg w-full text-center hover:from-blue-600 hover:to-indigo-600">Join Meeting</a>
+            </div>
+
+            <!-- Project Details -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Project Details</h2>
+                <p class="text-gray-700 mb-2"><strong>Project Name:</strong> AI Dashboard Development</p>
+                <p class="text-gray-700 mb-2"><strong>Description:</strong> Build a responsive dashboard for interns to track tasks and schedules.</p>
+                <p class="text-gray-700 mb-4"><strong>Deadline:</strong> July 31, 2025</p>
+                <button onclick="alert('Project details updated!')" class="btn-3d bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-2 rounded-lg w-full hover:from-green-600 hover:to-teal-600">Update Progress</button>
+            </div>
+
+            <!-- Daily Tasks -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Daily Tasks</h2>
+                <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li>Complete UI design for dashboard</li>
+                    <li>Attend code review at 2 PM</li>
+                    <li>Submit daily progress report</li>
+                </ul>
+                <button onclick="alert('Task marked as completed!')" class="btn-3d bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-2 rounded-lg w-full hover:from-yellow-600 hover:to-orange-600">Mark as Done</button>
+            </div>
+
+            <!-- Attendance -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Attendance</h2>
+                <p class="text-gray-700 mb-4">Mark your daily attendance here.</p>
+                <a href="https://example.com/attendance" target="_blank" class="btn-3d bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-lg w-full text-center hover:from-purple-600 hover:to-pink-600">Mark Attendance</a>
+            </div>
+
+            <!-- Connect to Mentor -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Connect to Mentor</h2>
+                <p class="text-gray-700 mb-4">Schedule a session or message your mentor.</p>
+                <a href="https://example.com/mentor" target="_blank" class="btn-3d bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-6 py-2 rounded-lg w-full text-center hover:from-indigo-600 hover:to-blue-600">Contact Mentor</a>
+            </div>
+
+            <!-- Assessment Session -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Assessment Session</h2>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Active Tests</h3>
+                <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li>UI Design Quiz - Due: June 15, 2025</li>
+                    <li>Coding Challenge - Due: June 20, 2025</li>
+                </ul>
+                <a href="https://example.com/active-tests" target="_blank" class="btn-3d bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-lg w-full text-center mb-4 hover:from-blue-600 hover:to-indigo-600">Take Active Tests</a>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Results</h3>
+                <p class="text-gray-700 mb-2">
+                    HTML Basics Test: <span class="circular-marks">85%</span> (Completed: June 10, 2025)
+                </p>
+                <p class="text-gray-700 mb-4">
+                    CSS Fundamentals: <span class="circular-marks">90%</span> (Completed: June 12, 2025)
+                </p>
+                <a href="https://example.com/assessments" target="_blank" class="btn-3d bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-2 rounded-lg w-full text-center hover:from-red-600 hover:to-pink-600">View All Results</a>
+            </div>
+
+            <!-- Doubt Session -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Doubt Session</h2>
+                <p class="text-gray-700 mb-4">Schedule or join a session to clear your doubts.</p>
+                <a href="https://example.com/doubt-session" target="_blank" class="btn-3d bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-2 rounded-lg w-full text-center hover:from-teal-600 hover:to-cyan-600">Join Doubt Session</a>
+            </div>
+
+            <!-- Reference Documents -->
+            <div class="card glassmorphism bg-white/80 p-6 rounded-xl">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Reference Documents</h2>
+                <p class="text-gray-700 mb-4">Access important documents related to your internship.</p>
+                <ul class="list-disc list-inside text-gray-700 mb-4">
+                    <li><a href="https://example.com/offer-letter" target="_blank" class="text-blue-600 hover:underline">Offer Letter</a></li>
+                    <li><a href="https://example.com/class-notes-web-dev" target="_blank" class="text-blue-600 hover:underline">Web Development Basics Class Notes</a></li>
+                    <li><a href="https://example.com/class-notes-ui-ux" target="_blank" class="text-blue-600 hover:underline">UI/UX Design Class Notes</a></li>
+                    <li><a href="https://example.com/project-guidelines" target="_blank" class="text-blue-600 hover:underline">Project Guidelines</a></li>
+                    <li><a href="https://example.com/intern-handbook" target="_blank" class="text-blue-600 hover:underline">Intern Handbook</a></li>
+                </ul>
+                <a href="https://example.com/all-documents" target="_blank" class="btn-3d bg-gradient-to-r from-gray-500 to-gray-700 text-white px-6 py-2 rounded-lg w-full text-center hover:from-gray-600 hover:to-gray-800">View All Documents</a>
+            </div>
+        </div>
+
+        <!-- Weekly Schedule -->
+        <div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Weekly Schedule</h2>
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-blue-100/50">
+                        <th class="p-3 border-b border-gray-200 text-gray-800">Day</th>
+                        <th class="p-3 border-b border-gray-200 text-gray-800">Time</th>
+                        <th class="p-3 border-b border-gray-200 text-gray-800">Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-row">
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Monday</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">10:00 AM - 11:00 AM</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Team Standup</td>
+                    </tr>
+                    <tr class="table-row">
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">2:00 PM - 3:00 PM</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Code Review</td>
+                    </tr>
+                    <tr class="table-row">
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">11:00 AM - 12:00 PM</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Mentor Session</td>
+                    </tr>
+                    <tr class="table-row">
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">3:00 PM - 4:00 PM</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Project Update</td>
+                    </tr>
+                    <tr class="table-row">
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Friday</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">9:00 AM - 10:00 AM</td>
+                        <td class="p-3 border-b border-gray-200 text-gray-700">Weekly Wrap-up</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Learning Plan (June 16, 2025 - September 16, 2025) -->
+        <div class="card glassmorphism bg-white/80 p-6 rounded-xl mt-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Learning Plan (June 16, 2025 - September 16, 2025)</h2>
+            <p class="text-gray-700 mb-4">Day-to-day tasks excluding Saturdays and Sundays, organized by month.</p>
+
+            <!-- June 2025 -->
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 cursor-pointer hover:text-blue-600" onclick="toggleTable('june-table')">June 2025</h3>
+            <div id="june-table" class="collapsible-content">
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100/50">
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Date</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Day</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Tasks</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Activity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 16, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project kickoff meeting, start requirement analysis</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 17, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Web Development Basics class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 18, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, UI design planning</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 19, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review meeting, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 20, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 23, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, continue requirement analysis</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 24, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Web Development Basics class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 25, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Industry Expert Talk, mentor session</td><td class="p-3 border-b border-gray-200 text-gray-700">Guest, Mentor</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 26, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, UI design draft</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 27, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Group mentoring, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">June 30, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, finalize UI design</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- July 2025 -->
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 cursor-pointer hover:text-blue-600" onclick="toggleTable('july-table')">July 2025</h3>
+            <div id="july-table" class="collapsible-content">
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100/50">
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Date</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Day</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Tasks</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Activity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 1, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Web Development Basics class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 2, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, start development</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 3, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 4, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 7, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, continue development</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 8, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Web Development Basics class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 9, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, development progress</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 10, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, UI design finalization</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 11, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 14, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, development sprint</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 15, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Web Development Basics class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 16, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, code review</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 17, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 18, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 21, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, start UI/UX Design class</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Class</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 22, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 23, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, development progress</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 24, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 25, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Group mentoring, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 28, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, start testing phase</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 29, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 30, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Tech Trends Webinar, mentor session</td><td class="p-3 border-b border-gray-200 text-gray-700">Guest, Mentor</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">July 31, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, finalize testing</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- August 2025 -->
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 cursor-pointer hover:text-blue-600" onclick="toggleTable('august-table')">August 2025</h3>
+            <div id="august-table" class="collapsible-content">
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100/50">
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Date</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Day</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Tasks</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Activity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 1, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 4, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, deployment planning</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 5, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 6, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, deployment preparation</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 7, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 8, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 11, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, project deployment</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 12, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 13, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, post-deployment review</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 14, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 15, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Career Guidance session, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Guest, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 18, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, start new module</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 19, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 20, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, module planning</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 21, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 22, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Group mentoring, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 25, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, module development</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 26, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">UI/UX Design class, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Class, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 27, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, module progress</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 28, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">August 29, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- September 2025 -->
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 cursor-pointer hover:text-blue-600" onclick="toggleTable('september-table')">September 2025</h3>
+            <div id="september-table" class="collapsible-content">
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100/50">
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Date</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Day</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Tasks</th>
+                                <th class="p-3 border-b border-gray-200 text-gray-800">Activity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 1, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, module testing</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 2, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Coding practice, prepare for assessment</td><td class="p-3 border-b border-gray-200 text-gray-700">Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 3, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, testing feedback</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 4, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 5, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Intern sync, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 8, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, module deployment</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 9, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Coding practice, prepare for assessment</td><td class="p-3 border-b border-gray-200 text-gray-700">Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 10, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Wednesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor session, post-deployment review</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 11, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Thursday</td><td class="p-3 border-b border-gray-200 text-gray-700">Project review, read technical article</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 12, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Friday</td><td class="p-3 border-b border-gray-200 text-gray-700">Group mentoring, submit progress report</td><td class="p-3 border-b border-gray-200 text-gray-700">Mentor, Task</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 15, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Monday</td><td class="p-3 border-b border-gray-200 text-gray-700">Team standup, project wrap-up</td><td class="p-3 border-b border-gray-200 text-gray-700">Meeting, Project</td></tr>
+                            <tr class="table-row"><td class="p-3 border-b border-gray-200 text-gray-700">September 16, 2025</td><td class="p-3 border-b border-gray-200 text-gray-700">Tuesday</td><td class="p-3 border-b border-gray-200 text-gray-700">Final presentation preparation, coding practice</td><td class="p-3 border-b border-gray-200 text-gray-700">Project, Task</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTable(tableId) {
+            const table = document.getElementById(tableId);
+            table.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

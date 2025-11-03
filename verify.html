@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intern Certificate Verification – Next Afield</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      margin-top: 40px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+      width: 90%;
+      max-width: 650px;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .company-name {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #0f766e;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #10b981;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #10b981;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0d946b;
+    }
+
+    .verified, .not-found {
+      margin-top: 30px;
+      padding: 20px;
+      border-left: 6px solid;
+      border-radius: 6px;
+    }
+
+    .verified {
+      background-color: #e6ffed;
+      border-color: #28a745;
+    }
+
+    .not-found {
+      background-color: #ffe6e6;
+      border-color: #dc3545;
+      color: #a30000;
+    }
+
+    .details p {
+      margin: 6px 0;
+    }
+
+    .profile-photo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #10b981;
+      margin-bottom: 15px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <center>
+      <img src="img/logo2.png" alt="Next Afield Logo" class="logo" />
+    </center>
+    <div class="company-name">Next Afield – Agriculture Services and Solutions</div>
+    <h1>Intern Certificate Verification</h1>
+
+    <input type="text" id="certIdInput" placeholder="Enter Certificate ID (e.g., NAINT25J00)" />
+    <button onclick="verifyCertificate()">Verify</button>
+
+    <div id="result"></div>
+
+    <div class="footer">© 2025 Next Afield. All Rights Reserved.</div>
+  </div>
+
+  <script>
+    const certificates = {
+      "NAINT25J00": {
+        name: "Katravath Srinu Naik",
+        title: "Full Stack Development",
+        duration: "16 June 2025 – 16 September 2025",
+        id: "NAINT25J00",
+        issued_by: "Next Afield – Agriculture Services and Solutions",
+        photo: "img/j000.png"
+      },
+      "NAINT25J01": {
+        name: "Charisma Yadav",
+        title: "Full Stack Developer",
+        duration: "16 June 2025 – 16 September 2025",
+        id: "NAINT25J01",
+        issued_by: "Next Afield – Agriculture Services and Solutions",
+        photo: "https:img/j01.png"
+      },
+      "NAINT25J02": {
+        name: "Rahul Kumar",
+        title: "Backend Development",
+        duration: "16 June 2025 – 16 September 2025",
+        id: "NAINT25J02",
+        issued_by: "Next Afield – Agriculture Services and Solutions",
+        photo: "https://nextafield.link/interns/j02.jpg"
+      }
+      // Add more...
+    };
+
+    function verifyCertificate() {
+      const certId = document.getElementById('certIdInput').value.trim().toUpperCase();
+      const data = certificates[certId];
+      const container = document.getElementById('result');
+
+      if (data) {
+        container.innerHTML = `
+          <div class="verified" style="text-align: center;">
+            <img src="${data.photo}" class="profile-photo" alt="${data.name}'s photo" />
+            ✅ This certificate is officially verified.
+            <div class="details" style="text-align: left; margin-top: 10px;">
+              <p><strong>Name:</strong> ${data.name}</p>
+              <p><strong>Internship:</strong> ${data.title}</p>
+              <p><strong>Duration:</strong> ${data.duration}</p>
+              <p><strong>Certificate ID:</strong> ${data.id}</p>
+              <p><strong>Issued by:</strong> ${data.issued_by}</p>
+            </div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="not-found">
+            <h2>❌ Certificate Not Found</h2>
+            <p>The certificate ID you entered does not exist in our records.</p>
+            <p>Please verify the ID and try again, or contact <strong>info@nextafield.link</strong> for help.</p>
+            <p><strong>Entered Certificate ID:</strong> <span style="color:#b30000;">${certId}</span></p>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>
