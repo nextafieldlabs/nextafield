@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Afield - Internship Offer Letter Generator</title>
+    <style>
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --light-color: #f5f7fa;
+            --dark-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .logo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .tagline {
+            color: var(--secondary-color);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .step {
+            display: none;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .offer-letter {
+            background-color: white;
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .offer-letter h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .offer-letter h2 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .offer-letter p {
+            margin-bottom: 15px;
+        }
+        
+        .offer-letter ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .offer-letter li {
+            margin-bottom: 8px;
+        }
+        
+        .signature-area {
+            margin-top: 40px;
+        }
+        
+        .signature-line {
+            border-top: 1px solid var(--dark-color);
+            width: 300px;
+            margin-top: 40px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .actions button {
+            flex: 1;
+        }
+        
+        .back-btn {
+            background-color: #7f8c8d;
+        }
+        
+        .back-btn:hover {
+            background-color: #6c7b7d;
+        }
+        
+        .download-btn {
+            background-color: #3498db;
+        }
+        
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .info-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #f1c40f;
+        }
+        
+        .date-display {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            .card, .offer-letter {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .offer-letter {
+                padding: 20px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .logo-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <div class="logo-container">
+                <div class="logo">
+                    <!-- Logo will be inserted here -->
+                    <img src="img/about-2.jpg" alt="Next Afield Logo" onerror="this.style.display='none'">
+                </div>
+                <div>
+                    <div class="logo-text">Next Afield</div>
+                    <div class="tagline">Solutions and Networks</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 1: Intern ID Verification -->
+        <div id="step1" class="step active card">
+            <h2>Intern ID Verification</h2>
+            <p>Please enter your Intern ID to proceed with generating your offer letter.</p>
+            
+            
+            
+            <div class="form-group">
+                <label for="internId">Intern ID</label>
+                <input type="text" id="internId" placeholder="Enter a Intern ID">
+                <div id="internIdError" class="error">Please enter a valid Intern ID (e.g., NAI25NOV01)</div>
+            </div>
+            
+            <button id="verifyIdBtn">Verify ID</button>
+        </div>
+        
+        <!-- Step 2: Personal Information -->
+        <div id="step2" class="step card">
+            <h2>Personal Information</h2>
+            <p>Please provide your personal details for the offer letter.</p>
+            
+            <div class="date-display">
+                Offer letter will be generated with today's date: <span id="currentDateDisplay"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name">
+                <div id="nameError" class="error">Please enter your full name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address">
+                <div id="emailError" class="error">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="parentName">Parent's Name</label>
+                <input type="text" id="parentName" placeholder="Enter your parent's name">
+                <div id="parentError" class="error">Please enter your parent's name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="collegeName">College Name</label>
+                <input type="text" id="collegeName" placeholder="Enter your college name">
+                <div id="collegeError" class="error">Please enter your college name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="degreeBranch">Degree & Branch</label>
+                <input type="text" id="degreeBranch" placeholder="e.g., B.Tech Computer Science">
+                <div id="degreeError" class="error">Please enter your degree and branch</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" placeholder="Enter your phone number">
+                <div id="phoneError" class="error">Please enter a valid phone number</div>
+            </div>
+            
+            <div class="actions">
+                <button id="backToStep1" class="back-btn">Back</button>
+                <button id="generateOfferBtn">Generate Offer Letter</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Offer Letter -->
+        <div id="step3" class="step">
+            <div class="offer-letter" id="offerLetterContent">
+                <!-- Offer letter content will be generated here -->
+            </div>
+            
+            <div class="actions no-print">
+                <button id="backToStep2" class="back-btn">Back</button>
+                <button id="downloadBtn" class="download-btn">Download as PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const internIdInput = document.getElementById('internId');
+        const verifyIdBtn = document.getElementById('verifyIdBtn');
+        const internIdError = document.getElementById('internIdError');
+        const backToStep1Btn = document.getElementById('backToStep1');
+        const generateOfferBtn = document.getElementById('generateOfferBtn');
+        const backToStep2Btn = document.getElementById('backToStep2');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const offerLetterContent = document.getElementById('offerLetterContent');
+        const currentDateDisplay = document.getElementById('currentDateDisplay');
+        
+        // Form elements
+        const fullNameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('email');
+        const parentNameInput = document.getElementById('parentName');
+        const collegeNameInput = document.getElementById('collegeName');
+        const degreeBranchInput = document.getElementById('degreeBranch');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        
+        // Error elements
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const parentError = document.getElementById('parentError');
+        const collegeError = document.getElementById('collegeError');
+        const degreeError = document.getElementById('degreeError');
+        const phoneError = document.getElementById('phoneError');
+        
+        // Current step tracking
+        let currentStep = 1;
+        
+        // Valid month codes
+        const monthCodes = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        
+        // Initialize current date display
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            currentDateDisplay.textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Get formatted current date
+        function getCurrentDate() {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return now.toLocaleDateString('en-US', options);
+        }
+        
+        // Event Listeners
+        verifyIdBtn.addEventListener('click', verifyInternId);
+        backToStep1Btn.addEventListener('click', () => navigateToStep(1));
+        generateOfferBtn.addEventListener('click', generateOfferLetter);
+        backToStep2Btn.addEventListener('click', () => navigateToStep(2));
+        downloadBtn.addEventListener('click', downloadAsPDF);
+        
+        // Initialize
+        updateCurrentDate();
+        
+        // Functions
+        function verifyInternId() {
+            const internId = internIdInput.value.trim().toUpperCase();
+            
+            // Validate the format: NAI + 2-digit year + 3-letter month + 2-digit number
+            const pattern = /^NAI(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\d{2})$/;
+            const match = internId.match(pattern);
+            
+            if (!match) {
+                internIdError.textContent = 'Please enter a valid Intern ID (e.g., NAI25NOV01)';
+                internIdError.style.display = 'block';
+                return;
+            }
+            
+            const year = match[1];
+            const month = match[2];
+            const number = parseInt(match[3]);
+            
+            // Check if the month is valid
+            if (!monthCodes.includes(month)) {
+                internIdError.textContent = 'Invalid month code in Intern ID';
+                internIdError.style.display = 'block';
+                return;
+            }
+            
+            // Check if the number is between 01 and 99
+            if (number < 1 || number > 99) {
+                internIdError.textContent = 'Intern ID number must be between 01 and 99';
+                internIdError.style.display = 'block';
+                return;
+            }
+            
+            // If all validations pass
+            internIdError.style.display = 'none';
+            navigateToStep(2);
+        }
+        
+        function navigateToStep(step) {
+            // Hide all steps
+            step1.classList.remove('active');
+            step2.classList.remove('active');
+            step3.classList.remove('active');
+            
+            // Show the target step
+            if (step === 1) {
+                step1.classList.add('active');
+                currentStep = 1;
+            } else if (step === 2) {
+                step2.classList.add('active');
+                currentStep = 2;
+            } else if (step === 3) {
+                step3.classList.add('active');
+                currentStep = 3;
+            }
+        }
+        
+        function validateStep2() {
+            let isValid = true;
+            
+            // Reset errors
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            parentError.style.display = 'none';
+            collegeError.style.display = 'none';
+            degreeError.style.display = 'none';
+            phoneError.style.display = 'none';
+            
+            // Validate full name
+            if (!fullNameInput.value.trim()) {
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput.value.trim())) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate parent's name
+            if (!parentNameInput.value.trim()) {
+                parentError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate college name
+            if (!collegeNameInput.value.trim()) {
+                collegeError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate degree & branch
+            if (!degreeBranchInput.value.trim()) {
+                degreeError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate phone number (basic validation)
+            const phonePattern = /^[\d\s\-+()]{10,}$/;
+            if (!phonePattern.test(phoneNumberInput.value.trim())) {
+                phoneError.style.display = 'block';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        function generateOfferLetter() {
+            if (!validateStep2()) {
+                return;
+            }
+            
+            // Get form values
+            const internId = internIdInput.value.trim().toUpperCase();
+            const fullName = fullNameInput.value.trim();
+            const email = emailInput.value.trim();
+            const parentName = parentNameInput.value.trim();
+            const collegeName = collegeNameInput.value.trim();
+            const degreeBranch = degreeBranchInput.value.trim();
+            const phoneNumber = phoneNumberInput.value.trim();
+            
+            // Get current date
+            const currentDate = getCurrentDate();
+            
+            // Set start date to 26 November 2025 as requested
+            const startDate = "26 November 2025";
+            
+            // Generate the offer letter HTML
+            offerLetterContent.innerHTML = `
+        
+                
+                <h1>Internship Offer Letter</h1>
+                
+                <p><strong>Next Afield – Solutions and Networks</strong><br>
+                Website: www.nextafield.co.in<br>
+                Email: support@nextafield.co.in<br>
+                Date: ${currentDate}</p>
+                
+                <p>To,<br>
+                ${fullName}<br>
+                ${email}<br>
+                <strong>Intern ID : ${internId}</strong></p>
+                
+                <hr style="margin: 20px 0;">
+                
+                <h2>Dear ${fullName},</h2>
+                
+                <p>We are pleased to extend this formal offer for the position of <strong>Full Stack Developer Intern at Next Afield – Solutions and Networks</strong>. This internship is a key opportunity to directly contribute to live company projects while gaining practical experience in full-stack software development.</p>
+                
+                <h2>Internship Overview:</h2>
+                <ul>
+                    <li><strong>Role:</strong> Full Stack Developer Intern</li>
+                    <li><strong>Mode:</strong> Virtual Internship (Remote Work)</li>
+                    <li><strong>Duration:</strong> 3 Months</li>
+                    <li><strong>Start Date:</strong> ${startDate}</li>
+                    <li><strong>Stipend:</strong> Unpaid Internship</li>
+                    <li><strong>Working Days:</strong> Monday to Friday (with weekly team meetings every Friday at 06:00 PM)</li>
+                    <li><strong>Expected Commitment:</strong> Minimum 20 hours/week</li>
+                    <li><strong>Reporting To:</strong> Technical Team Lead / Project Manager</li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>Note:</strong> All interns are required to attend the weekly team meeting every Friday at 06:00 PM IST. This meeting is crucial for project updates, team coordination, and planning for the upcoming week.
+                </div>
+                
+                <h2>Role & Responsibilities:</h2>
+                <ul>
+                    <li>Participating in the design, development, and maintenance of full-stack web applications</li>
+                    <li>Writing clean, scalable, and efficient front-end and back-end code</li>
+                    <li>Collaborating on API integrations, databases, and DevOps workflows</li>
+                    <li>Actively contributing to ongoing projects in agriculture tech innovation</li>
+                    <li>Attending project stand-ups, team reviews, and sprint planning meetings</li>
+                    <li>Providing timely updates, documentation, and adhering to deadlines</li>
+                    <li>Participating in the weekly Friday team meeting at 06:00 PM</li>
+                </ul>
+                
+                <div class="page-break"></div>
+                
+                <h2>Terms & Conditions:</h2>
+                <ul>
+                    <li><strong>Confidentiality:</strong> Maintain strict confidentiality about all company data, systems, and operations. Breach may result in termination.</li>
+                    <li><strong>Code Ownership & IP Rights:</strong> All code, designs, and deliverables developed remain the property of Next Afield.</li>
+                    <li><strong>Professional Conduct:</strong> Interns must maintain professionalism, timely communication, and task discipline.</li>
+                    <li><strong>Project Accountability:</strong> Interns are expected to contribute meaningfully to production-level deliverables.</li>
+                    <li><strong>Non-Disclosure Agreement (NDA):</strong> May be required to sign an NDA before accessing internal platforms.</li>
+                    <li><strong>Code of Ethics and Anti-Plagiarism:</strong> Work must be original. AI/code assistant usage must comply with ethical standards.</li>
+                    <li><strong>Performance & Evaluation:</strong> Evaluation is continuous; certificate awarded only upon satisfactory completion.</li>
+                    <li><strong>Termination Clause:</strong> Either party can terminate with 7 days' notice; immediate termination possible for misconduct.</li>
+                    <li><strong>No Employment Guarantee:</strong> Internship does not imply any job guarantee.</li>
+                </ul>
+                
+                <h2>Company Policy Highlights – Next Afield</h2>
+                <ul>
+                    <li>We are committed to sustainability, innovation, and ethical development in agri-tech.</li>
+                    <li>Agile collaboration and proactive communication are essential.</li>
+                    <li>Interns are expected to meet deadlines and coordinate using official tools (GitHub, Slack, Notion, etc.).</li>
+                    <li>Regular attendance at weekly Friday meetings (06:00 PM) is mandatory for all team members.</li>
+                </ul>
+                
+                <p>Please confirm your acceptance of this offer by signing below and returning a scanned copy via email.</p>
+                
+                <p>We look forward to having you contribute your skills and energy to build impactful, technology-driven solutions for the agriculture industry.</p>
+                
+                <div class="signature-area">
+                    <p>Warm regards,</p>
+                    <div class="signature-line"></div>
+                    <p><strong>Srinu Naik Katravath</strong><br>
+                    Founder & CEO<br>
+                    Next Afield – Solutions and Networks<br>
+                    srinunaik@nextafield.co.in</p>
+                </div>
+                
+                <div class="page-break"></div>
+                
+                <h2>Candidate Declaration</h2>
+                
+                <p>I, ${fullName}, accept the terms and conditions stated in this letter and agree to join as a Full Stack Developer Intern at Next Afield from ${startDate}.</p>
+                
+                <div class="signature-area">
+                    <p>Signature: ________________________</p>
+                    <p>Date: ________________________</p>
+                </div>
+                
+                <hr style="margin: 20px 0;">
+                
+                <p><strong>NEXT AFIELD<br>
+                SOLUTIONS AND NETWORKS</strong></p>
+                
+                <div class="page-break"></div>
+                
+                <h2>Internship Acceptance Declaration</h2>
+                
+                <p>To proceed with the next steps, we kindly request you to confirm your acceptance by completing the following Internship Acceptance Declaration and sending it to <strong>support@nextafield.co.in</strong> within 12 hours of receiving this email.</p>
+                
+                <p>1. ${fullName}, son/daughter of ${parentName}, a student of ${collegeName}, hereby declare that:</p>
+                
+                <ol>
+                    <li>I have been offered an internship opportunity at Next Afield – Solutions and Networks, and I accept the offer voluntarily.</li>
+                    <li>I understand that this internship is virtual and unpaid, and I will be directly involved in real-time projects and company activities, not a training or classroom-based program.</li>
+                    <li>I agree to abide by all the rules, guidelines, and policies laid out by the company during the internship period, including attending the weekly Friday meeting at 06:00 PM.</li>
+                    <li>I confirm that:
+                        <ul>
+                            <li>All the details I have provided are true and accurate.</li>
+                            <li>I will maintain the confidentiality of any data, documents, or internal information shared during the internship.</li>
+                            <li>I will actively participate, complete assigned tasks on time, and maintain professional conduct throughout the internship.</li>
+                        </ul>
+                    </li>
+                    <li>I understand that any form of misconduct, plagiarism, inactivity, or lack of communication may lead to immediate termination of the internship without notice or certification.</li>
+                    <li>I will not hold Next Afield liable for any academic, legal, or personal implications during or after the internship period.</li>
+                </ol>
+                
+                <div class="page-break"></div>
+                
+                <h2>Declaration Acknowledgment</h2>
+                
+                <p>Candidate Name: ${fullName}</p>
+                <p>College Name: ${collegeName}</p>
+                <p>Degree & Branch: ${degreeBranch}</p>
+                <p>Phone Number: ${phoneNumber}</p>
+                <p>Email ID: ${email}</p>
+                
+                <div class="signature-area">
+                    <p>Signature (Digital/Manual): ________________________</p>
+                    <p>Date: ________________________</p>
+                </div>
+                
+                <hr style="margin: 20px 0;">
+                
+                <p><strong>Warm regards,<br>
+                Team Next Afield<br>
+                support@nextafield.co.in<br>
+                www.nextafield.co.in</strong></p>
+            `;
+            
+            navigateToStep(3);
+        }
+        
+        function downloadAsPDF() {
+            // In a real implementation, you would use a library like jsPDF or html2pdf
+            // For this example, we'll just open the print dialog
+            window.print();
+        }
+    </script>
+</body>
+</html>
