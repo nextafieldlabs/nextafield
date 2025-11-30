@@ -743,6 +743,7 @@
         <div class="d-flex align-items-center">
             <p id="greetingMessage" class="text-sm font-medium text-gray-300 mb-0 me-3 d-none d-md-block"></p>
             
+            <!--
             <div class="relative me-3">
                 <i class="fas fa-bell text-lg text-gray-300 cursor-pointer"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
@@ -751,6 +752,7 @@
             <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
+        -->
             <button onclick="logout()" class="btn-primary bg-gradient-to-r from-accent to-pink-600 hover:from-accent hover:to-pink-700">
                     Logout <i class="fas fa-sign-out-alt ml-2"></i>
                 </button>
@@ -5374,24 +5376,18 @@
             once: true
         });
 
-        // Intern data for all users (NAI25NOV01 to NAI25NOV24)
-        const internData = {
-           "NAI25NOV011": {
-    name: "Srinu Naik Katravath",
-    email: "srinunaik@nextafield.link",
-    aicte: "AICTE67890",
-    avatar: "img/j000.png",
-    dob: "02052003",
-    results: [
-        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-    ],
+        // Helper functions to provide default data structures
+function getDefaultProjects(score = 0) {
+    const completed = Math.floor(score / 10);
+    const inProgress = score > 0 ? 1 : 0;
+    const pending = 5 - completed;
+    const overallProgress = Math.min(score * 2, 100);
     
-    // ADD THIS COMPLETE PROJECTS DATA STRUCTURE
-    projects: {
-        completed: 0,
-        inProgress: 0,
-        pending: 0,
-        overallProgress: 11,
+    return {
+        completed: completed,
+        inProgress: inProgress,
+        pending: pending,
+        overallProgress: overallProgress,
         currentProjects: [
             { 
                 title: "JavaScript Calculator", 
@@ -5399,7 +5395,265 @@
                 score: null, 
                 date: "December 10, 2024",
                 description: "Build a fully functional calculator with JavaScript",
-                progress: 11,
+                progress: score > 0 ? Math.min(score * 2, 100) : 0,
+                status: score > 0 ? "In Progress" : "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: score > 0 ? 4 : null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: score > 0 ? [
+            { 
+                title: "Portfolio Website", 
+                type: "completed",
+                score: Math.max(score - 10, 0), 
+                date: "November 30, 2024",
+                description: "Personal portfolio with HTML/CSS",
+                progress: 100
+            },
+            { 
+                title: "Login System", 
+                type: "completed",
+                score: Math.max(score - 5, 0), 
+                date: "December 03, 2024",
+                description: "Authentication UI design",
+                progress: 100
+            }
+        ] : []
+    };
+}
+
+function getDefaultProgressTracking(score = 0) {
+    return {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: Math.min(score + 20, 100), date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: Math.min(score * 0.8, 100), date: "Current Progress", type: "skill" },
+            { test: "React Development", score: Math.min(score * 0.6, 100), date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: Math.min(score * 0.4, 100), date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: score, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: Math.min(score * 1.2, 100), date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: Math.min(score * 0.9, 100), date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: score > 0 ? [
+            { 
+                title: "Completed Portfolio Website", 
+                description: "Built a responsive portfolio with modern design",
+                date: "November 30, 2024",
+                score: Math.max(score - 10, 0),
+                status: "completed",
+                progress: 100
+            },
+            { 
+                title: "Mastered HTML/CSS Fundamentals", 
+                description: "Completed advanced layout techniques",
+                date: "December 2, 2024",
+                score: Math.max(score - 5, 0),
+                status: "completed",
+                progress: 100
+            },
+            { 
+                title: "JavaScript Calculator Project", 
+                description: "Currently working on interactive features",
+                date: "In Progress",
+                score: null,
+                status: "in-progress",
+                progress: Math.min(score * 2, 100)
+            }
+        ] : [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    };
+}
+
+function getDefaultTasks(score = 0) {
+    return {
+        completed: Math.floor(score / 2),
+        total: 24,
+        progress: Math.min(Math.floor(score / 2.4), 100)
+    };
+}
+
+// Intern data for all users with complete data structures
+const internData = {
+    "NAI25NOV01": {
+    name: "Shivam Singh Tomar",
+    email: "Shivamsinght21@gmail.com",
+    aicte: "STU661fea41c26f41713367617",
+    avatar: "img/25nov01.png",
+    dob: "21112004",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV02": {
+    name: "Krishna Somnath Baviskar",
+    email: "krishnabaviskar40@gmail.com",
+    aicte: "STU670f58d3a51d61729059027",
+    avatar: "img/25nov02.jpg",
+    dob: "01102004",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI28JAN03": {
+    name: "Lavanya Shahapur",
+    email: "shahapurlavanya@gmail.com",
+    aicte: "STU6842eddb31e061749216731",
+    avatar: "img/j02.jpg",
+    dob: "15082003",
+    results: [
+        { test: "November 2024, Performance Test", score: 37, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 3,
+        inProgress: 1,
+        pending: 1,
+        overallProgress: 74,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 74,
                 status: "In Progress",
                 deadline: "December 10, 2024",
                 daysLeft: 4
@@ -5410,7 +5664,7 @@
                 score: null, 
                 date: "December 17, 2024",
                 description: "Create a modern responsive website",
-                progress: 11,
+                progress: 0,
                 status: "Upcoming",
                 deadline: "December 17, 2024",
                 daysLeft: null
@@ -5420,7 +5674,7 @@
             { 
                 title: "Portfolio Website", 
                 type: "completed",
-                score: 11, 
+                score: 27, 
                 date: "November 30, 2024",
                 description: "Personal portfolio with HTML/CSS",
                 progress: 100
@@ -5428,7 +5682,7 @@
             { 
                 title: "Login System", 
                 type: "completed",
-                score: 11, 
+                score: 32, 
                 date: "December 03, 2024",
                 description: "Authentication UI design",
                 progress: 100
@@ -5436,33 +5690,31 @@
             { 
                 title: "CSS Animations", 
                 type: "completed",
-                score: 92, 
+                score: 35, 
                 date: "December 05, 2024",
                 description: "Interactive web animations",
                 progress: 100
             }
         ]
     },
-    
-    // ADD THIS COMPLETE PROGRESS TRACKING DATA STRUCTURE
     progressTracking: {
         learningProgress: [
-            { test: "HTML/CSS Mastery", score: 85, date: "Current Progress", type: "skill" },
-            { test: "JavaScript Fundamentals", score: 70, date: "Current Progress", type: "skill" },
-            { test: "React Development", score: 60, date: "Current Progress", type: "skill" },
-            { test: "Backend Skills", score: 45, date: "Current Progress", type: "skill" }
+            { test: "HTML/CSS Mastery", score: 57, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 29, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 22, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 14, date: "Current Progress", type: "skill" }
         ],
         performance: [
-            { test: "Average Test Score", score: 11, date: "Performance Analytics", type: "performance" },
-            { test: "Project Completion Rate", score: 11, date: "Performance Analytics", type: "performance" },
-            { test: "Learning Consistency", score: 11, date: "Performance Analytics", type: "performance" }
+            { test: "Average Test Score", score: 37, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 44, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 33, date: "Performance Analytics", type: "performance" }
         ],
         timeline: [
             { 
                 title: "Completed Portfolio Website", 
                 description: "Built a responsive portfolio with modern design",
                 date: "November 30, 2024",
-                score: 11,
+                score: 27,
                 status: "completed",
                 progress: 100
             },
@@ -5470,7 +5722,7 @@
                 title: "Mastered HTML/CSS Fundamentals", 
                 description: "Completed advanced layout techniques",
                 date: "December 2, 2024",
-                score: 11,
+                score: 32,
                 status: "completed",
                 progress: 100
             },
@@ -5480,336 +5732,686 @@
                 date: "In Progress",
                 score: null,
                 status: "in-progress",
-                progress: 11
+                progress: 74
             }
         ]
     },
-    
-    // ADD THIS TASKS DATA STRUCTURE
     tasks: {
-        completed: 11,
+        completed: 15,
         total: 24,
-        progress: 11
+        progress: 62
     }
 },
-            "NAI25NOV01": {
-                name: "Shivam Singh Tomar",
-                email: "Shivamsinght21@gmail.com",
-                aicte: "STU661fea41c26f41713367617",
-                avatar: "img/25nov01.png",
-                dob: "21112004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]
+"NAI25NOV04": {
+    name: "PALLE JYOSHNA",
+    email: "pallejyoshna130@gmail.com",
+    aicte: "STU68d1468c55d241758545548",
+    avatar: "img/25nov04.jpg",
+    dob: "09122002",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
             },
-            "NAI25NOV02": {
-                name: "Krishna Somnath Baviskar",
-                email: "krishnabaviskar40@gmail.com",
-                aicte: "STU670f58d3a51d61729059027",
-                avatar: "img/25nov02.jpg",
-                dob: "01102004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV03": {
-                name: "Lavanya Shahapur",
-                email: "shahapurlavanya@gmail.com",
-                aicte: "STU6842eddb31e061749216731",
-                avatar: "img/j02.jpg",
-                dob: "15082003", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 37, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV04": {
-                name: "PALLE JYOSHNA",
-                email: "pallejyoshna130@gmail.com",
-                aicte: "STU68d1468c55d241758545548",
-                avatar: "img/25nov04.jpg",
-                dob: "09122002", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV05": {
-                name: "Chimmili Lakshmi Kumari",
-                email: "chimmililakshmikumari57@gmail.com",
-                aicte: "STU67dad1c4cb7721742393796",
-                avatar: "img/25nov05.jpg",
-                dob: "11042006", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV06": {
-                name: "Pragati Gupta",
-                email: "pragatigupta168@gmail.com",
-                aicte: "STU673c5c8de31fb1732009101",
-                avatar: "img/25nov06.jpg",
-                dob: "01012005", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV07": {
-                name: "Naresh G",
-                email: "gnaresh3003@gmail.com",
-                aicte: "STU6457ecef2fe4b1683483887",
-                avatar: "img/25nov07.png",
-                dob: "13112004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV08": {
-                name: "Rohit Kumar ",
-                email: "rohit926560@gmail.com",
-                aicte: "NA",
-                avatar: "img/25nov08.jpg",
-                dob: "01012005", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV09": {
-                name: "Diksha Sharma",
-                email: "0221csml198@niet.co.in",
-                aicte: "STU65bfd220f39fc1707069984",
-                avatar: "img/25nov09.jpg",
-                dob: "30042005", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV10": {
-                name: "G Bhavya",
-                email: "bhavyagovindaswamy2003@gmail.com",
-                aicte: "STU68426212a98e01749180946",
-                avatar: "img/j09.jpg",
-                dob: "12082003", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV11": {
-                name: "Bholane Siddhi Shailesh",
-                email: "siddhi.22311881@viit.ac.in",
-                aicte: "STU6801f6c7f36211744959175",
-                avatar: "img/j10.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV12": {
-                name: "Kanak Sharma",
-                email: "sharmakanak043@gmail.com",
-                aicte: "STU662f4a866aa6a1714375302",
-                avatar: "img/j11.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 41, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV13": {
-                name: "Sneha Gupta",
-                email: "snehagupta25092004@gmail.com",
-                aicte: "STU6570b5274e4721701885223",
-                avatar: "img/j12.jpg",
-                dob: "25092004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 44, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV14": {
-                name: "Tanvi Sunil Khicchi",
-                email: "tanvikhicchi@gmail.com",
-                aicte: "STU6824c4063d4ed1747239942",
-                avatar: "img/j13.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 47, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV15": {
-                name: "Shikhar Sharma",
-                email: "shik99990@gmail.com",
-                aicte: "STU642bdb159bf811680595733",
-                avatar: "img/j14.jpeg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 49, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV16": {
-                name: "Riya Mangesh Kulkarni",
-                email: "kulkarniriya.07@gmail.com",
-                aicte: "STU680294e27566f1744999650",
-                avatar: "img/j15.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 46, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV17": {
-                name: "Tejeswini R",
-                email: "tejeswinir2005@gmail.com",
-                aicte: "STU68492ca663a8b1749626022",
-                avatar: "img/j16.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 46, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV18": {
-                name: "Sareddy Poojya Sree",
-                email: "sareddypoojyasree@gmail.com",
-                aicte: "STU681ba2b0506ba1746641584",
-                avatar: "img/j17.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV19": {
-                name: "Mutchi Divya",
-                email: "mutchidivyas05@gmail.com",
-                aicte: "NA",
-                avatar: "img/j18.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]  
-            },
-            "NAI25NOV20": {
-                name: "Soni Kumari Mehta",
-                email: "sonimehta2005@gmail.com",
-                aicte: "STU66585b88ed20f1717066632",
-                avatar: "img/j19.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 44, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV21": {
-                name: "Vanarasi Satya Siva Chaturvedi",
-                email: "vchatur281p@gmail.com",
-                aicte: "STU673af217c8b701731916311",
-                avatar: "img/j20.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 50, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV22": {
-                name: "Nandana Balakrishnan",
-                email: "nandanabalakrishnan07@gmail.com",
-                aicte: "STU68426226058001749180966",
-                avatar: "img/j21.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 47, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV23": {
-                name: "Darshini K H",
-                email: "darshini610@gmail.com",
-                aicte: "STU68495ed4c0ca31749638868",
-                avatar: "img/j22.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 47, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV24": {
-                name: "Priya Sharma",
-                email: "priyasharma@gmail.com",
-                aicte: "STU66585b88ed20f1717066636",
-                avatar: "img/j23.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]
-            },
-            "NAI25NOV25": {
-                name: "Rohan Kumar",
-                email: "rohankumar@gmail.com",
-                aicte: "STU66585b88ed20f1717066637",
-                avatar: "img/j24.jpg",
-                dob: "15032004", // DDMMYYYY format
-                results: [
-                    { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
-                ]
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
             }
-        };
-
-        // Month codes for validation
-        const monthCodes = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
-        // Handle login form submission with new ID format and date of birth authentication
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const userId = document.getElementById('userId').value.trim().toUpperCase();
-            const password = document.getElementById('password').value.trim();
-            
-            // Validate new Intern ID format: NAI + 2-digit year + 3-letter month + 2-digit number
-            const idPattern = /^NAI(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\d{2})$/;
-            const match = userId.match(idPattern);
-            
-            if (match) {
-                const year = match[1];
-                const month = match[2];
-                const number = parseInt(match[3]);
-                
-                // Check if the month is valid
-                if (!monthCodes.includes(month)) {
-                    alert('Invalid month code in Intern ID. Please use valid 3-letter month codes (JAN, FEB, MAR, etc.)');
-                    return;
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV05": {
+    name: "Chimmili Lakshmi Kumari",
+    email: "chimmililakshmikumari57@gmail.com",
+    aicte: "STU67dad1c4cb7721742393796",
+    avatar: "img/25nov05.jpg",
+    dob: "11042006",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV06": {
+    name: "Pragati Gupta",
+    email: "pragatigupta168@gmail.com",
+    aicte: "STU673c5c8de31fb1732009101",
+    avatar: "img/25nov06.jpg",
+    dob: "01012005",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV07": {
+    name: "Naresh G",
+    email: "gnaresh3003@gmail.com",
+    aicte: "STU6457ecef2fe4b1683483887",
+    avatar: "img/25nov07.png",
+    dob: "13112004",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV08": {
+    name: "Rohit Kumar",
+    email: "rohit926560@gmail.com",
+    aicte: "NA",
+    avatar: "img/25nov08.jpg",
+    dob: "01012005",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV09": {
+    name: "Diksha Sharma",
+    email: "0221csml198@niet.co.in",
+    aicte: "STU65bfd220f39fc1707069984",
+    avatar: "img/25nov09.jpg",
+    dob: "30042005",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 26, 2025",
+                score: null,
+                status: "completed",
+                progress: 100
+            },
+            { 
+                title: "Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+"NAI25NOV10": {
+    name: "G Bhavya",
+    email: "bhavyagovindaswamy2003@gmail.com",
+    aicte: "STU68426212a98e01749180946",
+    avatar: "img/j09.jpg",
+    dob: "12082003",
+    results: [
+        { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+    ],
+    projects: {
+        completed: 0,
+        inProgress: 0,
+        pending: 5,
+        overallProgress: 0,
+        currentProjects: [
+            { 
+                title: "JavaScript Calculator", 
+                type: "current",
+                score: null, 
+                date: "December 10, 2024",
+                description: "Build a fully functional calculator with JavaScript",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 10, 2024",
+                daysLeft: null
+            },
+            { 
+                title: "Responsive Landing Page", 
+                type: "current",
+                score: null, 
+                date: "December 17, 2024",
+                description: "Create a modern responsive website",
+                progress: 0,
+                status: "Upcoming",
+                deadline: "December 17, 2024",
+                daysLeft: null
+            }
+        ],
+        completedProjects: []
+    },
+    progressTracking: {
+        learningProgress: [
+            { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+            { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+            { test: "React Development", score: 0, date: "Current Progress", type: "skill" },
+            { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+        ],
+        performance: [
+            { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+            { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+        ],
+        timeline: [
+            { 
+                title: "Welcome to Internship", 
+                description: "Started your web development journey",
+                date: "November 25, 2024",
+                score: null,
+                status: "completed",
+                progress: 100
+            }
+        ]
+    },
+    tasks: {
+        completed: 0,
+        total: 24,
+        progress: 0
+    }
+},
+    "NAI25NOV11": {
+        name: "Srinu Naik Katravath",
+        email: "srinunaik@nextafield.co.in",
+        aicte: "AICTE67890",
+        avatar: "img/j000.png",
+        dob: "02052003",
+        results: [
+            { test: "November 2024, Performance Test", score: 0, date: "November 30, 2024" }
+        ],
+        projects: {
+            completed: 0,
+            inProgress: 0,
+            pending: 0,
+            overallProgress: 10,
+            currentProjects: [
+                { 
+                    title: "JavaScript Calculator", 
+                    type: "current",
+                    score: null, 
+                    date: "December 10, 2024",
+                    description: "Build a fully functional calculator with JavaScript",
+                    progress: 11,
+                    status: "In Progress",
+                    deadline: "December 10, 2024",
+                    daysLeft: 4
+                },
+                { 
+                    title: "Responsive Landing Page", 
+                    type: "current",
+                    score: null, 
+                    date: "December 17, 2024",
+                    description: "Create a modern responsive website",
+                    progress: 11,
+                    status: "Upcoming",
+                    deadline: "December 17, 2024",
+                    daysLeft: null
                 }
-                
-                // Check if the number is between 01 and 99
-                if (number < 1 || number > 99) {
-                    alert('Intern ID number must be between 01 and 99');
-                    return;
+            ],
+            completedProjects: [
+                { 
+                    title: "Portfolio Website", 
+                    type: "completed",
+                    score: 0, 
+                    date: "November 30, 2024",
+                    description: "Personal portfolio with HTML/CSS",
+                    progress: 100
+                },
+                { 
+                    title: "Login System", 
+                    type: "completed",
+                    score: 0, 
+                    date: "December 03, 2024",
+                    description: "Authentication UI design",
+                    progress: 100
+                },
+                { 
+                    title: "CSS Animations", 
+                    type: "completed",
+                    score: 0, 
+                    date: "December 05, 2024",
+                    description: "Interactive web animations",
+                    progress: 100
                 }
+            ]
+        },
+        progressTracking: {
+            learningProgress: [
+                { test: "HTML/CSS Mastery", score: 0, date: "Current Progress", type: "skill" },
+                { test: "JavaScript Fundamentals", score: 0, date: "Current Progress", type: "skill" },
+                { test: "React Development", score: 10, date: "Current Progress", type: "skill" },
+                { test: "Backend Skills", score: 0, date: "Current Progress", type: "skill" }
+            ],
+            performance: [
+                { test: "Average Test Score", score: 0, date: "Performance Analytics", type: "performance" },
+                { test: "Project Completion Rate", score: 0, date: "Performance Analytics", type: "performance" },
+                { test: "Learning Consistency", score: 0, date: "Performance Analytics", type: "performance" }
+            ],
+            timeline: [
+                { 
+                    title: "Completed Portfolio Website", 
+                    description: "Built a responsive portfolio with modern design",
+                    date: "November 30, 2024",
+                    score: 0,
+                    status: "completed",
+                    progress: 100
+                },
+                { 
+                    title: "Mastered HTML/CSS Fundamentals", 
+                    description: "Completed advanced layout techniques",
+                    date: "December 2, 2024",
+                    score: 0,
+                    status: "completed",
+                    progress: 100
+                },
+                { 
+                    title: "JavaScript Calculator Project", 
+                    description: "Currently working on interactive features",
+                    date: "In Progress",
+                    score: null,
+                    status: "in-progress",
+                    progress: 0
+                }
+            ]
+        },
+        tasks: {
+            completed: 0,
+            total: 24,
+            progress: 10
+        }
+    }
+};
+
+// Month codes for validation
+const monthCodes = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+// Handle login form submission with new ID format and date of birth authentication
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const userId = document.getElementById('userId').value.trim().toUpperCase();
+    const password = document.getElementById('password').value.trim();
+    
+    // Validate new Intern ID format: NAI + 2-digit year + 3-letter month + 2-digit number
+    const idPattern = /^NAI(\d{2})(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\d{2})$/;
+    const match = userId.match(idPattern);
+    
+    if (match) {
+        const year = match[1];
+        const month = match[2];
+        const number = parseInt(match[3]);
+        
+        // Check if the month is valid
+        if (!monthCodes.includes(month)) {
+            alert('Invalid month code in Intern ID. Please use valid 3-letter month codes (JAN, FEB, MAR, etc.)');
+            return;
+        }
+        
+        // Check if the number is between 01 and 99
+        if (number < 1 || number > 99) {
+            alert('Intern ID number must be between 01 and 99');
+            return;
+        }
+        
+        // Check if user exists in database
+        if (internData[userId]) {
+            // Verify date of birth (password)
+            const expectedPassword = internData[userId].dob;
+            
+            if (password === expectedPassword) {
+                // Successful login
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard-screen').style.display = 'block';
                 
-                // Check if user exists in database
-                if (internData[userId]) {
-                    // Verify date of birth (password)
-                    const expectedPassword = internData[userId].dob;
-                    
-                    if (password === expectedPassword) {
-                        // Successful login
-                        document.getElementById('login-screen').style.display = 'none';
-                        document.getElementById('dashboard-screen').style.display = 'block';
-                        
-                        // Hide spinner
-                        document.getElementById('spinner').style.display = 'none';
-                        
-                        // Load intern data
-                        loadInternData(userId);
-                        
-                        // Store login state
-                        localStorage.setItem('loggedIn', 'true');
-                        localStorage.setItem('currentUserId', userId);
-                        
-                        // Refresh AOS animations
-                        AOS.refresh();
-                    } else {
-                        alert('Invalid date of birth. Please enter your date of birth in DDMMYYYY format (e.g., 15032004 for 15th March 2004).');
-                    }
-                } else {
-                    alert('Intern ID not found. Please check your Intern ID.');
+                // Hide spinner
+                document.getElementById('spinner').style.display = 'none';
+                
+                // Load intern data
+                loadInternData(userId);
+                
+                // Store login state
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('currentUserId', userId);
+                
+                // Refresh AOS animations
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
                 }
             } else {
-                alert('Invalid Intern ID format.\n');
+                alert('Invalid date of birth. Please enter your date of birth in DDMMYYYY format (e.g., 15032004 for 15th March 2004).');
             }
-        });
+        } else {
+            alert('Intern ID not found. Please check your Intern ID.');
+        }
+    } else {
+        alert('Invalid Intern ID format. Expected format: NAI25NOV01');
+    }
+});
 
-        // Check if user is already logged in
-        // Always show login screen on page load
+// Check if user is already logged in - Always show login screen on page load
 window.addEventListener('load', function() {
     document.getElementById('spinner').style.display = 'none';
     document.getElementById('login-screen').style.display = 'flex';
@@ -5820,19 +6422,19 @@ window.addEventListener('load', function() {
     localStorage.removeItem('currentUserId');
 });
 
-        // Updated logout function to clear stored data
-        function logout() {
-            localStorage.removeItem('loggedIn');
-            localStorage.removeItem('currentUserId');
-            
-            document.getElementById('dashboard-screen').style.display = 'none';
-            document.getElementById('login-screen').style.display = 'flex';
-            document.getElementById('userId').value = '';
-            document.getElementById('password').value = '';
-        }
+// Updated logout function to clear stored data
+function logout() {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('currentUserId');
+    
+    document.getElementById('dashboard-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('userId').value = '';
+    document.getElementById('password').value = '';
+}
 
-        // Load intern-specific data
-        function loadInternData(userId) {
+// Load intern-specific data
+function loadInternData(userId) {
     console.log('=== LOADING INTERN DATA FOR:', userId, '===');
     const intern = internData[userId];
     
@@ -5859,185 +6461,84 @@ window.addEventListener('load', function() {
     
     // Update all sections
     updatePerformanceResults(userId);
-    updateProjectData(userId);        // ADD THIS LINE
-    updateProgressData(userId);       // ADD THIS LINE
+    updateProjectData(userId);
+    updateProgressData(userId);
 }
 
-        // Update performance results for specific intern
-        function updatePerformanceResults(userId) {
-            const intern = internData[userId];
-            const novemberResults = document.getElementById('november-results');
-            const decemberResults = document.getElementById('december-results');
+// Update performance results for specific intern
+function updatePerformanceResults(userId) {
+    const intern = internData[userId];
+    const novemberResults = document.getElementById('november-results');
+    const decemberResults = document.getElementById('december-results');
+    
+    // Clear existing results
+    novemberResults.innerHTML = '';
+    decemberResults.innerHTML = '';
+    
+    // Calculate overall score
+    let totalScore = 0;
+    let testCount = 0;
+    let lastTest = '';
+    let lastTestDate = '';
+    
+    // Add results to appropriate month
+    if (intern.results && intern.results.length > 0) {
+        intern.results.forEach(result => {
+            const month = new Date(result.date).getMonth();
+            const container = month === 10 ? novemberResults : decemberResults; // November is month 10
             
-            // Clear existing results
-            novemberResults.innerHTML = '';
-            decemberResults.innerHTML = '';
+            const item = document.createElement('div');
+            item.className = 'performance-item';
+            item.innerHTML = `
+                <span>${result.test}</span>
+                <span>${result.score}</span>
+            `;
+            container.appendChild(item);
             
-            // Calculate overall score
-            let totalScore = 0;
-            let testCount = 0;
-            let lastTest = '';
-            let lastTestDate = '';
+            // Update overall score calculation
+            totalScore += result.score;
+            testCount++;
             
-            // Add results to appropriate month
-            if (intern.results && intern.results.length > 0) {
-                intern.results.forEach(result => {
-                    const month = new Date(result.date).getMonth();
-                    const container = month === 10 ? novemberResults : decemberResults; // November is month 10
-                    
-                    const item = document.createElement('div');
-                    item.className = 'performance-item';
-                    item.innerHTML = `
-                        <span>${result.test}</span>
-                        <span>${result.score}</span>
-                    `;
-                    container.appendChild(item);
-                    
-                    // Update overall score calculation
-                    totalScore += result.score;
-                    testCount++;
-                    
-                    // Track last test
-                    if (!lastTestDate || new Date(result.date) > new Date(lastTestDate)) {
-                        lastTest = result.test;
-                        lastTestDate = result.date;
-                    }
-                });
-                
-                // Calculate and display overall score
-                if (testCount > 0) {
-                    const overallScore = Math.round(totalScore / testCount);
-                    document.getElementById('overall-score').textContent = overallScore;
-                }
-                
-                // Display last test info
-                if (lastTest) {
-                    const lastTestElement = document.getElementById('last-test');
-                    const testDate = new Date(lastTestDate);
-                    const formattedDate = testDate.toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric', 
-                        year: 'numeric' 
-                    });
-                    lastTestElement.textContent = `${lastTest} (${formattedDate})`;
-                }
-            } else {
-                // No results available
-                novemberResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for November</div>';
-                decemberResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for December</div>';
-                document.getElementById('overall-score').textContent = '0';
-                document.getElementById('last-test').textContent = 'No tests taken';
+            // Track last test
+            if (!lastTestDate || new Date(result.date) > new Date(lastTestDate)) {
+                lastTest = result.test;
+                lastTestDate = result.date;
             }
-        }
-function updateProjectOverview(projects) {
-    const projectSection = document.getElementById('projects');
-    if (!projectSection) return;
-    
-    const overviewCards = projectSection.querySelectorAll('.glass-card');
-    const overviewCard = overviewCards[0];
-    
-    if (!overviewCard) return;
-    
-    // Update Overall Project Progress circle
-    const progressCircle = overviewCard.querySelector('svg');
-    if (progressCircle) {
-        const progressText = progressCircle.querySelector('text');
-        const progressPath = progressCircle.querySelector('path:nth-child(2)');
+        });
         
-        if (progressText) {
-            progressText.textContent = `${projects.overallProgress}%`;
+        // Calculate and display overall score
+        if (testCount > 0) {
+            const overallScore = Math.round(totalScore / testCount);
+            document.getElementById('overall-score').textContent = overallScore;
         }
-        if (progressPath) {
-            progressPath.style.strokeDasharray = `${projects.overallProgress}, 100`;
-        }
-    }
-    
-    // Update project counts
-    const statsContainer = overviewCard.querySelector('.space-y-3') || overviewCard.querySelector('.space-y-4');
-    if (statsContainer) {
-        const statsElements = statsContainer.querySelectorAll('div');
         
-        if (statsElements.length >= 3) {
-            // Completed projects
-            const completedSpan = statsElements[0].querySelector('span:last-child');
-            if (completedSpan) completedSpan.textContent = `${projects.completed} projects`;
-            
-            // In Progress projects
-            const inProgressSpan = statsElements[1].querySelector('span:last-child');
-            if (inProgressSpan) inProgressSpan.textContent = `${projects.inProgress} projects`;
-            
-            // Pending projects
-            const pendingSpan = statsElements[2].querySelector('span:last-child');
-            if (pendingSpan) pendingSpan.textContent = `${projects.pending} projects`;
+        // Display last test info
+        if (lastTest) {
+            const lastTestElement = document.getElementById('last-test');
+            const testDate = new Date(lastTestDate);
+            const formattedDate = testDate.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+            lastTestElement.textContent = `${lastTest} (${formattedDate})`;
         }
+    } else {
+        // No results available
+        novemberResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for November</div>';
+        decemberResults.innerHTML = '<div class="text-gray-400 text-sm">No test results available for December</div>';
+        document.getElementById('overall-score').textContent = '0';
+        document.getElementById('last-test').textContent = 'No tests taken';
     }
 }
 
-function updatePerformanceAnalytics(performance) {
-    const progressSection = document.getElementById('progress');
-    if (!progressSection) return;
-    
-    const progressCards = progressSection.querySelectorAll('.glass-card');
-    const performanceCard = progressCards[1];
-    
-    if (!performanceCard) return;
-    
-    const performanceItems = performanceCard.querySelectorAll('.space-y-4 > div');
-    
-    performance.forEach((item, index) => {
-        if (performanceItems[index]) {
-            const title = performanceItems[index].querySelector('.text-white');
-            const percentageElement = performanceItems[index].querySelector('span:last-child');
-            
-            if (title) title.textContent = item.test;
-            if (percentageElement) percentageElement.textContent = `${item.score}%`;
-        }
-    });
-}
-
-function updateProgressTimeline(timeline) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const timelineCard = progressCards[2];
-    
-    if (!timelineCard) return;
-    
-    const container = timelineCard.querySelector('.space-y-6');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    timeline.forEach((item, index) => {
-        const isLast = index === timeline.length - 1;
-        const statusColor = item.status === 'completed' ? 'green' : 'yellow';
-        const scoreText = item.status === 'completed' ? `Score: ${item.score}%` : `${item.progress}% Complete`;
-        
-        const timelineHTML = `
-            <div class="flex">
-                <div class="flex flex-col items-center mr-4">
-                    <div class="w-3 h-3 bg-${statusColor}-500 rounded-full"></div>
-                    ${!isLast ? `<div class="w-0.5 h-16 bg-${statusColor}-500 mt-1"></div>` : ''}
-                </div>
-                <div class="flex-1 ${!isLast ? 'pb-6' : ''}">
-                    <h3 class="text-lg font-bold text-white">${item.title}</h3>
-                    <p class="text-sm text-gray-400 mb-2">${item.description}</p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i class="fas fa-calendar mr-1"></i>
-                        <span>${item.date}</span>
-                        <span class="mx-2">•</span>
-                        <span class="text-${statusColor}-400">${scoreText}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.innerHTML += timelineHTML;
-    });
-}
-        // Add these functions AFTER the existing updatePerformanceResults function:
-
-// Add this function to update project data
+// Update project data
 function updateProjectData(userId) {
     const intern = internData[userId];
-    if (!intern.projects) return;
+    if (!intern.projects) {
+        console.log('No projects data for:', userId);
+        return;
+    }
     
     console.log('Updating project data:', intern.projects);
     
@@ -6049,7 +6550,7 @@ function updateProjectData(userId) {
         const tasksProgress = statsCards[0].querySelector('.progress-bar');
         
         if (tasksCount) {
-            tasksCount.textContent = `${intern.tasks.completed}/24`;
+            tasksCount.textContent = `${intern.tasks.completed}/${intern.tasks.total}`;
         }
         if (tasksProgress) {
             tasksProgress.style.width = `${intern.tasks.progress}%`;
@@ -6079,10 +6580,13 @@ function updateProjectData(userId) {
     updateCompletedProjects(intern.projects.completedProjects);
 }
 
-// Add this function to update progress data
+// Update progress data
 function updateProgressData(userId) {
     const intern = internData[userId];
-    if (!intern.progressTracking) return;
+    if (!intern.progressTracking) {
+        console.log('No progress tracking data for:', userId);
+        return;
+    }
     
     console.log('Updating progress data:', intern.progressTracking);
     
@@ -6127,8 +6631,6 @@ function updateProjectOverview(projects) {
             console.log('Updated progress circle text to:', progressText.textContent);
         }
         if (progressPath) {
-            const circumference = 100; // Assuming full circle is 100
-            const dashOffset = circumference - (projects.overallProgress / 100) * circumference;
             progressPath.style.strokeDasharray = `${projects.overallProgress}, 100`;
             console.log('Updated progress circle path');
         }
@@ -6242,22 +6744,6 @@ function updateCompletedProjects(projects) {
         `;
         container.innerHTML += projectHTML;
     });
-}
-
-function updateProgressData(userId) {
-    const intern = internData[userId];
-    if (!intern.progressTracking) return;
-    
-    console.log('Updating progress data:', intern.progressTracking);
-    
-    // Update Performance Analytics
-    updatePerformanceAnalytics(intern.progressTracking.performance);
-    
-    // Update Progress Timeline
-    updateProgressTimeline(intern.progressTracking.timeline);
-    
-    // Update Learning Progress
-    updateLearningProgress(intern.progressTracking.learningProgress);
 }
 
 function updatePerformanceAnalytics(performance) {
@@ -6376,542 +6862,153 @@ function updateLearningProgress(skills) {
     });
 }
 
-function updatePerformanceAnalytics(performance) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const performanceCard = progressCards[1];
+// Navigation System
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navigation
+    initNavigation();
     
-    if (!performanceCard) return;
-    
-    const performanceItems = performanceCard.querySelectorAll('.space-y-4 > div');
-    
-    performance.forEach((item, index) => {
-        if (performanceItems[index]) {
-            const title = performanceItems[index].querySelector('.text-white');
-            const percentageElement = performanceItems[index].querySelector('span:last-child');
-            
-            if (title) title.textContent = item.test;
-            if (percentageElement) percentageElement.textContent = `${item.score}%`;
-        }
+    // Set current date
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
     });
-}
+});
 
-function updateProgressTimeline(timeline) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const timelineCard = progressCards[2];
-    
-    if (!timelineCard) return;
-    
-    const container = timelineCard.querySelector('.space-y-6');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    timeline.forEach((item, index) => {
-        const isLast = index === timeline.length - 1;
-        const statusColor = item.status === 'completed' ? 'green' : 'yellow';
-        const scoreText = item.status === 'completed' ? `Score: ${item.score}%` : `${item.progress}% Complete`;
-        
-        const timelineHTML = `
-            <div class="flex">
-                <div class="flex flex-col items-center mr-4">
-                    <div class="w-3 h-3 bg-${statusColor}-500 rounded-full"></div>
-                    ${!isLast ? `<div class="w-0.5 h-16 bg-${statusColor}-500 mt-1"></div>` : ''}
-                </div>
-                <div class="flex-1 ${!isLast ? 'pb-6' : ''}">
-                    <h3 class="text-lg font-bold text-white">${item.title}</h3>
-                    <p class="text-sm text-gray-400 mb-2">${item.description}</p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i class="fas fa-calendar mr-1"></i>
-                        <span>${item.date}</span>
-                        <span class="mx-2">•</span>
-                        <span class="text-${statusColor}-400">${scoreText}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.innerHTML += timelineHTML;
-    });
-}
-
-function updateProjectOverview(completed, current, pending, overallProgress) {
-    const overviewCards = document.querySelectorAll('#projects .glass-card');
-    const overviewCard = overviewCards[0];
-    
-    if (!overviewCard) return;
-    
-    // Update progress circle
-    const progressText = overviewCard.querySelector('text');
-    if (progressText) {
-        progressText.textContent = `${overallProgress}%`;
-    }
-    
-    // Update project counts
-    const statsElements = overviewCard.querySelectorAll('.space-y-3 div');
-    if (statsElements.length >= 3) {
-        statsElements[0].querySelector('span:last-child').textContent = `${completed.length} projects`;
-        statsElements[1].querySelector('span:last-child').textContent = `${current.length} projects`;
-        statsElements[2].querySelector('span:last-child').textContent = `${pending.length} projects`;
-    }
-}
-
-function updateCurrentProjects(projects) {
-    const projectCards = document.querySelectorAll('#projects .glass-card');
-    const currentProjectsCard = projectCards[1];
-    
-    if (!currentProjectsCard) return;
-    
-    const container = currentProjectsCard.querySelector('.space-y-6');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    projects.forEach(project => {
-        const status = project.progress > 0 ? "In Progress" : "Upcoming";
-        const statusClass = project.progress > 0 ? "bg-yellow-500/20 text-yellow-400" : "bg-blue-500/20 text-blue-400";
-        
-        const projectHTML = `
-            <div class="bg-gray-800/50 p-6 rounded-lg">
-                <div class="flex items-start justify-between mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-white mb-2">${project.title}</h3>
-                        <p class="text-sm text-gray-400">${project.description}</p>
-                    </div>
-                    <span class="${statusClass} px-3 py-1 rounded-full text-sm">${status}</span>
-                </div>
-                
-                <div class="mb-4">
-                    <div class="flex justify-between text-sm mb-2">
-                        <span class="text-gray-400">Progress</span>
-                        <span class="text-primary-light">${project.progress}%</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: ${project.progress}%"></div>
-                    </div>
-                </div>
-                
-                <div class="flex justify-between items-center text-sm text-gray-400">
-                    <div class="flex items-center">
-                        <i class="fas fa-calendar mr-2"></i>
-                        <span>Due: ${project.date}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-clock mr-2"></i>
-                        <span>${project.progress > 0 ? 'In Progress' : 'Not started'}</span>
-                    </div>
-                </div>
-                
-                <div class="flex space-x-3 mt-4">
-                    <button class="btn-primary flex-1 text-sm">Continue Working</button>
-                    <button class="bg-gray-700 text-white px-4 py-2 rounded-lg text-sm">View Details</button>
-                </div>
-            </div>
-        `;
-        container.innerHTML += projectHTML;
-    });
-}
-
-function updateCompletedProjects(projects) {
-    const container = document.querySelector('#projects .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
-    if (!container) return;
-    
-    container.innerHTML = '';
-    
-    projects.forEach(project => {
-        const projectHTML = `
-            <div class="bg-gray-800/50 p-6 rounded-lg">
-                <div class="bg-green-500/20 p-3 rounded-full inline-flex mb-4">
-                    <i class="fas fa-check text-green-400"></i>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2">${project.title}</h3>
-                <p class="text-sm text-gray-400 mb-4">${project.description}</p>
-                <div class="flex justify-between items-center text-sm text-gray-400">
-                    <span>Completed: ${project.date}</span>
-                    <span class="text-green-400">Score: ${project.score}%</span>
-                </div>
-            </div>
-        `;
-        container.innerHTML += projectHTML;
-    });
-}
-
-function updateProgressData(userId) {
-    const intern = internData[userId];
-    if (!intern.progressTracking) return;
-    
-    // Separate skills and performance data
-    const skills = intern.progressTracking.filter(item => item.type === 'skill');
-    const performance = intern.progressTracking.filter(item => item.type === 'performance');
-    
-    // Update Learning Progress
-    updateLearningProgress(skills);
-    
-    // Update Performance Analytics
-    updatePerformanceAnalytics(performance);
-}
-
-function updateLearningProgress(skills) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const learningCard = progressCards[0];
-    
-    if (!learningCard) return;
-    
-    const progressElements = learningCard.querySelectorAll('.space-y-4 > div');
-    
-    skills.forEach((skill, index) => {
-        if (progressElements[index]) {
-            const skillName = progressElements[index].querySelector('.text-gray-300');
-            const percentageElement = progressElements[index].querySelector('.text-primary-light');
-            const progressBar = progressElements[index].querySelector('.progress-bar');
-            
-            if (skillName) skillName.textContent = skill.test;
-            if (percentageElement) percentageElement.textContent = `${skill.score}%`;
-            if (progressBar) progressBar.style.width = `${skill.score}%`;
-        }
-    });
-}
-
-function updatePerformanceAnalytics(performance) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const performanceCard = progressCards[1];
-    
-    if (!performanceCard) return;
-    
-    const performanceItems = performanceCard.querySelectorAll('.space-y-4 > div');
-    
-    performance.forEach((item, index) => {
-        if (performanceItems[index]) {
-            const title = performanceItems[index].querySelector('.text-white');
-            const percentageElement = performanceItems[index].querySelector('span:last-child');
-            
-            if (title) title.textContent = item.test;
-            if (percentageElement) percentageElement.textContent = `${item.score}%`;
-        }
-    });
-}
-
-function updateCurrentProjects(projects) {
-    // Find the current projects container (2nd card in Projects section)
-    const projectCards = document.querySelectorAll('#projects .glass-card');
-    const currentProjectsCard = projectCards[1]; // Second card
-    
-    if (!currentProjectsCard) {
-        console.log('Current projects card not found');
-        return;
-    }
-    
-    const container = currentProjectsCard.querySelector('.space-y-6');
-    if (!container) {
-        console.log('Current projects container not found');
-        return;
-    }
-    
-    container.innerHTML = '';
-    
-    projects.forEach(project => {
-        const projectHTML = `
-            <div class="bg-gray-800/50 p-6 rounded-lg">
-                <div class="flex items-start justify-between mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-white mb-2">${project.title}</h3>
-                        <p class="text-sm text-gray-400">${project.description}</p>
-                    </div>
-                    <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm">${project.status}</span>
-                </div>
-                
-                <div class="mb-4">
-                    <div class="flex justify-between text-sm mb-2">
-                        <span class="text-gray-400">Progress</span>
-                        <span class="text-primary-light">${project.progress}%</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: ${project.progress}%"></div>
-                    </div>
-                </div>
-                
-                <div class="flex justify-between items-center text-sm text-gray-400">
-                    <div class="flex items-center">
-                        <i class="fas fa-calendar mr-2"></i>
-                        <span>Due: ${project.deadline}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-clock mr-2"></i>
-                        <span>${project.daysLeft ? project.daysLeft + ' days left' : 'Not started'}</span>
-                    </div>
-                </div>
-                
-                <div class="flex space-x-3 mt-4">
-                    <button class="btn-primary flex-1 text-sm">Continue Working</button>
-                    <button class="bg-gray-700 text-white px-4 py-2 rounded-lg text-sm">View Details</button>
-                </div>
-            </div>
-        `;
-        container.innerHTML += projectHTML;
-    });
-}
-
-function updateCompletedProjects(projects) {
-    // Find completed projects grid (after the main cards)
-    const container = document.querySelector('#projects .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
-    
-    if (!container) {
-        console.log('Completed projects container not found');
-        return;
-    }
-    
-    container.innerHTML = '';
-    
-    projects.forEach(project => {
-        const projectHTML = `
-            <div class="bg-gray-800/50 p-6 rounded-lg">
-                <div class="bg-green-500/20 p-3 rounded-full inline-flex mb-4">
-                    <i class="fas fa-check text-green-400"></i>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2">${project.title}</h3>
-                <p class="text-sm text-gray-400 mb-4">${project.description}</p>
-                <div class="flex justify-between items-center text-sm text-gray-400">
-                    <span>Completed: ${project.completionDate}</span>
-                    <span class="text-green-400">Score: ${project.score}%</span>
-                </div>
-            </div>
-        `;
-        container.innerHTML += projectHTML;
-    });
-}
-
-function updateProgressData(userId) {
-    const intern = internData[userId];
-    if (!intern.progress) return;
-    
-    console.log('Updating progress data for:', userId, intern.progress);
-    
-    // Update Performance Analytics (2nd card in Progress section)
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    if (progressCards[1]) {
-        const performanceItems = progressCards[1].querySelectorAll('.space-y-4 > div');
-        if (performanceItems.length >= 3 && intern.progress.performance) {
-            performanceItems[0].querySelector('span:last-child').textContent = `${intern.progress.performance.averageTestScore}%`;
-            performanceItems[1].querySelector('span:last-child').textContent = `${intern.progress.performance.projectCompletionRate}%`;
-            performanceItems[2].querySelector('span:last-child').textContent = `${intern.progress.performance.learningConsistency}%`;
-        }
-    }
-    
-    // Update Learning Progress (1st card in Progress section)
-    updateLearningProgress(intern.progress.learningProgress);
-    
-    // Update Progress Timeline (3rd card in Progress section)
-    updateProgressTimeline(intern.progress.timeline);
-}
-
-function updateLearningProgress(learningProgress) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const learningCard = progressCards[0]; // First card
-    
-    if (!learningCard) {
-        console.log('Learning progress card not found');
-        return;
-    }
-    
-    const progressElements = learningCard.querySelectorAll('.space-y-4 > div');
-    const skills = Object.keys(learningProgress);
-    
-    skills.forEach((skill, index) => {
-        if (progressElements[index]) {
-            const skillName = progressElements[index].querySelector('.text-gray-300');
-            const percentageElement = progressElements[index].querySelector('.text-primary-light');
-            const progressBar = progressElements[index].querySelector('.progress-bar');
-            
-            if (skillName) skillName.textContent = skill;
-            if (percentageElement) percentageElement.textContent = `${learningProgress[skill]}%`;
-            if (progressBar) progressBar.style.width = `${learningProgress[skill]}%`;
-        }
-    });
-}
-
-function updateProgressTimeline(timeline) {
-    const progressCards = document.querySelectorAll('#progress .glass-card');
-    const timelineCard = progressCards[2]; // Third card
-    
-    if (!timelineCard) {
-        console.log('Timeline card not found');
-        return;
-    }
-    
-    const container = timelineCard.querySelector('.space-y-6');
-    if (!container) {
-        console.log('Timeline container not found');
-        return;
-    }
-    
-    container.innerHTML = '';
-    
-    timeline.forEach((item, index) => {
-        const isLast = index === timeline.length - 1;
-        const statusColor = item.status === 'completed' ? 'green' : 'yellow';
-        const timelineHTML = `
-            <div class="flex">
-                <div class="flex flex-col items-center mr-4">
-                    <div class="w-3 h-3 bg-${statusColor}-500 rounded-full"></div>
-                    ${!isLast ? `<div class="w-0.5 h-16 bg-${statusColor}-500 mt-1"></div>` : ''}
-                </div>
-                <div class="flex-1 ${!isLast ? 'pb-6' : ''}">
-                    <h3 class="text-lg font-bold text-white">${item.title}</h3>
-                    <p class="text-sm text-gray-400 mb-2">${item.description}</p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <i class="fas fa-calendar mr-1"></i>
-                        <span>${item.date}</span>
-                        <span class="mx-2">•</span>
-                        <span class="text-${statusColor}-400">
-                            ${item.status === 'completed' ? 'Score: ' + item.score + '%' : item.progress + '% Complete'}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.innerHTML += timelineHTML;
-    });
-}
-
-        // Navigation System
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize navigation
-            initNavigation();
-            
-            // Set current date
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
+function initNavigation() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
         });
+    }
 
-        function initNavigation() {
-            // Mobile menu toggle
-            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-                document.getElementById('sidebar').classList.toggle('active');
+    // Navigation item clicks
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section');
+            
+            // Update active states
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
             });
-
-            // Navigation item clicks
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const sectionId = this.getAttribute('data-section');
-                    
-                    // Update active states
-                    document.querySelectorAll('.nav-item').forEach(nav => {
-                        nav.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Show selected section
-                    document.querySelectorAll('.section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    document.getElementById(sectionId).classList.add('active');
-                    
-                    // Close mobile menu
-                    document.getElementById('sidebar').classList.remove('active');
-                });
+            this.classList.add('active');
+            
+            // Show selected section
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Close mobile menu
+            document.getElementById('sidebar').classList.remove('active');
+        });
+    });
 
-            // Quick access grid clicks
-            document.querySelectorAll('.glass-card[data-section]').forEach(card => {
-                card.addEventListener('click', function() {
-                    const sectionId = this.getAttribute('data-section');
-                    
-                    // Update navigation and show section
-                    document.querySelectorAll('.nav-item').forEach(nav => {
-                        nav.classList.remove('active');
-                        if (nav.getAttribute('data-section') === sectionId) {
-                            nav.classList.add('active');
-                        }
-                    });
-                    
-                    document.querySelectorAll('.section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    document.getElementById(sectionId).classList.add('active');
-                });
-            });
-        }
-
-        // AI Mentor Functionality
-        function askAIMentor() {
-            const question = document.getElementById('aiQuestion').value;
-            if (!question) return;
+    // Quick access grid clicks
+    document.querySelectorAll('.glass-card[data-section]').forEach(card => {
+        card.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section');
             
-            // Add user message
-            addAIMessage(question, 'user');
-            
-            // Simulate AI thinking
-            addAIMessage('Thinking...', 'ai', true);
-            
-            // Simulate API call
-            setTimeout(() => {
-                removeThinkingMessage();
-                const response = generateAIResponse(question);
-                addAIMessage(response, 'ai');
-            }, 1500);
-            
-            document.getElementById('aiQuestion').value = '';
-        }
-
-        function addAIMessage(message, sender, isThinking = false) {
-            const container = document.getElementById('aiConversation');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message message-${sender === 'user' ? 'sent' : 'received'} ${isThinking ? 'thinking' : ''}`;
-            
-            messageDiv.innerHTML = `
-                <div class="flex items-start">
-                    <div class="${sender === 'user' ? 'bg-blue-500/20' : 'bg-green-500/20'} p-2 rounded-full mr-3">
-                        <i class="fas fa-${sender === 'user' ? 'user' : 'robot'} ${sender === 'user' ? 'text-blue-400' : 'text-green-400'}"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-white">${message}</p>
-                    </div>
-                </div>
-            `;
-            
-            container.appendChild(messageDiv);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function removeThinkingMessage() {
-            const thinkingMessages = document.querySelectorAll('.thinking');
-            thinkingMessages.forEach(msg => msg.remove());
-        }
-
-        function generateAIResponse(question) {
-            const responses = {
-                'html': "HTML is the foundation of web development. Focus on semantic HTML5 elements and accessibility features.",
-                'css': "Master CSS Grid and Flexbox for modern layouts. Consider learning CSS-in-JS for React applications.",
-                'javascript': "JavaScript fundamentals are crucial. Practice closures, promises, and async/await thoroughly.",
-                'react': "React is about components and state management. Learn hooks thoroughly and understand the virtual DOM.",
-                'career': "Build projects consistently. Contribute to open source and network with other developers.",
-                'default': "That's a great question! Focus on building practical projects and understanding core concepts deeply. Would you like me to elaborate on any specific area?"
-            };
-            
-            const lowerQuestion = question.toLowerCase();
-            for (const [key, response] of Object.entries(responses)) {
-                if (lowerQuestion.includes(key)) {
-                    return response;
+            // Update navigation and show section
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.getAttribute('data-section') === sectionId) {
+                    nav.classList.add('active');
                 }
-            }
-            return responses.default;
-        }
-
-        // Notification bell
-        document.getElementById('notificationBell').addEventListener('click', function() {
-            alert('You have 3 new notifications:\n- New project assigned\n- Team meeting reminder\n- Code review requested');
-        });
-
-        // Custom checkbox functionality
-        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('click', function() {
-                this.classList.toggle('checked');
             });
+            
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
         });
+    });
+}
 
-        // Greeting message script
+// AI Mentor Functionality
+function askAIMentor() {
+    const question = document.getElementById('aiQuestion').value;
+    if (!question) return;
+    
+    // Add user message
+    addAIMessage(question, 'user');
+    
+    // Simulate AI thinking
+    addAIMessage('Thinking...', 'ai', true);
+    
+    // Simulate API call
+    setTimeout(() => {
+        removeThinkingMessage();
+        const response = generateAIResponse(question);
+        addAIMessage(response, 'ai');
+    }, 1500);
+    
+    document.getElementById('aiQuestion').value = '';
+}
+
+function addAIMessage(message, sender, isThinking = false) {
+    const container = document.getElementById('aiConversation');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message message-${sender === 'user' ? 'sent' : 'received'} ${isThinking ? 'thinking' : ''}`;
+    
+    messageDiv.innerHTML = `
+        <div class="flex items-start">
+            <div class="${sender === 'user' ? 'bg-blue-500/20' : 'bg-green-500/20'} p-2 rounded-full mr-3">
+                <i class="fas fa-${sender === 'user' ? 'user' : 'robot'} ${sender === 'user' ? 'text-blue-400' : 'text-green-400'}"></i>
+            </div>
+            <div>
+                <p class="text-sm text-white">${message}</p>
+            </div>
+        </div>
+    `;
+    
+    container.appendChild(messageDiv);
+    container.scrollTop = container.scrollHeight;
+}
+
+function removeThinkingMessage() {
+    const thinkingMessages = document.querySelectorAll('.thinking');
+    thinkingMessages.forEach(msg => msg.remove());
+}
+
+function generateAIResponse(question) {
+    const responses = {
+        'html': "HTML is the foundation of web development. Focus on semantic HTML5 elements and accessibility features.",
+        'css': "Master CSS Grid and Flexbox for modern layouts. Consider learning CSS-in-JS for React applications.",
+        'javascript': "JavaScript fundamentals are crucial. Practice closures, promises, and async/await thoroughly.",
+        'react': "React is about components and state management. Learn hooks thoroughly and understand the virtual DOM.",
+        'career': "Build projects consistently. Contribute to open source and network with other developers.",
+        'default': "That's a great question! Focus on building practical projects and understanding core concepts deeply. Would you like me to elaborate on any specific area?"
+    };
+    
+    const lowerQuestion = question.toLowerCase();
+    for (const [key, response] of Object.entries(responses)) {
+        if (lowerQuestion.includes(key)) {
+            return response;
+        }
+    }
+    return responses.default;
+}
+
+// Notification bell
+const notificationBell = document.getElementById('notificationBell');
+if (notificationBell) {
+    notificationBell.addEventListener('click', function() {
+        alert('You have 3 new notifications:\n- New project assigned\n- Team meeting reminder\n- Code review requested');
+    });
+}
+
+// Custom checkbox functionality
+document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('click', function() {
+        this.classList.toggle('checked');
+    });
+});
+
+// Greeting message script
 function updateGreeting() {
     let now = new Date();
     let hours = now.getHours();
@@ -6927,7 +7024,10 @@ function updateGreeting() {
         message = "🌜 Good Night! Rest well for another productive day";
     }
 
-    document.getElementById("greetingMessage").innerText = message;
+    const greetingElement = document.getElementById("greetingMessage");
+    if (greetingElement) {
+        greetingElement.innerText = message;
+    }
 }
 
 updateGreeting();
